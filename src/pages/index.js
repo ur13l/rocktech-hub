@@ -2,20 +2,40 @@ import React from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import styled from "styled-components"
+import Carousel from "react-multi-carousel"
+import BusinessUnit from "../components/business-unit"
+
+const LayoutWrapper = styled.div`
+  background-color: #171717;
+  min-height:99%;
+  color: white;
+
+  .rocktech-def {
+    padding-top:6vh;
+    margin-bottom: 12vh;
+  }
+
+`
+
 
 const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
+  <LayoutWrapper>
+    <Layout location="/">
+      <SEO title="Rocktech Hub" />
+      <div class="rocktech-def">
+          <h3>¿Qué es Rocktech?</h3>
+          <p class="def">
+            Rocktech es una empresa de tecnología financiera que fomenta la inversión en innovación y analítica de mercados, con el propósito de incrementar el valor a cada negocio.
+          </p>
+      </div>
+      <div class="units">
+        <h3>Unidades de negocio</h3>
+        <BusinessUnit/>
+      </div>
+    </Layout>
+  </LayoutWrapper>
 )
 
 export default IndexPage
