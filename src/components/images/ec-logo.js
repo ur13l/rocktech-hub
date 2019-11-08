@@ -23,7 +23,7 @@ const ECLogo = () => {
     query {
       placeholderImage: file(relativePath: { eq: "ec-logo.png" }) {
         childImageSharp {
-          fixed(width: 500) {
+          fixed(width: 400) {
             ...GatsbyImageSharpFixed
           }
         }

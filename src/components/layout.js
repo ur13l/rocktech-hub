@@ -14,12 +14,18 @@ import Indicators from "./indicators"
 import Cover from "./cover"
 import "./layout.module.css"
 import styled from "styled-components"
+import Footer from "./footer"
 
 const GlobalStyles = styled.div`
   h3 {
     text-transform: uppercase;
     color: #A0A0A0;
     letter-spacing: 5px;
+  } 
+
+  h5 {
+    text-transform: uppercase;
+    color: #A0A0A0;
   } 
 
   .container {
@@ -50,13 +56,9 @@ const Layout = ({ children, location }) => {
       <Header siteTitle={data.site.siteMetadata.title} location={location} />
       <Cover location={ location } />
       <Indicators location={location} />
-      <div class="container">
+      <div className="container">
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <Footer/>
       </div>
     </GlobalStyles>
   )

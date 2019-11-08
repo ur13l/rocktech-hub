@@ -59,7 +59,7 @@ const Header = ({ siteTitle, location }) =>
             <li>
               <Link to="/">Noticias</Link>
             </li>
-            <li class="icon">
+            <li className="icon">
               <Link to="/">
                 <FaSearch/>
               </Link>

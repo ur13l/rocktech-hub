@@ -26,7 +26,7 @@ const AnalyticsLogo = () => {
     query {
       placeholderImage: file(relativePath: { eq: "analytics-logo.png" }) {
         childImageSharp {
-          fixed(width: 500) {
+          fixed(width: 400) {
             ...GatsbyImageSharpFixed
           }
         }

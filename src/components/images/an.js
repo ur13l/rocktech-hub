@@ -23,7 +23,7 @@ const AnalyticsImage = () => {
     query {
       placeholderImage: file(relativePath: { eq: "analytics.png" }) {
         childImageSharp {
-          fixed(width: 500) {
+          fixed(width: 700) {
             ...GatsbyImageSharpFixed
           }
         }

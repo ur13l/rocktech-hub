@@ -23,7 +23,7 @@ const CFLogo = () => {
     query {
       placeholderImage: file(relativePath: { eq: "cf-logo.png" }) {
         childImageSharp {
-          fixed(width: 500) {
+          fixed(width: 400) {
             ...GatsbyImageSharpFixed
           }
         }

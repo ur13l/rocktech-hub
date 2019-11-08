@@ -12,9 +12,6 @@ const IndicatorsWrapper = styled.div`
   height:50px;
   
   div {
-    margin: 0 auto;
-    max-width: 1280px;
-    padding: 0.5rem 0rem;
     hr {
       border-top: 1px solid white;
     }
@@ -31,7 +28,7 @@ const Indicators = ({ location }) =>
   {
     return (
       <IndicatorsWrapper>
-        <div>
+        <div className="container">
           <hr/>
             <div>
               

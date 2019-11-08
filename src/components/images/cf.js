@@ -20,9 +20,9 @@ import styled from "styled-components"
 const CFImage = () => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "logo1.png" }) {
+      placeholderImage: file(relativePath: { eq: "cf.png" }) {
         childImageSharp {
-          fixed(width: 500) {
+          fixed(width: 400) {
             ...GatsbyImageSharpFixed
           }
         }

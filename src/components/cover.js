@@ -14,7 +14,7 @@ const CoverWrapper = styled.div`
     margin: 0 auto;
     width: 100%;
     padding: 0.5rem 0rem;
-    height: 80vh;
+    height: 85vh;
     text-align: center;
     display:flex;
     justify-content: center;
@@ -56,9 +56,9 @@ const Cover = ({ location }) =>
         <div>
           <BigLogo location={location}/>
         </div>
-        <h3 class="disrupt-title">Disrumpir:</h3>
-        <p class="deflat">del lat. disruptio, -ōnis, var. de diruptio, -ōnis ‘rotura, fractura’.</p>
-        <p class="def">Alude a realizar las cosas de manera diferente.</p>
+        <h3 className="disrupt-title">Disrumpir:</h3>
+        <p className="deflat">del lat. disruptio, -ōnis, var. de diruptio, -ōnis ‘rotura, fractura’.</p>
+        <p className="def">Alude a realizar las cosas de manera diferente.</p>
         
       </CoverWrapper>
     )
