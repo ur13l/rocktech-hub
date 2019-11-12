@@ -57,7 +57,7 @@ const Header = ({ siteTitle, location }) =>
               <Link to="/">Glosario</Link>
             </li>
             <li>
-              <Link to="/">Noticias</Link>
+              <Link to="/noticias">Noticias</Link>
             </li>
             <li className="icon">
               <Link to="/">

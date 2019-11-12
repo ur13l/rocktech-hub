@@ -48,30 +48,32 @@ const IndexPage = () => (
   <LayoutWrapper>
     <Layout location="/">
       <SEO title="Rocktech Hub" />
-      <div className="rocktech-def">
-          <h3>¿Qué es Rocktech?</h3>
-          <p className="def">
-            Rocktech es una empresa de tecnología financiera que fomenta la inversión en innovación y analítica de mercados, con el propósito de incrementar el valor a cada negocio.
-          </p>
-      </div>
-      <div className="units">
-        <h3>Unidades de negocio</h3>
-        
-        <Carousel 
-          responsive={responsive}
-          autoPlay={true}
-          autoPlaySpeed={10000}
-          infinite={true}
-          showDots={true}
-          swipeable={false}
-          draggable={false}
-          removeArrowOnDeviceType={["superLargeDesktop", "desktop", "tablet", "mobile"]}
-          >
-          <BusinessUnit unit="ec"/>
-          <BusinessUnit unit="rd"/>
-          <BusinessUnit unit="cf"/>
-          <BusinessUnit unit="an"/>
-        </Carousel>
+      <div className="container">
+        <div className="rocktech-def">
+            <h3>¿Qué es Rocktech?</h3>
+            <p className="def">
+              Rocktech es una empresa de tecnología financiera que fomenta la inversión en innovación y analítica de mercados, con el propósito de incrementar el valor a cada negocio.
+            </p>
+        </div>
+        <div className="units">
+          <h3>Unidades de negocio</h3>
+          
+          <Carousel 
+            responsive={responsive}
+            autoPlay={true}
+            autoPlaySpeed={10000}
+            infinite={true}
+            showDots={true}
+            swipeable={false}
+            draggable={false}
+            removeArrowOnDeviceType={["superLargeDesktop", "desktop", "tablet", "mobile"]}
+            >
+            <BusinessUnit unit="ec"/>
+            <BusinessUnit unit="rd"/>
+            <BusinessUnit unit="cf"/>
+            <BusinessUnit unit="an"/>
+          </Carousel>
+        </div>
       </div>
     </Layout>
   </LayoutWrapper>

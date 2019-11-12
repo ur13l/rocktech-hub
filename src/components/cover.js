@@ -51,17 +51,20 @@ const CoverWrapper = styled.div`
 
 const Cover = ({ location }) => 
   {
-    return (
-      <CoverWrapper>
-        <div>
-          <BigLogo location={location}/>
-        </div>
-        <h3 className="disrupt-title">Disrumpir:</h3>
-        <p className="deflat">del lat. disruptio, -ōnis, var. de diruptio, -ōnis ‘rotura, fractura’.</p>
-        <p className="def">Alude a realizar las cosas de manera diferente.</p>
-        
-      </CoverWrapper>
-    )
+    if(location === "/"){
+      return (
+        <CoverWrapper>
+          <div>
+            <BigLogo location={location}/>
+          </div>
+          <h3 className="disrupt-title">Disrumpir:</h3>
+          <p className="deflat">del lat. disruptio, -ōnis, var. de diruptio, -ōnis ‘rotura, fractura’.</p>
+          <p className="def">Alude a realizar las cosas de manera diferente.</p>
+          
+        </CoverWrapper>
+      )
+    }
+    return (<></>)
   }
 
 

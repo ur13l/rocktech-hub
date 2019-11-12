@@ -17,15 +17,30 @@ import styled from "styled-components"
 import Footer from "./footer"
 
 const GlobalStyles = styled.div`
+  
+  h2 {
+    text-transform: uppercase;
+    color: #A0A0A0;
+    letter-spacing: 6px;
+    margin: 0;
+  } 
+
+  h1 {
+    text-transform: uppercase;
+  } 
+
+
   h3 {
     text-transform: uppercase;
     color: #A0A0A0;
-    letter-spacing: 5px;
+    letter-spacing: 6px;
   } 
 
   h5 {
     text-transform: uppercase;
     color: #A0A0A0;
+    letter-spacing: 1px;
+    margin: 0px;
   } 
 
   .container {
@@ -37,6 +52,23 @@ const GlobalStyles = styled.div`
   p.deflat {
     font-style: italic;
   }
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+
+  .white-background {
+    background: white;
+  }
+  
+  .section {
+    width: 100%;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+
 `
 
 
@@ -56,7 +88,7 @@ const Layout = ({ children, location }) => {
       <Header siteTitle={data.site.siteMetadata.title} location={location} />
       <Cover location={ location } />
       <Indicators location={location} />
-      <div className="container">
+      <div>
         <main>{children}</main>
         <Footer/>
       </div>
