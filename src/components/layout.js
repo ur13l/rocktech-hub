@@ -33,7 +33,7 @@ const GlobalStyles = styled.div`
   h3 {
     text-transform: uppercase;
     color: #A0A0A0;
-    letter-spacing: 6px;
+    letter-spacing: 3px;
   } 
 
   h5 {

@@ -6,8 +6,20 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import MainPost from "../components/main-post"
+import SmallPost from "../components/small-post"
+import MediumPost from "../components/medium-post"
+import SideNav from "../components/sidenav"
 
 const LayoutWrapper = styled.div`
+  h3 {
+    color: #000;
+    margin-bottom: 12px;
+  }
+
+  .no-margin {
+    margin:0;
+  }
+  
   /**
     Definition container and items grid
   */
@@ -41,55 +53,110 @@ const LayoutWrapper = styled.div`
   .content-news {
     display: grid;
     grid-gap: 24px;
-    border-top: 1px #d0d0d0 solid;
-    padding-top: 24px;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: 0fr 1fr ;
   }
 
   .content-item1 {
-    grid-column: 1 / span 3;
+    grid-column: 1;
     grid-row: 1;
     display: grid;
     grid-gap: 24px;
+    height: fit-content;
   }
 
   .content-item2 {
-    background: saddlebrown;
-    height: 1200px;
-    grid-column: 4;
+    grid-column: 2;
     grid-row: 1 / span 2;
     display: grid;
+    border-left: 1px solid #d0d0d0;
   }
 
   .content-item3 {
-    background: peru;
-    height: 500px;
-    grid-column: 1 / span 3;
+    padding-top: 24px;
+    grid-column: 1;
     grid-row: 2;
     display: grid;
-    padding: 24px;
     grid-gap: 24px;
+    grid-template-columns: 50% 50%;
   }
 
   /**
     Main Section
    */
   .main1  {
-    grid-column: 1 / span 3;
+    grid-column: 1;
     grid-row: 1;
-
+    padding-top: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #d0d0d0;
+    border-top: 1px solid #d0d0d0;
   }
 
-  .main-common-item {
+  .main2 {
+    grid-column:1;
     grid-row: 2;
-    height: auto;
-    background: rebeccapurple;
+    grid-template-columns: 33% 33% 33%;
+    display: grid;
+    grid-gap: 12px;
   }
-`
 
+  .main-common-item1 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .main-common-item2 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .main-common-item3 {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  /**
+    Technology / Finance section
+   */
+  .technology-item {
+    grid-column: 2;
+    grid-row: 1;
+    padding-right: 24px;
+  }
+
+  .finance-item {
+    grid-column: 1;
+    grid-row: 1;
+    border-right: 1px solid #d0d0d0;
+    padding-right: 24px;
+  }
+
+  .header-half-section {
+    height: fit-content;
+    margin-bottom: 18px;
+  }
+
+  .space {
+    height: 26px;
+  }
+
+`
 class Noticias extends Component {
+ 
+  
+  postLoop = (posts) => {
+    let div = [];
+    posts.forEach((post, key) => {
+      div.push(<MediumPost post={post}/>)
+    })
+    return div;
+  }
+  
   render() {
     var mainPosts = this.props.data.mainPosts.edges
+    var techPosts = this.props.data.technologyPosts.edges;
+    var financePosts = this.props.data.financePosts.edges;
 
     /**
      * We iterate in reverse because that is how we assure the most recent
@@ -124,19 +191,48 @@ class Noticias extends Component {
                   <div className="main1">
                     <MainPost post={mainPosts[0]} />
                   </div>
-                  <div className="main-common-item main2"></div>
-                  <div className="main-common-item main3"></div>
-                  <div className="main-common-item main4"></div>
+                  <div className="main2" >
+                    <div className="main-common-item1">
+                      <SmallPost post={mainPosts[1]}/> 
+                    </div>
+                    <div className="main-common-item2">
+                      <SmallPost post={mainPosts[2]}/>
+                    </div>
+                    <div className="main-common-item3">
+                      <SmallPost post={mainPosts[3]}/>
+                    </div>
+                  </div>
                 </div>
-                <div className="content-item2"></div>
-                <div className="content-item3"></div>
+                <div className="content-item2">
+                  <SideNav/>
+                </div>
+                <div className="content-item3">
+                  <div className="finance-item">
+                    <div className="header-half-section">
+                      <h3>Finanzas</h3>
+                      <p className="italic no-margin space"></p>
+                      <p className="no-margin">f. Conjunto de actividades que tienen relación con el dinero y actividades dentro del sector económico.</p>
+                    </div>
+                    {this.postLoop(financePosts)}
+
+                  </div>
+                  <div className="technology-item">
+                    <div className="header-half-section">
+                      <h3>Tecnología</h3>
+                      <p className="italic no-margin">(Del gr. Τεχνολογία)</p>
+                      <p className="no-margin">f. Conjunto de actividades que tienen relación con el dinero y actividades dentro del sector económico.</p>
+                    </div>
+                    {this.postLoop(techPosts)}
+
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </Layout>
       </LayoutWrapper>
     )
-  }
+  } 
 }
 
 export default Noticias
@@ -157,9 +253,15 @@ export const postsQuery = graphql`
         node {
           id
           title
+          content
           sticky
           excerpt
           slug
+          date
+          author {
+            id
+            name
+          }
           featured_media {
             id
             link
@@ -167,9 +269,19 @@ export const postsQuery = graphql`
             localFile {
               childImageSharp {
                 # Try editing the "maxWidth" value to generate resized images.
-                fluid(maxWidth: 500) {
+                fixed(width: 120, height: 120) {
+                  ...GatsbyImageSharpFixed
+                }
+                fluid(maxWidth: 468, maxHeight: 350) {
                   ...GatsbyImageSharpFluid
-                  }
+                }
+
+                grayFixed:  fixed(width: 120, height: 120,
+                  duotone: { highlight: "#ffffff", shadow: "#000000", opacity: 100 }) {
+                  ...GatsbyImageSharpFixed
+                }
+
+                
               }
             }
           }
@@ -185,7 +297,6 @@ export const postsQuery = graphql`
       }
     }
   
-
   financePosts: allWordpressPost(
       sort: { fields: [date], order: DESC }
       limit: 3
@@ -202,6 +313,22 @@ export const postsQuery = graphql`
             id
             link
             caption
+            localFile {
+              childImageSharp {
+                # Try editing the "maxWidth" value to generate resized images.
+                fixed(width: 468, height: 263) {
+                  ...GatsbyImageSharpFixed
+                  }
+                  fluid(maxWidth: 468, maxHeight: 263) {
+                    ...GatsbyImageSharpFluid
+                    }
+
+                    grayFluid: fluid(maxWidth: 468, maxHeight: 200,
+                      duotone: { highlight: "#ffffff", shadow: "#000000", opacity: 100 }) {
+                      ...GatsbyImageSharpFluid
+                    }
+              }
+            }
           }
           tags {
             id
@@ -214,7 +341,7 @@ export const postsQuery = graphql`
         }
       }
     }
-    tecnologyPosts: allWordpressPost(
+    technologyPosts: allWordpressPost(
       sort: { fields: [date], order: DESC }
       limit: 3
       filter: { tags: { elemMatch: { name: { eq: "Tecnología" } } } }
@@ -230,6 +357,22 @@ export const postsQuery = graphql`
             id
             link
             caption
+            localFile {
+              childImageSharp {
+                # Try editing the "maxWidth" value to generate resized images.
+                fixed(width: 468, height: 263) {
+                  ...GatsbyImageSharpFixed
+                  }
+                  fluid(maxWidth: 468, maxHeight: 263) {
+                    ...GatsbyImageSharpFluid
+                    }
+
+                    grayFluid: fluid(maxWidth: 468, maxHeight: 200,
+                      duotone: { highlight: "#ffffff", shadow: "#000000", opacity: 100 }) {
+                      ...GatsbyImageSharpFluid
+                    }
+              }
+            }
           }
           tags {
             id
