@@ -69,6 +69,9 @@ const GlobalStyles = styled.div`
     font-style: italic;
   }
 
+  .truncate-text {
+    color: #707070;
+  }
 `
 
 

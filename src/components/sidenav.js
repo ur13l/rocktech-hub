@@ -6,22 +6,10 @@ import "../styles/global.css"
 import Img from "gatsby-image"
 import DOMPurify from "dompurify"
 import TextTruncate from "react-text-truncate"
-import TimeAgo from "react-timeago"
 import esStrings from "react-timeago/lib/language-strings/es"
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter"
 import htmlToText from "html-to-text"
-import {
-  TwitterTimelineEmbed,
-  TwitterShareButton,
-  TwitterFollowButton,
-  TwitterHashtagButton,
-  TwitterMentionButton,
-  TwitterTweetEmbed,
-  TwitterMomentShare,
-  TwitterDMButton,
-  TwitterVideoEmbed,
-  TwitterOnAirButton,
-} from "react-twitter-embed"
+import { TwitterTimelineEmbed } from "react-twitter-embed"
 
 const formatter = buildFormatter(esStrings)
 /**
@@ -37,7 +25,43 @@ const SideNavWrapper = styled.div`
   }
 
   .sidenav-section {
+    padding-top: 42px;
     padding-bottom: 42px;
+  }
+
+  .word-of-the-day {
+    padding-top: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  /**
+  * Highlight section styles.
+  */
+  .highlight-item  {
+    list-style: none;
+    margin-bottom: 24px;
+  }
+
+  .highlight-title,
+  .wotd-title  {
+    line-height: 24px;
+    margin-top: 39px;
+    margin-bottom: 12px;
+  }
+
+  .sidenav-section {
+    border-bottom: 1px solid #d0d0d0;
+  }
+
+  .categories-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 42px;
+    grid-gap: 12px 24px
   }
 `
 
@@ -47,7 +71,7 @@ const SideNavWrapper = styled.div`
 const SideNav = ({}) => {
   const data = useStaticQuery(graphql`
     query {
-      allWordpressPost(
+      glosary: allWordpressPost(
         sort: { fields: [date], order: DESC }
         filter: { categories: { elemMatch: { name: { eq: "glosario" } } } }
       ) {
@@ -63,6 +87,44 @@ const SideNav = ({}) => {
               id
               name
             }
+          }
+        }
+      }
+      highlights: allWordpressPost(
+        sort: { fields: [date], order: DESC }
+        filter: {
+          categories: { elemMatch: { name: { eq: "blog" } } }
+          sticky: { eq: true }
+        }
+        limit: 2
+      ) {
+        edges {
+          node {
+            id
+            title
+            content
+            excerpt
+            slug
+            date
+            sticky
+            categories {
+              id
+              name
+            }
+          }
+        }
+      }
+
+      categories: allWordpressTag(
+        sort: { fields: [count], order: [DESC] }
+        limit: 10
+      ) {
+        edges {
+          node {
+            id
+            name
+            count
+            slug
           }
         }
       }
@@ -105,8 +167,9 @@ const SideNav = ({}) => {
     return localStorage.randomNumber
   }
 
-  console.log(data)
-  let glosary = data.allWordpressPost.edges
+  const glosary = data.glosary.edges
+  const highlights = data.highlights.edges
+  const categories = data.categories.edges
   /**
    * For the word of the day we select a random item from pages in the glosary
    * This word will be different for each user.
@@ -114,11 +177,44 @@ const SideNav = ({}) => {
   let randomNumber = getRandomNumberOfDay(glosary.length)
   let wordOfTheDay = glosary[randomNumber]
 
+  let highlightsElem = []
+  highlights.forEach(post => {
+    highlightsElem.push(
+      <li className="highlight-item">
+        <Link to={post.node.slug}>
+          <h5 className="highlight-title">{post.node.title}</h5>
+        </Link>
+        <TextTruncate
+          className="highlight-content"
+          line={3}
+          element="span"
+          truncateText=""
+          text={post.node.excerpt.replace("<p>", "").replace("</p>", "")}
+          textTruncateChild={
+            <a className="truncate-text" href={"/" + post.node.slug}>
+              Ver más...
+            </a>
+          }
+        />
+      </li>
+    )
+  })
+
+  let categoriesElem = []
+  categories.forEach(category => {
+    categoriesElem.push(
+      <Link to={"/categoria/" + category.node.slug}>
+        {category.node.name}
+      </Link>
+    )
+  })
+
   return (
     <SideNavWrapper>
       <div className="word-of-the-day sidenav-section">
         <h3>Palabra del día</h3>
         <h5
+          className="wotd-title"
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(wordOfTheDay.node.title + ":"),
           }}
@@ -126,10 +222,15 @@ const SideNav = ({}) => {
         <TextTruncate
           line={4}
           element="span"
-          truncateText="…"
+          truncateText=""
           text={htmlToText.fromString(wordOfTheDay.node.content)}
           textTruncateChild={
-            <a href={"/glosario/" + wordOfTheDay.node.slug}>Ver más</a>
+            <a
+              className="truncate-text"
+              href={"/glosario/" + wordOfTheDay.node.slug}
+            >
+              Ver más...
+            </a>
           }
         />
       </div>
@@ -140,6 +241,14 @@ const SideNav = ({}) => {
           screenName="rocktechmx"
           options={{ height: 600 }}
         />
+      </div>
+      <div className="highlights sidenav-section">
+        <h3>Destacadas</h3>
+        <ul>{highlightsElem}</ul>
+      </div>
+      <div className="highlights sidenav-section">
+        <h3>Categorías</h3>
+        <div className="categories-container">{categoriesElem}</div>
       </div>
     </SideNavWrapper>
   )

@@ -209,7 +209,7 @@ class Noticias extends Component {
                 <div className="content-item3">
                   <div className="finance-item">
                     <div className="header-half-section">
-                      <h3>Finanzas</h3>
+                      <h3>Negocio</h3>
                       <p className="italic no-margin space"></p>
                       <p className="no-margin">f. Conjunto de actividades que tienen relación con el dinero y actividades dentro del sector económico.</p>
                     </div>
@@ -218,7 +218,7 @@ class Noticias extends Component {
                   </div>
                   <div className="technology-item">
                     <div className="header-half-section">
-                      <h3>Tecnología</h3>
+                      <h3>Tecnología financiera</h3>
                       <p className="italic no-margin">(Del gr. Τεχνολογία)</p>
                       <p className="no-margin">f. Conjunto de actividades que tienen relación con el dinero y actividades dentro del sector económico.</p>
                     </div>
@@ -300,7 +300,7 @@ export const postsQuery = graphql`
   financePosts: allWordpressPost(
       sort: { fields: [date], order: DESC }
       limit: 3
-      filter: { tags: { elemMatch: { name: { eq: "Finanzas" } } } }
+      filter: { tags: { elemMatch: { name: { eq: "Negocio" } } } }
     ) {
       edges {
         node {
@@ -344,7 +344,7 @@ export const postsQuery = graphql`
     technologyPosts: allWordpressPost(
       sort: { fields: [date], order: DESC }
       limit: 3
-      filter: { tags: { elemMatch: { name: { eq: "Tecnología" } } } }
+      filter: { tags: { elemMatch: { slug: { eq: "tecnologia-financiera" } } } }
     ) {
       edges {
         node {
