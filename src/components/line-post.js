@@ -19,7 +19,9 @@ const PostWrapper = styled.div`
   grid-gap: 24px;
   align-items: top;
   justify-content: left;
-  grid-template-columns: 50% 50%;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  grid-template-columns: 30% 70%;
 
   /** Remove the blue color from default anchor tags */
   a {
@@ -27,12 +29,12 @@ const PostWrapper = styled.div`
   }
 
   /** General main elements styled */
-  .mp-item1 {
+  .lp-item1 {
     grid-column: 1;
     grid-row: 1;
   }
 
-  .mp-item2 {
+  .lp-item2 {
     grid-column: 2;
     grid-row: 1;
     padding-right: 24px;
@@ -59,33 +61,33 @@ const PostWrapper = styled.div`
 `
 
 /**
- * MainPost will render the most important new located on the News Page as a headliner.
+ * LinePost will render the most important new located on the News Page as a headliner.
  * @param {Object} post
  */
-const MainPost = ({ post }) => {
+const LinePost = ({ post }) => {
   return (
     <PostWrapper>
       {/* Pointing to the detail page by Gatsby from the slug in Wordpress. */}
       <Link to={"/" + post.node.slug}>
-        <div className="mp-item1">
+        <div className="lp-item1">
           <Img
-            fluid={post.node.featured_media.localFile.childImageSharp.fluid}
+            fluid={post.node.featured_media.localFile.childImageSharp.grayFluid}
           />
         </div>
       </Link>
       <Link to={"/" + post.node.slug}>
-        <div className="mp-item2">
+        <div className="lp-item2">
           {/* dangerouslySetInnerHTML means that the content will render in HTML */}
-          <h1
+          <h3
             dangerouslySetInnerHTML={{
               __html: DOMPurify.sanitize(post.node.title),
             }}
-          ></h1>
+          ></h3>
 
           {/* The replace method on the text attribute helps to remove the paragraph tag 
           that comes with the excerpt */}
           <TextTruncate
-            line={4}
+            line={2}
             element="span"
             truncateText="…"
             text={post.node.excerpt.replace("<p>", "").replace("</p>", "")}
@@ -110,12 +112,12 @@ const MainPost = ({ post }) => {
 /**
  * Default props for Main Post
  */
-MainPost.propTypes = {
+LinePost.propTypes = {
   post: PropTypes.object,
 }
 
-MainPost.defaultProps = {
+LinePost.defaultProps = {
   post: {},
 }
 
-export default MainPost
+export default LinePost

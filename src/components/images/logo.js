@@ -32,7 +32,7 @@ const Logo = ({location, src}) => {
       }
     }
   `)
-  if(location != "/") {
+  if(location !== "/") {
     return <Img fixed={data.placeholderImage.childImageSharp.fixed} />
   }
   return (

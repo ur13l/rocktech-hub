@@ -1,4 +1,3 @@
-import { Link, StaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
@@ -43,7 +42,6 @@ const BusinessUnitWrapper = styled.div`
 /**
  * BusinessUnit component
  */
-
 const BusinessUnit = ({unit}) => 
   {
     switch(unit) {
@@ -62,7 +60,6 @@ const BusinessUnit = ({unit}) =>
               <ECImage/>
             </div>
           </BusinessUnitWrapper>)
-        break;
       case "rd": 
         return (
           <BusinessUnitWrapper>
@@ -78,7 +75,6 @@ const BusinessUnit = ({unit}) =>
               <RDImage/>
             </div>
           </BusinessUnitWrapper>)
-          break;
       case "cf": 
         return (
           <BusinessUnitWrapper>
@@ -94,7 +90,6 @@ const BusinessUnit = ({unit}) =>
               <CFImage/>
             </div>
           </BusinessUnitWrapper>)
-          break;
       case "an": 
           return (
             <BusinessUnitWrapper>
@@ -110,7 +105,8 @@ const BusinessUnit = ({unit}) =>
                 <AnalyticsImage/>
               </div>
             </BusinessUnitWrapper>)
-            break;
+      default: 
+          return (<></>)
     }
     
     

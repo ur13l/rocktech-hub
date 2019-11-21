@@ -1,10 +1,10 @@
-import { Link, StaticQuery } from "gatsby"
+import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 import "../styles/global.css"
 import Logo from "./images/logo.js"
-import { FaFacebookF, FaLinkedin, FaTwitter, FaInstagram, FaLink } from "react-icons/fa"
+import { FaFacebookF, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa"
 
 /**
  * FooterWrapper element, used to set style to a component.
@@ -79,6 +79,11 @@ const FooterWrapper = styled.footer`
         }
       }
     }
+
+    .no-top {
+      padding-top: 0;
+    }
+
 `
 
 /**
@@ -91,16 +96,13 @@ const Footer = ({ siteTitle, location }) =>
   {
     return (
       <FooterWrapper>
-        <div className="container">
-          <hr className="footer-separator"/>
-        </div>
         <div className="container grid">
           <div className="item item1">
             <Logo/>
           </div>
           <div className="item item2"> 
             <h5 className="footer-title footer-color">Oficina Central</h5>
-            <a className="address footer-color" href="https://g.page/Rocktech?share" target="_blank">
+            <a className="address footer-color" href="https://g.page/Rocktech?share" target="_blank" rel="noopener noreferrer">
             <p>Av. Cerro Gordo del Campestre 201 Int. 303<br/>
               Col. Las Quintas, León, Gto.<br/>
               C.P. 37125<br/>
@@ -110,7 +112,7 @@ const Footer = ({ siteTitle, location }) =>
           </div>
           <div className="item item3">
           <h5 className="footer-title footer-color">Corporativo</h5>
-            <a className="address footer-color" href="https://goo.gl/maps/vFqDoMThoGVdxtkn8" target="_blank">
+            <a className="address footer-color" href="https://goo.gl/maps/vFqDoMThoGVdxtkn8" target="_blank" rel="noopener noreferrer">
               <p className="address">Capital Reforma<br/>
                   Avenida Paseo de la Reforma #250<br/>
                   Torre 1 Reforma #16, Piso 11 Col. Juárez,<br/>
@@ -137,22 +139,22 @@ const Footer = ({ siteTitle, location }) =>
               </ul>
             </div>
             <div className="sn sn2">
-              <a className="footer-color" href="https://twitter.com/rocktechmx?lang=en" target="_blank">
+              <a className="footer-color" href="https://twitter.com/rocktechmx?lang=en" target="_blank" rel="noopener noreferrer">
               <FaTwitter/>
               </a>
             </div>
             <div className="sn sn3">
-              <a className="footer-color" href="https://www.linkedin.com/company/rocktechgroup" target="_blank">
+              <a className="footer-color" href="https://www.linkedin.com/company/rocktechgroup" target="_blank" rel="noopener noreferrer">
               <FaLinkedin/>
               </a>
             </div>
             <div className="sn sn4">
-              <a className="footer-color" href="https://www.facebook.com/rocktechEquityCrowdfunding/" target="_blank">
+              <a className="footer-color" href="https://www.facebook.com/rocktechEquityCrowdfunding/" target="_blank" rel="noopener noreferrer">
               <FaFacebookF/>
               </a>
             </div>
             <div className="sn sn5">
-              <a className="footer-color" href="https://www.instagram.com/rocktechmx/?hl=en" target="_blank">
+              <a className="footer-color" href="https://www.instagram.com/rocktechmx/?hl=en" target="_blank" rel="noopener noreferrer">
               <FaInstagram/>
               </a>
             </div>

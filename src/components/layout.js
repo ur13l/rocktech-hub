@@ -27,13 +27,21 @@ const GlobalStyles = styled.div`
 
   h1 {
     text-transform: uppercase;
+    font-weight: 800;
   } 
 
+  h2 {
+    text-transform: uppercase;
+    font-weight: 800;
+
+  } 
 
   h3 {
     text-transform: uppercase;
     color: #A0A0A0;
     letter-spacing: 3px;
+    font-weight: 800;
+
   } 
 
   h5 {
@@ -41,6 +49,7 @@ const GlobalStyles = styled.div`
     color: #A0A0A0;
     letter-spacing: 1px;
     margin: 0px;
+    font-weight: 800;
   } 
 
   .container {
@@ -67,6 +76,10 @@ const GlobalStyles = styled.div`
 
   .italic {
     font-style: italic;
+  }
+
+  .black {
+    font-weight: 800;
   }
 
   .truncate-text {

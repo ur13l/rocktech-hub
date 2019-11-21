@@ -1,17 +1,14 @@
-import { Link, StaticQuery, useStaticQuery } from "gatsby"
+import { Link, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
-import React, { Component } from "react"
+import React from "react"
 import styled from "styled-components"
 import "../styles/global.css"
-import Img from "gatsby-image"
 import DOMPurify from "dompurify"
 import TextTruncate from "react-text-truncate"
-import esStrings from "react-timeago/lib/language-strings/es"
-import buildFormatter from "react-timeago/lib/formatters/buildFormatter"
 import htmlToText from "html-to-text"
 import { TwitterTimelineEmbed } from "react-twitter-embed"
+import { graphql } from 'gatsby'
 
-const formatter = buildFormatter(esStrings)
 /**
  * SideNavWrapper element, used to set style to a component.
  */
@@ -19,7 +16,10 @@ const SideNavWrapper = styled.div`
   padding: 24px;
 
   h3,
-  h5,
+  h5 {
+    color: #000 !important;
+  }
+
   a {
     color: #000;
   }
@@ -61,14 +61,14 @@ const SideNavWrapper = styled.div`
     display: grid;
     grid-template-columns: 50% 50%;
     margin-top: 42px;
-    grid-gap: 12px 24px
+    grid-gap: 12px 24px;
   }
 `
 
 /**
  * SideNav will render the most important new located on the News Page as a headliner.
  */
-const SideNav = ({}) => {
+const SideNav = () => {
   const data = useStaticQuery(graphql`
     query {
       glosary: allWordpressPost(
@@ -117,7 +117,7 @@ const SideNav = ({}) => {
 
       categories: allWordpressTag(
         sort: { fields: [count], order: [DESC] }
-        limit: 10
+        limit: 100
       ) {
         edges {
           node {
@@ -125,6 +125,7 @@ const SideNav = ({}) => {
             name
             count
             slug
+            description
           }
         }
       }
@@ -182,7 +183,12 @@ const SideNav = ({}) => {
     highlightsElem.push(
       <li className="highlight-item">
         <Link to={post.node.slug}>
-          <h5 className="highlight-title">{post.node.title}</h5>
+          <h5
+            className="highlight-title"
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(post.node.title),
+            }}
+          />
         </Link>
         <TextTruncate
           className="highlight-content"
@@ -203,9 +209,7 @@ const SideNav = ({}) => {
   let categoriesElem = []
   categories.forEach(category => {
     categoriesElem.push(
-      <Link to={"/categoria/" + category.node.slug}>
-        {category.node.name}
-      </Link>
+      <Link to={"/categoria/" + category.node.slug}>{category.node.name}</Link>
     )
   })
 

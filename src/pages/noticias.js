@@ -1,9 +1,7 @@
 import React, { Component } from "react"
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
-
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import { graphql } from 'gatsby'
+import PageLayout from "../components/page-layout"
 import styled from "styled-components"
 import MainPost from "../components/main-post"
 import SmallPost from "../components/small-post"
@@ -170,24 +168,9 @@ class Noticias extends Component {
 
     return (
       <LayoutWrapper>
-        <Layout>
-          <SEO title="Noticias" />
-          <div className="section white-background">
-            <div className="container">
-              <div className="def-container">
-                <div className="def-item1">
-                  <h2>Noticias</h2>
-                </div>
-                <div className="def-item2">
-                  <p className="italic">Del lat. notitia.</p>
-                  <p>
-                    f. Información sobre algo que se considera interesante
-                    divulgar.
-                  </p>
-                </div>
-              </div>
-              <div className="content-news">
-                <div className="content-item1">
+        <PageLayout title="Noticias" description="f. Información sobre algo que se considera interesante divulgar."
+          descriptionDef="Del lat. notitia.">
+        <div className="content-item1">
                   <div className="main1">
                     <MainPost post={mainPosts[0]} />
                   </div>
@@ -226,10 +209,7 @@ class Noticias extends Component {
 
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </Layout>
+        </PageLayout>
       </LayoutWrapper>
     )
   } 
