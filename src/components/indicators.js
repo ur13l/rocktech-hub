@@ -8,18 +8,16 @@ import "../styles/global.css"
  */
 const IndicatorsWrapper = styled.div`
   background: #171717;
-  height:50px;
-  
+
+  height: 50px;
+
   div {
     hr {
       border-top: 1px solid white;
     }
-    
   }
 
-  .is-hidden {
-    display: none;
-  }
+  
 `
 
 /**
@@ -27,21 +25,17 @@ const IndicatorsWrapper = styled.div`
  * @param {string} location
  */
 
-const Indicators = ({ location }) => 
-  {
-    return (
-      <IndicatorsWrapper>
-        <div className="container" id="indicators">
-          <hr/>
-            <div>
-              
-            </div>
-          <hr/>
-        </div>
-      </IndicatorsWrapper>
-    )
-  }
-
+const Indicators = ({ location }) => {
+  return (
+    <IndicatorsWrapper>
+      <div className="container" id="indicators">
+        <hr />
+        <div></div>
+        <hr />
+      </div>
+    </IndicatorsWrapper>
+  )
+}
 
 Indicators.propTypes = {
   location: PropTypes.string,

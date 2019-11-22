@@ -10,7 +10,6 @@ import { FaSearch, FaTimes } from "react-icons/fa"
  * HeaderWrapper element, used to set style to a component.
  */
 const HeaderWrapper = styled.header`
-  background: #171717;
   width: 100%;
   div {
     margin: 0 auto;
@@ -24,7 +23,7 @@ const HeaderWrapper = styled.header`
       li {
         display: inline-block;
         color: white;
-        padding: 10px 30px;
+        padding: 10px 12px 10px 48px;
         text-transform: uppercase;
         line-height: normal;
         font-size: 14px;
@@ -37,14 +36,7 @@ const HeaderWrapper = styled.header`
     color: #fff !important;
   }
 
-  .is-hidden {
-    visibility: hidden;
-    height:0px !important;
-    width: 0px;
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow: hidden;
-  }
+ 
 
   .pointer {
     cursor: pointer;
@@ -57,10 +49,10 @@ const HeaderWrapper = styled.header`
     color: white;
     font-size: 30px;
     transition: width 0.3s;
-    padding-right:48px;
+    padding-right: 48px;
     width: 0%;
-    height:0%;
-    float:right;
+    height: 0%;
+    float: right;
     box-sizing: border-box;
   }
 
@@ -69,12 +61,11 @@ const HeaderWrapper = styled.header`
   }
 
   .closable {
-    position:relative;
-    display:inline-block;
+    position: relative;
+    display: inline-block;
     width: 100%;
     font-size: 40px !important;
   }
-
 
   .input-full-width {
     width: 100% !important;
@@ -83,18 +74,22 @@ const HeaderWrapper = styled.header`
 
   .closable_close {
     position: absolute;
-    right:0;
-    top:0;
-    padding: 0 12px;
-    cursor:pointer;
+    right: 0;
+    top: 0;
+    padding: 0px 0px 27px 0px;
+    cursor: pointer;
     color: #fff;
   }
 
-  #header-search {
+  #header-search  {
     height: 70px;
     padding-top: 33px;
   }
 
+  .last-item {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+  }
 `
 
 /**
@@ -115,8 +110,8 @@ const Header = ({ siteTitle, location }) => {
     headerSearch.classList.toggle("is-hidden")
     headerContent.classList.toggle("is-hidden")
     indicators.classList.toggle("is-hidden")
-    headerInput.classList.toggle("input-full-width");
-    headerInput.focus();
+    headerInput.classList.toggle("input-full-width")
+    headerInput.focus()
   }
 
   const onClickCancel = () => {
@@ -124,22 +119,57 @@ const Header = ({ siteTitle, location }) => {
     const headerContent = document.getElementById("header-content")
     const headerInput = document.getElementsByClassName("large-input")[0]
     const indicators = document.getElementById("indicators")
-    headerInput.classList.toggle("input-full-width");
-    
-    setTimeout(()=>{
+    const searchPanel = document.getElementById("search-panel")
+
+    headerInput.classList.toggle("input-full-width")
+
+    setTimeout(() => {
       headerSearch.classList.toggle("is-hidden")
       headerContent.classList.toggle("is-hidden")
       indicators.classList.toggle("is-hidden")
+      searchPanel.classList.add('is-hidden')
+      document.body.style="overflow:inherit"      
+      document.documentElement.style="overflow:scroll"
+
     }, 300)
   }
 
+  const onKeyUp = () => {
+    const headerInput = document.getElementsByClassName("large-input")[0]
+    const searchPanel = document.getElementById("search-panel")
+    const text = headerInput.value
+    window.scrollTo(0,0)
+    if(text.length >= 3) {
+      searchPanel.classList.remove('is-hidden')
+      document.body.style="overflow:hidden"
+      document.documentElement.style="overflow:hidden"
+
+    }
+    else if (text.length<=3){
+      searchPanel.classList.add('is-hidden')
+      document.body.style="overflow:inherit"
+      document.documentElement.style="overflow:scroll"
+    }
+  }
 
   return (
     <HeaderWrapper>
       <div id="header-search" className="container is-hidden">
         <span className="closable">
-          <input className="large-input" type="search" placeholder="¿Qué quieres encontrar?" />
-          <FaTimes className="closable_close" onClick={() => {onClickCancel()}}/>
+          <input
+            onKeyUp={() => {
+              onKeyUp()
+            }}
+            className="large-input"
+            type="search"
+            placeholder="¿Qué quieres encontrar?"
+          />
+          <FaTimes
+            className="closable_close"
+            onClick={() => {
+              onClickCancel()
+            }}
+          />
         </span>
       </div>
       <div id="header-content" className="container">
@@ -154,9 +184,9 @@ const Header = ({ siteTitle, location }) => {
           <li>
             <Link to="/noticias">Noticias</Link>
           </li>
-          <li className="icon">
+          <li>
             <div
-              className="pointer"
+              className="search-icon-container pointer"
               onClick={() => {
                 onClickSearchToggle()
               }}

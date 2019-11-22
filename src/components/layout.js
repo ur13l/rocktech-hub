@@ -15,42 +15,49 @@ import Cover from "./cover"
 import "./layout.module.css"
 import styled from "styled-components"
 import Footer from "./footer"
+import SearchPanel from "./search-panel"
 
 const GlobalStyles = styled.div`
-  
   h2 {
     text-transform: uppercase;
-    color: #A0A0A0;
+    color: #a0a0a0;
     letter-spacing: 6px;
     margin: 0;
-  } 
+  }
 
   h1 {
     text-transform: uppercase;
     font-weight: 800;
-  } 
+  }
 
   h2 {
     text-transform: uppercase;
     font-weight: 800;
-
-  } 
+  }
 
   h3 {
     text-transform: uppercase;
-    color: #A0A0A0;
+    color: #a0a0a0;
     letter-spacing: 3px;
     font-weight: 800;
-
-  } 
+  }
 
   h5 {
     text-transform: uppercase;
-    color: #A0A0A0;
+    color: #a0a0a0;
     letter-spacing: 1px;
     margin: 0px;
     font-weight: 800;
-  } 
+  }
+
+  .is-hidden {
+    visibility: hidden;
+    height: 0px !important;
+    width: 0px;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden;
+  }
 
   .container {
     margin: 0 auto;
@@ -69,7 +76,7 @@ const GlobalStyles = styled.div`
   .white-background {
     background: white;
   }
-  
+
   .section {
     width: 100%;
   }
@@ -85,8 +92,11 @@ const GlobalStyles = styled.div`
   .truncate-text {
     color: #707070;
   }
-`
 
+  .no-scroll {
+    overflow-y: hidden !important ;
+  }
+`
 
 const Layout = ({ children, location }) => {
   const data = useStaticQuery(graphql`
@@ -102,11 +112,12 @@ const Layout = ({ children, location }) => {
   return (
     <GlobalStyles>
       <Header siteTitle={data.site.siteMetadata.title} location={location} />
-      <Cover location={ location } />
+      <Cover location={location} />
       <Indicators location={location} />
+      <SearchPanel id="search-panel" />
       <div>
         <main>{children}</main>
-        <Footer/>
+        <Footer />
       </div>
     </GlobalStyles>
   )
