@@ -54,7 +54,6 @@ const LayoutWrapper = styled.div`
     grid-gap: 24px;
     grid-template-columns: 75% 25%;
     padding-top: 24px;
-    padding-bottom: 24px;
   }
 
   .content-item1 {

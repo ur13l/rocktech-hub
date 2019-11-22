@@ -16,6 +16,10 @@ const IndicatorsWrapper = styled.div`
     }
     
   }
+
+  .is-hidden {
+    display: none;
+  }
 `
 
 /**
@@ -27,7 +31,7 @@ const Indicators = ({ location }) =>
   {
     return (
       <IndicatorsWrapper>
-        <div className="container">
+        <div className="container" id="indicators">
           <hr/>
             <div>
               

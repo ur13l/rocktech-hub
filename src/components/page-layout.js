@@ -15,6 +15,10 @@ import SocialFooter from "./social-footer"
 
 
 const LayoutWrapper = styled.div`
+  .section {
+    padding-bottom: 42px;
+  }
+  
   h3 {
     color: #000;
     margin-bottom: 12px;

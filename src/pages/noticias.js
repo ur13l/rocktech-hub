@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import PageLayout from "../components/page-layout"
 import styled from "styled-components"
 import MainPost from "../components/main-post"
@@ -9,6 +9,7 @@ import MediumPost from "../components/medium-post"
 import SideNav from "../components/sidenav"
 
 const LayoutWrapper = styled.div`
+
   h3 {
     color: #000;
     margin-bottom: 12px;
@@ -139,6 +140,10 @@ const LayoutWrapper = styled.div`
     height: 26px;
   }
 
+  h5 { 
+    color: #000;
+    text-align: center;
+  }
 `
 class Noticias extends Component {
  
@@ -197,6 +202,7 @@ class Noticias extends Component {
                       <p className="no-margin">f. Conjunto de actividades que tienen relación con el dinero y actividades dentro del sector económico.</p>
                     </div>
                     {this.postLoop(financePosts)}
+                    <Link className="show-more" to="/categoria/negocio"><h5>Ver todo</h5></Link>
 
                   </div>
                   <div className="technology-item">
@@ -206,7 +212,7 @@ class Noticias extends Component {
                       <p className="no-margin">f. Conjunto de actividades que tienen relación con el dinero y actividades dentro del sector económico.</p>
                     </div>
                     {this.postLoop(techPosts)}
-
+                    <Link className="show-more" to="/categoria/tecnologia-financiera"><h5>Ver todo</h5></Link>
                   </div>
                 </div>
         </PageLayout>
@@ -280,7 +286,7 @@ export const postsQuery = graphql`
   financePosts: allWordpressPost(
       sort: { fields: [date], order: DESC }
       limit: 3
-      filter: { tags: { elemMatch: { name: { eq: "Negocio" } } } }
+      filter: { tags: { elemMatch: { slug: { eq: "negocio" } } } }
     ) {
       edges {
         node {
