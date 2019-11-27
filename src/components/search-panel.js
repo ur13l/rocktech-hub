@@ -13,6 +13,8 @@ import { graphql } from "gatsby"
  * SearchPanelWrapper element, used to set style to a component.
  */
 const SearchPanelWrapper = styled.div`
+  padding:0 !important;
+  margin:0 !important;
   div {
     top: 120px;
     position: fixed;
@@ -26,7 +28,7 @@ const SearchPanelWrapper = styled.div`
 /**
  * SearchPanel will render the most important new located on the News Page as a headliner.
  */
-const SearchPanel = () => {
+const SearchPanel = ({q}) => {
   const data = useStaticQuery(graphql`
     query {
       glosary: allWordpressPost(
@@ -80,7 +82,7 @@ const SearchPanel = () => {
 
   return (
     <SearchPanelWrapper>
-      <div id="search-panel" className="is-hidden"><h1>Hello</h1></div>
+      <div id="search-panel" className="is-hidden"><h1>{q}</h1></div>
     </SearchPanelWrapper>
   )
 }

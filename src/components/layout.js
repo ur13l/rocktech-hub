@@ -114,7 +114,6 @@ const Layout = ({ children, location }) => {
       <Header siteTitle={data.site.siteMetadata.title} location={location} />
       <Cover location={location} />
       <Indicators location={location} />
-      <SearchPanel id="search-panel" />
       <div>
         <main>{children}</main>
         <Footer />

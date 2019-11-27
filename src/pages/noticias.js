@@ -142,7 +142,6 @@ const LayoutWrapper = styled.div`
 
   h5 { 
     color: #000;
-    text-align: center;
   }
 `
 class Noticias extends Component {

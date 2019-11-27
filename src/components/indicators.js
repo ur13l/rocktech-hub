@@ -17,6 +17,12 @@ const IndicatorsWrapper = styled.div`
     }
   }
 
+  #indicators {
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    height: 30px;
+  }
+
   
 `
 
@@ -29,9 +35,7 @@ const Indicators = ({ location }) => {
   return (
     <IndicatorsWrapper>
       <div className="container" id="indicators">
-        <hr />
         <div></div>
-        <hr />
       </div>
     </IndicatorsWrapper>
   )

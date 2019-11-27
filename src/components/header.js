@@ -5,6 +5,7 @@ import styled from "styled-components"
 import "../styles/global.css"
 import Logo from "./images/logo.js"
 import { FaSearch, FaTimes } from "react-icons/fa"
+import SearchPanel from "./search-panel"
 
 /**
  * HeaderWrapper element, used to set style to a component.
@@ -13,7 +14,6 @@ const HeaderWrapper = styled.header`
   width: 100%;
   div {
     margin: 0 auto;
-    max-width: 96%;
     padding: 0.5rem 0rem;
 
     ul  {
@@ -35,8 +35,6 @@ const HeaderWrapper = styled.header`
     vertical-align: middle;
     color: #fff !important;
   }
-
- 
 
   .pointer {
     cursor: pointer;
@@ -90,6 +88,10 @@ const HeaderWrapper = styled.header`
     padding-right: 0 !important;
     margin-right: 0 !important;
   }
+  #search-panel {
+    margin: 0;
+    padding: 0;
+  }
 `
 
 /**
@@ -99,6 +101,8 @@ const HeaderWrapper = styled.header`
  */
 
 const Header = ({ siteTitle, location }) => {
+  let q = ""
+
   /**
    * Method called when the search icon or the close icon are clicked.
    */
@@ -109,7 +113,10 @@ const Header = ({ siteTitle, location }) => {
     const indicators = document.getElementById("indicators")
     headerSearch.classList.toggle("is-hidden")
     headerContent.classList.toggle("is-hidden")
-    indicators.classList.toggle("is-hidden")
+
+    if (location !== "/") {
+      indicators.classList.toggle("is-hidden")
+    }
     headerInput.classList.toggle("input-full-width")
     headerInput.focus()
   }
@@ -122,33 +129,35 @@ const Header = ({ siteTitle, location }) => {
     const searchPanel = document.getElementById("search-panel")
 
     headerInput.classList.toggle("input-full-width")
-
+    headerInput.value = ""
     setTimeout(() => {
       headerSearch.classList.toggle("is-hidden")
       headerContent.classList.toggle("is-hidden")
-      indicators.classList.toggle("is-hidden")
-      searchPanel.classList.add('is-hidden')
-      document.body.style="overflow:inherit"      
-      document.documentElement.style="overflow:scroll"
-
+      if (location !== "/") {
+        indicators.classList.toggle("is-hidden")
+      }
+      searchPanel.classList.add("is-hidden")
+      document.body.style = "overflow:inherit"
+      document.documentElement.style = "overflow:scroll"
     }, 300)
   }
 
+  /**
+   * Listener to the key characters introduced on search box.
+   */
   const onKeyUp = () => {
     const headerInput = document.getElementsByClassName("large-input")[0]
     const searchPanel = document.getElementById("search-panel")
-    const text = headerInput.value
-    window.scrollTo(0,0)
-    if(text.length >= 3) {
-      searchPanel.classList.remove('is-hidden')
-      document.body.style="overflow:hidden"
-      document.documentElement.style="overflow:hidden"
-
-    }
-    else if (text.length<=3){
-      searchPanel.classList.add('is-hidden')
-      document.body.style="overflow:inherit"
-      document.documentElement.style="overflow:scroll"
+    q = headerInput.value
+    window.scrollTo(0, 0)
+    if (q.length >= 3) {
+      searchPanel.classList.remove("is-hidden")
+      document.body.style = "overflow:hidden"
+      document.documentElement.style = "overflow:hidden"
+    } else if (q.length <= 3) {
+      searchPanel.classList.add("is-hidden")
+      document.body.style = "overflow:inherit"
+      document.documentElement.style = "overflow:scroll"
     }
   }
 
@@ -196,6 +205,7 @@ const Header = ({ siteTitle, location }) => {
           </li>
         </ul>
       </div>
+      <SearchPanel id="search-panel" />
     </HeaderWrapper>
   )
 }
