@@ -1,6 +1,6 @@
 import { useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
 import "../styles/global.css"
 import { graphql } from "gatsby"
@@ -24,8 +24,33 @@ const SearchPanelWrapper = styled.div`
 /**
  * SearchPanel will render the most important new located on the News Page as a headliner.
  */
-const SearchPanel = ({q}) => {
-  const data = useStaticQuery(graphql`
+
+ class SearchPanel extends Component {
+  
+  //const glosary = data.glosary.edges
+  //const news = data.news.edges
+  
+  render() {
+  return (
+    <SearchPanelWrapper>
+      <div id="search-panel" className="is-hidden"><h1>{this.props.q}</h1></div>
+    </SearchPanelWrapper>
+  )}
+}
+
+/**
+ * Default props for the SearchPanel Component
+ */
+SearchPanel.propTypes = {
+  data: PropTypes.object.isRequired,
+  edges: PropTypes.array,
+  q: PropTypes.string
+}
+
+export default SearchPanel
+
+
+const query = graphql`
     query {
       glosary: allWordpressPost(
         sort: { fields: [date], order: DESC }
@@ -71,24 +96,5 @@ const SearchPanel = ({q}) => {
         }
       }
     }
-  `)
+  `
 
-  //const glosary = data.glosary.edges
-  //const news = data.news.edges
-
-  return (
-    <SearchPanelWrapper>
-      <div id="search-panel" className="is-hidden"><h1>{q}</h1></div>
-    </SearchPanelWrapper>
-  )
-}
-
-/**
- * Default props for the SearchPanel Component
- */
-SearchPanel.propTypes = {
-  data: PropTypes.object.isRequired,
-  edges: PropTypes.array,
-}
-
-export default SearchPanel

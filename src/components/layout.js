@@ -24,29 +24,25 @@ const GlobalStyles = styled.div`
     margin: 0;
   }
 
-  h1 {
-    text-transform: uppercase;
-    font-weight: 800;
-  }
-
-  h2 {
+  h1, h2, h3, h4, h5 {
     text-transform: uppercase;
     font-weight: 800;
   }
 
   h3 {
-    text-transform: uppercase;
     color: #a0a0a0;
     letter-spacing: 3px;
-    font-weight: 800;
+  }
+  
+  h4 {
+    letter-spacing: 3px;
+    color: #000;
   }
 
   h5 {
-    text-transform: uppercase;
     color: #a0a0a0;
     letter-spacing: 1px;
     margin: 0px;
-    font-weight: 800;
   }
 
   .is-hidden {

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
-import { graphql, Link } from 'gatsby'
+import { graphql, Link } from "gatsby"
 import PageLayout from "../components/page-layout"
 import styled from "styled-components"
 import MainPost from "../components/main-post"
@@ -9,76 +9,14 @@ import MediumPost from "../components/medium-post"
 import SideNav from "../components/sidenav"
 
 const LayoutWrapper = styled.div`
-
   h3 {
     color: #000;
     margin-bottom: 12px;
   }
 
   .no-margin {
-    margin:0;
-  }
-  
-  /**
-    Definition container and items grid
-  */
-  .def-container {
-    display: grid;
-    align-items: center;
-    justify-content: left;
-    grid-gap: 24px;
-    height: 99px;
-  }
-
-  .def-item1 {
-    grid-column: 1;
-    grid-row: 1;
-    h2 {
-      color: #000000;
-    }
-  }
-
-  .def-item2 {
-    grid-column: 2 / span 5;
-    grid-row: 1;
-    p {
-      margin: 0;
-    }
-  }
-
-  /**
-  Content news div (grid)
-  */
-  .content-news {
-    display: grid;
-    grid-gap: 24px;
-    grid-template-columns: 75% 25%;
-    grid-template-rows: 0fr 1fr ;
-  }
-
-  .content-item1 {
-    grid-column: 1;
-    grid-row: 1;
-    display: grid;
-    grid-gap: 24px;
-    height: fit-content;
-  }
-
-  .content-item2 {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    display: grid;
-    border-left: 1px solid #d0d0d0;
-  }
-
-  .content-item3 {
-    padding-top: 24px;
-    grid-column: 1;
-    grid-row: 2;
-    display: grid;
-    grid-gap: 24px;
-    grid-template-columns: 50% 50%;
-  }
+    margin: 0;
+  }  
 
   /**
     Main Section
@@ -93,7 +31,7 @@ const LayoutWrapper = styled.div`
   }
 
   .main2 {
-    grid-column:1;
+    grid-column: 1;
     grid-row: 2;
     grid-template-columns: 33% 33% 33%;
     display: grid;
@@ -140,25 +78,23 @@ const LayoutWrapper = styled.div`
     height: 26px;
   }
 
-  h5 { 
+  h5 {
     color: #000;
   }
 `
 class Noticias extends Component {
- 
-  
-  postLoop = (posts) => {
-    let div = [];
+  postLoop = posts => {
+    let div = []
     posts.forEach((post, key) => {
-      div.push(<MediumPost post={post}/>)
+      div.push(<MediumPost post={post} />)
     })
-    return div;
+    return div
   }
-  
+
   render() {
     var mainPosts = this.props.data.mainPosts.edges
-    var techPosts = this.props.data.technologyPosts.edges;
-    var financePosts = this.props.data.financePosts.edges;
+    var techPosts = this.props.data.technologyPosts.edges
+    var financePosts = this.props.data.financePosts.edges
 
     /**
      * We iterate in reverse because that is how we assure the most recent
@@ -172,52 +108,65 @@ class Noticias extends Component {
 
     return (
       <LayoutWrapper>
-        <PageLayout title="Noticias" description="f. Información sobre algo que se considera interesante divulgar."
-          descriptionDef="Del lat. notitia.">
-        <div className="content-item1">
-                  <div className="main1">
-                    <MainPost post={mainPosts[0]} />
-                  </div>
-                  <div className="main2" >
-                    <div className="main-common-item1">
-                      <SmallPost post={mainPosts[1]}/> 
-                    </div>
-                    <div className="main-common-item2">
-                      <SmallPost post={mainPosts[2]}/>
-                    </div>
-                    <div className="main-common-item3">
-                      <SmallPost post={mainPosts[3]}/>
-                    </div>
-                  </div>
-                </div>
-                <div className="content-item2">
-                  <SideNav/>
-                </div>
-                <div className="content-item3">
-                  <div className="finance-item">
-                    <div className="header-half-section">
-                      <h3>Negocio</h3>
-                      <p className="italic no-margin space"></p>
-                      <p className="no-margin">f. Conjunto de actividades que tienen relación con el dinero y actividades dentro del sector económico.</p>
-                    </div>
-                    {this.postLoop(financePosts)}
-                    <Link className="show-more" to="/categoria/negocio"><h5>Ver todo</h5></Link>
-
-                  </div>
-                  <div className="technology-item">
-                    <div className="header-half-section">
-                      <h3>Tecnología financiera</h3>
-                      <p className="italic no-margin">(Del gr. Τεχνολογία)</p>
-                      <p className="no-margin">f. Conjunto de actividades que tienen relación con el dinero y actividades dentro del sector económico.</p>
-                    </div>
-                    {this.postLoop(techPosts)}
-                    <Link className="show-more" to="/categoria/tecnologia-financiera"><h5>Ver todo</h5></Link>
-                  </div>
-                </div>
+        <PageLayout
+          title="Noticias"
+          description="f. Información sobre algo que se considera interesante divulgar."
+          descriptionDef="Del lat. notitia."
+          location="/noticias"
+        >
+          <div className="content-item1">
+            <div className="main1">
+              <MainPost post={mainPosts[0]} />
+            </div>
+            <div className="main2">
+              <div className="main-common-item1">
+                <SmallPost post={mainPosts[1]} />
+              </div>
+              <div className="main-common-item2">
+                <SmallPost post={mainPosts[2]} />
+              </div>
+              <div className="main-common-item3">
+                <SmallPost post={mainPosts[3]} />
+              </div>
+            </div>
+          </div>
+          <div className="content-item2">
+            <SideNav />
+          </div>
+          <div className="content-item3">
+            <div className="finance-item">
+              <div className="header-half-section">
+                <h3>Negocio</h3>
+                <p className="italic no-margin space"></p>
+                <p className="no-margin">
+                  f. Conjunto de actividades que tienen relación con el dinero y
+                  actividades dentro del sector económico.
+                </p>
+              </div>
+              {this.postLoop(financePosts)}
+              <Link className="show-more" to="/categoria/negocio">
+                <h5>Ver todo</h5>
+              </Link>
+            </div>
+            <div className="technology-item">
+              <div className="header-half-section">
+                <h3>Tecnología financiera</h3>
+                <p className="italic no-margin">(Del gr. Τεχνολογία)</p>
+                <p className="no-margin">
+                  f. Conjunto de actividades que tienen relación con el dinero y
+                  actividades dentro del sector económico.
+                </p>
+              </div>
+              {this.postLoop(techPosts)}
+              <Link className="show-more" to="/categoria/tecnologia-financiera">
+                <h5>Ver todo</h5>
+              </Link>
+            </div>
+          </div>
         </PageLayout>
       </LayoutWrapper>
     )
-  } 
+  }
 }
 
 export default Noticias
@@ -261,12 +210,17 @@ export const postsQuery = graphql`
                   ...GatsbyImageSharpFluid
                 }
 
-                grayFixed:  fixed(width: 120, height: 120,
-                  duotone: { highlight: "#ffffff", shadow: "#000000", opacity: 100 }) {
+                grayFixed: fixed(
+                  width: 120
+                  height: 120
+                  duotone: {
+                    highlight: "#ffffff"
+                    shadow: "#000000"
+                    opacity: 100
+                  }
+                ) {
                   ...GatsbyImageSharpFixed
                 }
-
-                
               }
             }
           }
@@ -281,8 +235,8 @@ export const postsQuery = graphql`
         }
       }
     }
-  
-  financePosts: allWordpressPost(
+
+    financePosts: allWordpressPost(
       sort: { fields: [date], order: DESC }
       limit: 3
       filter: { tags: { elemMatch: { slug: { eq: "negocio" } } } }
@@ -303,15 +257,22 @@ export const postsQuery = graphql`
                 # Try editing the "maxWidth" value to generate resized images.
                 fixed(width: 468, height: 263) {
                   ...GatsbyImageSharpFixed
-                  }
-                  fluid(maxWidth: 468, maxHeight: 263) {
-                    ...GatsbyImageSharpFluid
-                    }
+                }
+                fluid(maxWidth: 468, maxHeight: 263) {
+                  ...GatsbyImageSharpFluid
+                }
 
-                    grayFluid: fluid(maxWidth: 468, maxHeight: 200,
-                      duotone: { highlight: "#ffffff", shadow: "#000000", opacity: 100 }) {
-                      ...GatsbyImageSharpFluid
-                    }
+                grayFluid: fluid(
+                  maxWidth: 468
+                  maxHeight: 200
+                  duotone: {
+                    highlight: "#ffffff"
+                    shadow: "#000000"
+                    opacity: 100
+                  }
+                ) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }
@@ -347,15 +308,22 @@ export const postsQuery = graphql`
                 # Try editing the "maxWidth" value to generate resized images.
                 fixed(width: 468, height: 263) {
                   ...GatsbyImageSharpFixed
-                  }
-                  fluid(maxWidth: 468, maxHeight: 263) {
-                    ...GatsbyImageSharpFluid
-                    }
+                }
+                fluid(maxWidth: 468, maxHeight: 263) {
+                  ...GatsbyImageSharpFluid
+                }
 
-                    grayFluid: fluid(maxWidth: 468, maxHeight: 200,
-                      duotone: { highlight: "#ffffff", shadow: "#000000", opacity: 100 }) {
-                      ...GatsbyImageSharpFluid
-                    }
+                grayFluid: fluid(
+                  maxWidth: 468
+                  maxHeight: 200
+                  duotone: {
+                    highlight: "#ffffff"
+                    shadow: "#000000"
+                    opacity: 100
+                  }
+                ) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }
@@ -370,6 +338,5 @@ export const postsQuery = graphql`
         }
       }
     }
-  
   }
 `

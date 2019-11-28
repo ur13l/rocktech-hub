@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
 import "../styles/global.css"
 import Logo from "./images/logo.js"
@@ -84,8 +84,8 @@ const HeaderWrapper = styled.header`
     padding-top: 33px;
   }
 
-  #header-content {
-    height:70px;
+  #header-content, #header-mobile {
+    height: 70px;
   }
 
   .last-item {
@@ -96,8 +96,6 @@ const HeaderWrapper = styled.header`
     margin: 0;
     padding: 0;
   }
-
-
 `
 
 /**
@@ -106,13 +104,18 @@ const HeaderWrapper = styled.header`
  * @param {string} location
  */
 
-const Header = ({ siteTitle, location }) => {
-  let q = ""
+class Header extends Component {
+  constructor() {
+    super()
+    this.state = {
+      q: "",
+    }
+  }
 
   /**
    * Method called when the search icon or the close icon are clicked.
    */
-  const onClickSearchToggle = () => {
+  onClickSearchToggle() {
     const headerSearch = document.getElementById("header-search")
     const headerContent = document.getElementById("header-content")
     const headerMobile = document.getElementById("header-mobile")
@@ -122,9 +125,10 @@ const Header = ({ siteTitle, location }) => {
     headerContent.classList.toggle("is-hidden")
     headerMobile.classList.toggle("is-hidden")
 
-    if (location !== "/") {
+    if (this.props.location !== "/") {
       indicators.classList.toggle("is-hidden")
     }
+
     headerInput.classList.toggle("input-full-width")
     headerInput.focus()
   }
@@ -132,7 +136,7 @@ const Header = ({ siteTitle, location }) => {
   /**
    * Called when the close button on the search bar is clicked.
    */
-  const onClickCancel = () => {
+  onClickCancel() {
     const headerSearch = document.getElementById("header-search")
     const headerContent = document.getElementById("header-content")
     const headerMobile = document.getElementById("header-mobile")
@@ -147,7 +151,7 @@ const Header = ({ siteTitle, location }) => {
       headerContent.classList.toggle("is-hidden")
       headerMobile.classList.toggle("is-hidden")
 
-      if (location !== "/") {
+      if (this.props.location !== "/") {
         indicators.classList.toggle("is-hidden")
       }
       searchPanel.classList.add("is-hidden")
@@ -156,95 +160,114 @@ const Header = ({ siteTitle, location }) => {
     }, 300)
   }
 
-
   /**
    * Listener to the key characters introduced on search box.
    */
-  const onKeyUp = () => {
+  onKeyUp() {
+    // Header input and search panel components.
     const headerInput = document.getElementsByClassName("large-input")[0]
     const searchPanel = document.getElementById("search-panel")
-    q = headerInput.value
+
+    this.onChangeSearchText(headerInput.value)
+
+    // When the user types something, there will be scrolled to top.
     window.scrollTo(0, 0)
-    if (q.length >= 3) {
+
+    // If the length of the search content is less than 3 characters, do not show the search panel.
+    if (headerInput.value.length >= 3) {
       searchPanel.classList.remove("is-hidden")
       document.body.style = "overflow:hidden"
       document.documentElement.style = "overflow:hidden"
-    } else if (q.length <= 3) {
+    } else if (headerInput.value.length <= 3) {
       searchPanel.classList.add("is-hidden")
       document.body.style = "overflow:inherit"
       document.documentElement.style = "overflow:scroll"
     }
   }
 
-  return (
-    <HeaderWrapper>
-      <div id="header-search" className="container is-hidden">
-        <span className="closable">
-          <input
-            onKeyUp={() => {
-              onKeyUp()
-            }}
-            className="large-input"
-            type="search"
-            placeholder="¿Qué quieres encontrar?"
-          />
-          <FaTimes
-            className="closable_close"
-            onClick={() => {
-              onClickCancel()
-            }}
-          />
-        </span>
-      </div>
-      <div id="header-content" className="container hide-on-med-and-down">
-        <Logo location={location} />
-        <ul>
-          <li>
-            <Link to="/">Inicio</Link>
-          </li>
-          <li>
-            <Link to="/">Glosario</Link>
-          </li>
-          <li>
-            <Link to="/noticias">Noticias</Link>
-          </li>
-          <li>
-            <div
-              className="search-icon-container pointer"
-              onClick={() => {
-                onClickSearchToggle()
+  onChangeSearchText(q) {
+    /** Asign the value to the state q. This state will be shared with SearchPanel Component */
+    this.setState({
+      q: q,
+    })
+  }
+
+  render() {
+    return (
+      <HeaderWrapper>
+        <div id="header-search" className="container is-hidden">
+          <span className="closable">
+            <input
+              onKeyUp={() => {
+                this.onKeyUp()
               }}
-            >
-              <FaSearch />
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div id="header-mobile" className="container hide-on-large-and-up">
-        <ul>
-          <li>
-            <div
-              className="search-icon-container pointer"
+              className="large-input"
+              type="search"
+              placeholder="¿Qué quieres encontrar?"
+            />
+            <FaTimes
+              className="closable_close"
               onClick={() => {
-                onClickSearchToggle()
+                this.onClickCancel()
               }}
-            >
-              <FaSearch />
-            </div>
-          </li>
-        </ul>
-      </div>
-      <SearchPanel id="search-panel" />
-    </HeaderWrapper>
-  )
+            />
+          </span>
+        </div>
+        <div id="header-content" className="container hide-on-med-and-down">
+          <Logo location={this.props.location} />
+          <ul>
+            <li>
+              <Link to="/">Inicio</Link>
+            </li>
+            <li>
+              <Link to="/">Glosario</Link>
+            </li>
+            <li>
+              <Link to="/noticias">Noticias</Link>
+            </li>
+            <li>
+              <div
+                className="search-icon-container pointer"
+                onClick={() => {
+                  this.onClickSearchToggle()
+                }}
+              >
+                <FaSearch />
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div id="header-mobile" className="container hide-on-large-and-up">
+          <ul>
+            <li>
+              <div
+                className="search-icon-container pointer"
+                onClick={() => {
+                  this.onClickSearchToggle()
+                }}
+              >
+                <FaSearch />
+              </div>
+            </li>
+          </ul>
+        </div>
+        <SearchPanel
+          id="search-panel"
+          q={this.state.q}
+        />
+      </HeaderWrapper>
+    )
+  }
 }
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
+  location: PropTypes.string,
 }
 
 Header.defaultProps = {
   siteTitle: ``,
+  location: `/`,
 }
 
 export default Header

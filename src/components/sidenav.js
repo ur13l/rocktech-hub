@@ -216,7 +216,7 @@ const SideNav = () => {
   return (
     <SideNavWrapper>
       <div className="word-of-the-day sidenav-section">
-        <h3>Palabra del día</h3>
+        <h4>Palabra del día</h4>
         <h5
           className="wotd-title"
           dangerouslySetInnerHTML={{
@@ -239,7 +239,7 @@ const SideNav = () => {
         />
       </div>
       <div className="last-minute sidenav-section">
-        <h3>Último minuto</h3>
+        <h4>Último minuto</h4>
         <TwitterTimelineEmbed
           sourceType="profile"
           screenName="rocktechmx"
@@ -247,11 +247,11 @@ const SideNav = () => {
         />
       </div>
       <div className="highlights sidenav-section">
-        <h3>Destacadas</h3>
+        <h4>Destacadas</h4>
         <ul>{highlightsElem}</ul>
       </div>
       <div className="highlights sidenav-section">
-        <h3>Categorías</h3>
+        <h4>Categorías</h4>
         <div className="categories-container">{categoriesElem}</div>
       </div>
     </SideNavWrapper>

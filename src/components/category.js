@@ -20,33 +20,6 @@ const LayoutWrapper = styled.div`
   }
 
   /**
-    Definition container and items grid
-  */
-  .def-container {
-    display: grid;
-    align-items: center;
-    justify-content: left;
-    grid-gap: 24px;
-    height: 99px;
-  }
-
-  .def-item1 {
-    grid-column: 1;
-    grid-row: 1;
-    h2 {
-      color: #000000;
-    }
-  }
-
-  .def-item2 {
-    grid-column: 2 / span 5;
-    grid-row: 1;
-    p {
-      margin: 0;
-    }
-  }
-
-  /**
   Content news div (grid)
   */
   .content-news {
