@@ -23,16 +23,16 @@ const FooterWrapper = styled.footer`
     font-weight: normal !important;
     font-size: 14px;
   }
-  
+
   .footer-color {
     color: #707070;
   }
-  
+
   div.grid {
     display: grid;
     justify-items: start;
     align-items: center;
-    grid-template-columns: auto auto auto auto auto;
+    
   }
 
   .footer-separator {
@@ -44,6 +44,13 @@ const FooterWrapper = styled.footer`
     line-height: normal;
   }
 
+  .item4 {
+    ul {
+      padding:0;
+      margin: 0;
+    }
+  }
+
   .item5 {
     display: grid;
   }
@@ -53,37 +60,115 @@ const FooterWrapper = styled.footer`
   }
 
   .sn1 {
-    grid-column: 1 / span 4; 
+    grid-column: 1 / span 4;
     align-items: start;
     justify-items: left;
     ul {
-      margin-left:0;
-      margin-bottom:12px;
+      margin-left: 0;
+      margin-bottom: 12px;
     }
   }
 
-  br, p {
-    margin:0;
+  br,
+  p  {
+    margin: 0;
   }
-  ul {
-      
-      li {
-        list-style: none;
+  ul  {
+    li {
+      list-style: none;
+      color: white;
+      padding: 6px 30px;
+      text-transform: uppercase;
+      font-size: 14px;
+      padding-left: 0;
+      a  {
         color: white;
-        padding: 6px 30px;
-        text-transform: uppercase;
-        font-size:14px; 
-        padding-left: 0;
-        a {
-          color: white;
-        }
       }
     }
+  }
 
-    .no-top {
-      padding-top: 0;
+  .no-top {
+    padding-top: 0;
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (max-width: 768px) {
+    div.grid {
+      grid-template-columns: 100%;
+      grid-gap: 12px;
     }
 
+    .item1 {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .item2 {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .item3 {
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    .item4 {
+      grid-column: 1;
+      grid-row: 4;
+    }
+
+    .item5 {
+      grid-column: 1;
+      grid-row: 5;
+    }
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
+    div.grid {
+      grid-template-columns: 50% 50%;
+    }
+
+    .item1 {
+      grid-column: 1 / span 2;
+      grid-row: 1;
+    }
+
+    .item2 {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .item3 {
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    .item4 {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    .item5 {
+      grid-column: 2;
+      grid-row: 3;
+    }
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+    div.grid {
+      grid-template-columns: auto auto auto auto auto;
+    }
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    div.grid {
+      grid-template-columns: auto auto auto auto auto;
+    }
+  }
 `
 
 /**
@@ -92,80 +177,125 @@ const FooterWrapper = styled.footer`
  * @param {string} locationfe
  */
 
-const Footer = ({ siteTitle, location }) => 
-  {
-    return (
-      <FooterWrapper>
-        <div className="container grid">
-          <div className="item item1">
-            <Logo/>
-          </div>
-          <div className="item item2"> 
-            <h5 className="footer-title footer-color">Oficina Central</h5>
-            <a className="address footer-color" href="https://g.page/Rocktech?share" target="_blank" rel="noopener noreferrer">
-            <p>Av. Cerro Gordo del Campestre 201 Int. 303<br/>
-              Col. Las Quintas, León, Gto.<br/>
-              C.P. 37125<br/>
+const Footer = ({ siteTitle, location }) => {
+  return (
+    <FooterWrapper>
+      <div className="container grid">
+        <div className="item item1">
+          <Logo />
+        </div>
+        <div className="item item2">
+          <h5 className="footer-title footer-color">Oficina Central</h5>
+          <a
+            className="address footer-color"
+            href="https://g.page/Rocktech?share"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p>
+              Av. Cerro Gordo del Campestre 201 Int. 303
+              <br />
+              Col. Las Quintas, León, Gto.
+              <br />
+              C.P. 37125
+              <br />
               477 688 89 86.
             </p>
-            </a>
-          </div>
-          <div className="item item3">
+          </a>
+        </div>
+        <div className="item item3">
           <h5 className="footer-title footer-color">Corporativo</h5>
-            <a className="address footer-color" href="https://goo.gl/maps/vFqDoMThoGVdxtkn8" target="_blank" rel="noopener noreferrer">
-              <p className="address">Capital Reforma<br/>
-                  Avenida Paseo de la Reforma #250<br/>
-                  Torre 1 Reforma #16, Piso 11 Col. Juárez,<br/>
-                  Delegación Cuauhtémoc, CDMX.
-              </p>
-            </a>
-          </div>
-          <div className="item item4"> 
+          <a
+            className="address footer-color"
+            href="https://goo.gl/maps/vFqDoMThoGVdxtkn8"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p className="address">
+              Capital Reforma
+              <br />
+              Avenida Paseo de la Reforma #250
+              <br />
+              Torre 1 Reforma #16, Piso 11 Col. Juárez,
+              <br />
+              Delegación Cuauhtémoc, CDMX.
+            </p>
+          </a>
+        </div>
+        <div className="item item4">
+          <ul>
+            <li>
+              <Link className="footer-color" to="/">
+                Inicio
+              </Link>
+            </li>
+            <li>
+              <Link className="footer-color" to="/">
+                Glosario
+              </Link>
+            </li>
+            <li>
+              <Link className="footer-color" to="/noticias">
+                Noticias
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="item item5">
+          <div className="sn1">
             <ul>
               <li>
-              <Link className="footer-color" to="/">Inicio</Link></li>
-              <li>
-              <Link className="footer-color" to="/">Glosario</Link></li>
-              <li>
-              <Link className="footer-color" to="/noticias">Noticias</Link></li>
+                <Link className="footer-color uppercase" to="/">
+                  Aviso de privacidad
+                </Link>
+              </li>
             </ul>
           </div>
-          <div className="item item5"> 
-            <div className="sn1">       
-              <ul>
-                <li>
-                  <Link className="footer-color uppercase" to="/">Aviso de privacidad</Link>
-                </li>
-              </ul>
-            </div>
-            <div className="sn sn2">
-              <a className="footer-color" href="https://twitter.com/rocktechmx?lang=en" target="_blank" rel="noopener noreferrer">
-              <FaTwitter/>
-              </a>
-            </div>
-            <div className="sn sn3">
-              <a className="footer-color" href="https://www.linkedin.com/company/rocktechgroup" target="_blank" rel="noopener noreferrer">
-              <FaLinkedin/>
-              </a>
-            </div>
-            <div className="sn sn4">
-              <a className="footer-color" href="https://www.facebook.com/rocktechEquityCrowdfunding/" target="_blank" rel="noopener noreferrer">
-              <FaFacebookF/>
-              </a>
-            </div>
-            <div className="sn sn5">
-              <a className="footer-color" href="https://www.instagram.com/rocktechmx/?hl=en" target="_blank" rel="noopener noreferrer">
-              <FaInstagram/>
-              </a>
-            </div>
+          <div className="sn sn2">
+            <a
+              className="footer-color"
+              href="https://twitter.com/rocktechmx?lang=en"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaTwitter />
+            </a>
+          </div>
+          <div className="sn sn3">
+            <a
+              className="footer-color"
+              href="https://www.linkedin.com/company/rocktechgroup"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin />
+            </a>
+          </div>
+          <div className="sn sn4">
+            <a
+              className="footer-color"
+              href="https://www.facebook.com/rocktechEquityCrowdfunding/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaFacebookF />
+            </a>
+          </div>
+          <div className="sn sn5">
+            <a
+              className="footer-color"
+              href="https://www.instagram.com/rocktechmx/?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram />
+            </a>
           </div>
         </div>
-
-      
-      </FooterWrapper>
-    )
-  }
-
+      </div>
+    </FooterWrapper>
+  )
+}
 
 Footer.propTypes = {
   siteTitle: PropTypes.string,

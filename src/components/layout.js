@@ -15,7 +15,6 @@ import Cover from "./cover"
 import "./layout.module.css"
 import styled from "styled-components"
 import Footer from "./footer"
-import SearchPanel from "./search-panel"
 
 const GlobalStyles = styled.div`
   h2 {
@@ -95,6 +94,51 @@ const GlobalStyles = styled.div`
 
   .no-scroll {
     overflow-y: hidden !important ;
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (max-width: 768px) {
+    .hide-on-small {
+      display: none;
+    }
+    .hide-on-med-and-down {
+      display: none;
+    }
+
+    .container {
+      padding: 0 30px;
+    }
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
+    .hide-on-med-and-down {
+      display: none;
+    }
+    .container {
+      padding: 0 30px;
+    }
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .hide-on-large-and-up {
+      display: none;
+    }
+    .container {
+      padding: 0 30px;
+    }
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .hide-on-large-and-up {
+      display: none;
+    }
+
+    .hide-on-xlarge {
+      display: none;
+    }
   }
 `
 

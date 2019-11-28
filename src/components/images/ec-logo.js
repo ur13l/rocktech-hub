@@ -13,23 +13,28 @@ import Img from "gatsby-image"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-
- /**
-  * 
-  */
+/**
+ *
+ */
 const ECLogo = () => {
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "ec-logo.png" }) {
         childImageSharp {
-          fixed(width: 400) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `)
-  return <Img fixed={data.placeholderImage.childImageSharp.fixed} />
+  return (
+    <Img
+      fluid={data.placeholderImage.childImageSharp.fluid}
+      style={{ maxWidth:"400px"}}
+      imgStyle={{ objectFit: "contain" }}
+    />
+  )
 }
 
 export default ECLogo

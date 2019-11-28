@@ -13,23 +13,29 @@ import Img from "gatsby-image"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-
- /**
-  * 
-  */
+/**
+ *
+ */
 const BigLogo = () => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "logo1.png" }) {
+      desktopImage: file(relativePath: { eq: "logo1.png" }) {
         childImageSharp {
-          fixed(width: 800) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 900) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `)
-  return <Img fixed={data.placeholderImage.childImageSharp.fixed} />
+
+  return (
+    <Img
+      fluid={data.desktopImage.childImageSharp.fluid}
+      style={{ maxWidth: "900px", marginLeft: "30px", marginRight: "30px" }}
+      imgStyle={{ objectFit: "contain" }}
+    />
+  )
 }
 
 export default BigLogo

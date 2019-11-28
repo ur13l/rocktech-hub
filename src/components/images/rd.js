@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import styled from "styled-components"
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -13,24 +14,35 @@ import Img from "gatsby-image"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-
-
- /**
-  * 
-  */
+const ImgWrapper = styled.div`
+  max-width: 700px;
+  min-width: 100px;
+  width: 100%;
+`
+/**
+ *
+ */
 const RDImage = () => {
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "rd.png" }) {
         childImageSharp {
-          fixed(width: 400) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 700) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `)
-  return <Img fixed={data.placeholderImage.childImageSharp.fixed} />
+  return (
+    <ImgWrapper>
+      <Img
+        fluid={data.placeholderImage.childImageSharp.fluid}
+        style={{ maxWidth: "700px" }}
+        imgStyle={{ objectFit: "contain" }}
+      />
+    </ImgWrapper>
+  )
 }
 
 export default RDImage

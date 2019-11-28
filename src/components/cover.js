@@ -15,11 +15,12 @@ const CoverWrapper = styled.div`
     padding: 0.5rem 0rem;
     height: 85vh;
     text-align: center;
-    display:flex;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     div {
-        align-self: center
+      align-self: center;
     }
   }
   p {
@@ -29,18 +30,34 @@ const CoverWrapper = styled.div`
   p.deflat {
     text-align: center;
     color: #5c5c5c;
+    padding: 0 30px;
   }
 
   p.def {
     margin-bottom: 10vh;
     color: #707070;
+    padding: 0 30px;
   }
 
   h3.disrupt-title {
     text-align: center;
     margin-top: -25vh;
+    padding: 0 30px;
   }
-  
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (max-width: 768px) {
+    div {
+      height: 75vh;
+    }
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
+    div {
+      height: 80vh;
+    }
+  }
 `
 
 /**
@@ -48,24 +65,23 @@ const CoverWrapper = styled.div`
  * @param {string} location
  */
 
-const Cover = ({ location }) => 
-  {
-    if(location === "/"){
-      return (
-        <CoverWrapper>
-          <div>
-            <BigLogo location={location}/>
-          </div>
-          <h3 className="disrupt-title">Disrumpir:</h3>
-          <p className="deflat">del lat. disruptio, -ōnis, var. de diruptio, -ōnis ‘rotura, fractura’.</p>
-          <p className="def">Alude a realizar las cosas de manera diferente.</p>
-          
-        </CoverWrapper>
-      )
-    }
-    return (<></>)
+const Cover = ({ location }) => {
+  if (location === "/") {
+    return (
+      <CoverWrapper>
+        <div>
+          <BigLogo location={location} />
+        </div>
+        <h3 className="disrupt-title">Disrumpir:</h3>
+        <p className="deflat">
+          del lat. disruptio, -ōnis, var. de diruptio, -ōnis ‘rotura, fractura’.
+        </p>
+        <p className="def">Alude a realizar las cosas de manera diferente.</p>
+      </CoverWrapper>
+    )
   }
-
+  return <></>
+}
 
 Cover.propTypes = {
   location: PropTypes.string,

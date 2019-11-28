@@ -14,30 +14,48 @@ import styled from "styled-components"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 const ImgWrapper = styled.span`
-  visibility: hidden;   
+  visibility: hidden;
+  display:inline-block;
+  width: 170px;
+`
+const ImgWrapper2 = styled.span`
+  display:inline-block;
+  width: 170px;
 `
 
- /**
-  * 
-  */
-const Logo = ({location, src}) => {
+/**
+ *
+ */
+const Logo = ({ location, src }) => {
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "logo.png" }) {
         childImageSharp {
-          fixed(width: 200) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 170) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `)
-  if(location !== "/") {
-    return <Img fixed={data.placeholderImage.childImageSharp.fixed} />
+  if (location !== "/") {
+    return (
+      <ImgWrapper2>
+      <Img
+        fluid={data.placeholderImage.childImageSharp.fluid}
+        style={{ maxWidth: "170px" }}
+        imgStyle={{ objectFit: "contain" }}
+      />
+      </ImgWrapper2>
+    )
   }
   return (
     <ImgWrapper>
-      <Img fixed={data.placeholderImage.childImageSharp.fixed} />
+      <Img
+        fluid={data.placeholderImage.childImageSharp.fluid}
+        style={{ maxWidth: "170px"}}
+        imgStyle={{ objectFit: "contain" }}
+      />
     </ImgWrapper>
   )
 }

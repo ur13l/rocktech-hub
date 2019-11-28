@@ -4,7 +4,7 @@ import React from "react"
 import styled from "styled-components"
 import "../styles/global.css"
 import Logo from "./images/logo.js"
-import { FaSearch, FaTimes } from "react-icons/fa"
+import { FaSearch, FaTimes, FaHamburger, FaBars } from "react-icons/fa"
 import SearchPanel from "./search-panel"
 
 /**
@@ -84,6 +84,10 @@ const HeaderWrapper = styled.header`
     padding-top: 33px;
   }
 
+  #header-content {
+    height:70px;
+  }
+
   .last-item {
     padding-right: 0 !important;
     margin-right: 0 !important;
@@ -92,6 +96,8 @@ const HeaderWrapper = styled.header`
     margin: 0;
     padding: 0;
   }
+
+
 `
 
 /**
@@ -109,10 +115,12 @@ const Header = ({ siteTitle, location }) => {
   const onClickSearchToggle = () => {
     const headerSearch = document.getElementById("header-search")
     const headerContent = document.getElementById("header-content")
+    const headerMobile = document.getElementById("header-mobile")
     const headerInput = document.getElementsByClassName("large-input")[0]
     const indicators = document.getElementById("indicators")
     headerSearch.classList.toggle("is-hidden")
     headerContent.classList.toggle("is-hidden")
+    headerMobile.classList.toggle("is-hidden")
 
     if (location !== "/") {
       indicators.classList.toggle("is-hidden")
@@ -121,9 +129,13 @@ const Header = ({ siteTitle, location }) => {
     headerInput.focus()
   }
 
+  /**
+   * Called when the close button on the search bar is clicked.
+   */
   const onClickCancel = () => {
     const headerSearch = document.getElementById("header-search")
     const headerContent = document.getElementById("header-content")
+    const headerMobile = document.getElementById("header-mobile")
     const headerInput = document.getElementsByClassName("large-input")[0]
     const indicators = document.getElementById("indicators")
     const searchPanel = document.getElementById("search-panel")
@@ -133,6 +145,8 @@ const Header = ({ siteTitle, location }) => {
     setTimeout(() => {
       headerSearch.classList.toggle("is-hidden")
       headerContent.classList.toggle("is-hidden")
+      headerMobile.classList.toggle("is-hidden")
+
       if (location !== "/") {
         indicators.classList.toggle("is-hidden")
       }
@@ -141,6 +155,7 @@ const Header = ({ siteTitle, location }) => {
       document.documentElement.style = "overflow:scroll"
     }, 300)
   }
+
 
   /**
    * Listener to the key characters introduced on search box.
@@ -181,7 +196,7 @@ const Header = ({ siteTitle, location }) => {
           />
         </span>
       </div>
-      <div id="header-content" className="container">
+      <div id="header-content" className="container hide-on-med-and-down">
         <Logo location={location} />
         <ul>
           <li>
@@ -193,6 +208,20 @@ const Header = ({ siteTitle, location }) => {
           <li>
             <Link to="/noticias">Noticias</Link>
           </li>
+          <li>
+            <div
+              className="search-icon-container pointer"
+              onClick={() => {
+                onClickSearchToggle()
+              }}
+            >
+              <FaSearch />
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="header-mobile" className="container hide-on-large-and-up">
+        <ul>
           <li>
             <div
               className="search-icon-container pointer"

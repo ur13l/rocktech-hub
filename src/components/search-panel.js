@@ -1,12 +1,8 @@
-import { Link, useStaticQuery } from "gatsby"
+import { useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 import "../styles/global.css"
-import DOMPurify from "dompurify"
-import TextTruncate from "react-text-truncate"
-import htmlToText from "html-to-text"
-import { TwitterTimelineEmbed } from "react-twitter-embed"
 import { graphql } from "gatsby"
 
 /**
@@ -77,8 +73,8 @@ const SearchPanel = ({q}) => {
     }
   `)
 
-  const glosary = data.glosary.edges
-  const news = data.news.edges
+  //const glosary = data.glosary.edges
+  //const news = data.news.edges
 
   return (
     <SearchPanelWrapper>

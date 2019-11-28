@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import styled from "styled-components"
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -14,23 +15,28 @@ import Img from "gatsby-image"
  */
 
 
-
- /**
-  * 
-  */
+/**
+ *
+ */
 const RDLogo = () => {
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "rd-logo.png" }) {
         childImageSharp {
-          fixed(width: 400) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `)
-  return <Img fixed={data.placeholderImage.childImageSharp.fixed} />
+  return (
+      <Img
+        fluid={data.placeholderImage.childImageSharp.fluid}
+        style={{ maxWidth: "400px" }}
+        imgStyle={{ objectFit: "contain" }}
+      />
+  )
 }
 
 export default RDLogo
