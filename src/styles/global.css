@@ -2,6 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,800&display=swap');
 
+html {
+    height: 100vh;
+}
+
 html, body {
     font-family: 'Nunito Sans', sans-serif !important;
     background: #171717;

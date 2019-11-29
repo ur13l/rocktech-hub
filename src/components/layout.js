@@ -93,6 +93,11 @@ const GlobalStyles = styled.div`
     overflow-y: hidden !important ;
   }
 
+  .menu-hidden {
+      width:0;
+      color: #171717 !important;
+  }
+
   /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (max-width: 768px) {
     .hide-on-small {

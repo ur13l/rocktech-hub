@@ -33,6 +33,10 @@ const CoverWrapper = styled.div`
     padding: 0 30px;
   }
 
+  .big-logo-container {
+    padding: 0 30px;
+  }
+
   p.def {
     margin-bottom: 10vh;
     color: #707070;
@@ -69,7 +73,7 @@ const Cover = ({ location }) => {
   if (location === "/") {
     return (
       <CoverWrapper>
-        <div>
+        <div className="big-logo-container">
           <BigLogo location={location} />
         </div>
         <h3 className="disrupt-title">Disrumpir:</h3>

@@ -6,6 +6,7 @@ import "../styles/global.css"
 import Logo from "./images/logo.js"
 import { FaSearch, FaTimes, FaHamburger, FaBars } from "react-icons/fa"
 import SearchPanel from "./search-panel"
+import Menu from "./menu"
 
 /**
  * HeaderWrapper element, used to set style to a component.
@@ -97,6 +98,53 @@ const HeaderWrapper = styled.header`
     margin: 0;
     padding: 0;
   }
+
+  .menu-icon-container,
+  .search-icon-container  {
+    font-size: 18px;
+    align-content: center;
+    align-self: center;
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (max-width: 768px) {
+    #header-mobile {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      color: #fff;
+      align-content: center;
+      grid-gap: 18px;
+    }
+
+    .menu-icon-container {
+      justify-self: start;
+      margin: 0;
+    }
+
+    .search-icon-container {
+      justify-self: right;
+      margin: 0;
+    }
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
+    #header-mobile {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      color: #fff;
+      align-content: center;
+      grid-gap: 18px;
+    }
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+  }
 `
 
 /**
@@ -186,9 +234,13 @@ class Header extends Component {
     }
   }
 
+  openMenu() {
+    const menu = document.getElementById("drawer-menu")
+    menu.classList.remove("menu-hidden")
+  }
   /**
    * Method executed when the user is typing a search term.
-   * @param {*} q 
+   * @param {*} q
    */
   onChangeSearchText(q) {
     /** Asign the value to the state q. This state will be shared with SearchPanel Component */
@@ -203,6 +255,7 @@ class Header extends Component {
   render() {
     return (
       <HeaderWrapper>
+        <Menu />
         <div id="header-search" className="container is-hidden">
           <span className="closable">
             <input
@@ -246,18 +299,24 @@ class Header extends Component {
           </ul>
         </div>
         <div id="header-mobile" className="container hide-on-large-and-up">
-          <ul>
-            <li>
-              <div
-                className="search-icon-container pointer"
-                onClick={() => {
-                  this.onClickSearchToggle()
-                }}
-              >
-                <FaSearch />
-              </div>
-            </li>
-          </ul>
+          <div
+            className="menu-icon-container pointer"
+            onClick={() => {
+              this.openMenu()
+            }}
+          >
+            <FaBars />
+          </div>
+          <Logo location={this.props.location} />
+
+          <div
+            className="search-icon-container pointer"
+            onClick={() => {
+              this.onClickSearchToggle()
+            }}
+          >
+            <FaSearch />
+          </div>
         </div>
         <SearchPanel id="search-panel" q={this.state.q} />
       </HeaderWrapper>
