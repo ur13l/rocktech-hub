@@ -114,6 +114,7 @@ const HeaderWrapper = styled.header`
       color: #fff;
       align-content: center;
       grid-gap: 18px;
+      justify-items: center;
     }
 
     .menu-icon-container {

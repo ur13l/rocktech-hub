@@ -18,42 +18,6 @@ const LayoutWrapper = styled.div`
   .no-margin {
     margin: 0;
   }
-
-  /**
-  Content news div (grid)
-  */
-  .content-news {
-    display: grid;
-    grid-gap: 24px;
-    grid-template-columns: 75% 25%;
-    padding-top: 24px;
-  }
-
-  .content-item1 {
-    grid-column: 1;
-    grid-row: 1;
-    display: grid;
-    grid-gap: 24px;
-    height: fit-content;
-  }
-
-  .content-item2 {
-    grid-column: 2;
-    grid-row: 1;
-    display: grid;
-    border-left: 1px solid #d0d0d0;
-  }
-
-
-  .main1  {
-    grid-column: 1;
-    grid-row: 1;
-    padding-top: 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid #d0d0d0;
-    border-top: 1px solid #d0d0d0;
-  }
-
   /**
    * Other post section
    */
@@ -65,6 +29,14 @@ const LayoutWrapper = styled.div`
     padding-top: 24px;
     padding-bottom: 24px;
   }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (max-width: 992px) {
+    .other-posts {
+      grid-template-columns: 100%;
+    }
+  }
+
 `
 
 class Category extends Component {
@@ -109,7 +81,7 @@ class Category extends Component {
 
     return (
       <LayoutWrapper>
-        <PageLayout title={category.name} description={category.description}>
+        <PageLayout title={category.name} description={category.description} location={"/categoria/" + category.slug}>
           <div className="content-item1">
             <div>{postsElems}</div>
             <div className="other-posts">{otherElems}</div>

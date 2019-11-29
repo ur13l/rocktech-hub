@@ -8,7 +8,6 @@ import "../styles/global.css"
  */
 const IndicatorsWrapper = styled.div`
   background: #171717;
-
   height: 50px;
 
   div {

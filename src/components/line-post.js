@@ -58,6 +58,15 @@ const PostWrapper = styled.div`
     justify-self: right;
     grid-column: 2;
   }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (max-width: 992px) {
+    grid-template-columns: 100%;
+    margin: 33px 0;
+    .lp-item2{
+      padding-right: 0;
+    }
+  }
 `
 
 /**

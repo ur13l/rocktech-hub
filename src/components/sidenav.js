@@ -262,8 +262,7 @@ const SideNav = () => {
  * Default props for the SideNav Component
  */
 SideNav.propTypes = {
-  data: PropTypes.object.isRequired,
-  edges: PropTypes.array,
+  
 }
 
 export default SideNav

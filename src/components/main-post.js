@@ -19,6 +19,7 @@ const PostWrapper = styled.div`
   grid-gap: 24px;
   align-items: top;
   justify-content: left;
+  width: 100%;
   grid-template-columns: 50% 50%;
 
   /** Remove the blue color from default anchor tags */
@@ -56,6 +57,22 @@ const PostWrapper = styled.div`
     justify-self: right;
     grid-column: 2;
   }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: 100%;
+   .mp-item2{
+     padding-right:0;
+   }
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
+    grid-template-columns: 100%;
+    .mp-item2{
+      padding-right:0;
+    }
+  }
 `
 
 /**
@@ -67,9 +84,11 @@ const MainPost = ({ post }) => {
     <PostWrapper>
       {/* Pointing to the detail page by Gatsby from the slug in Wordpress. */}
       <Link to={"/" + post.node.slug}>
-        <div className="mp-item1">
+        <div className="mp-item1 hide-on-med-and-down">
           <Img
             fluid={post.node.featured_media.localFile.childImageSharp.fluid}
+            imgStyle={{ objectFit: "contain" }}
+            style={{ maxWidth: "900px" }}
           />
         </div>
       </Link>
@@ -81,7 +100,13 @@ const MainPost = ({ post }) => {
               __html: DOMPurify.sanitize(post.node.title),
             }}
           ></h1>
-
+          <div className="mp-item1 hide-on-large-and-up">
+            <Img
+              fluid={post.node.featured_media.localFile.childImageSharp.fluid}
+              imgStyle={{ objectFit: "contain" }}
+              style={{ maxWidth: "900px" }}
+            />
+          </div>
           {/* The replace method on the text attribute helps to remove the paragraph tag 
           that comes with the excerpt */}
           <TextTruncate

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import PageLayout from "./page-layout"
@@ -10,11 +10,8 @@ import Moment from "react-moment"
 import "moment/locale/es"
 import {
   FacebookShareButton,
-  GooglePlusShareButton,
   LinkedinShareButton,
   TwitterShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
 } from "react-share"
 import { FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa"
 
@@ -25,7 +22,6 @@ const LayoutWrapper = styled.div`
     align-content: center;
     * {
       align-self: center;
-
     }
   }
 
@@ -39,12 +35,31 @@ const LayoutWrapper = styled.div`
     align-content: center;
     * {
       align-self: center;
-
     }
   }
   .social {
     font-size: 30px;
     padding: 12px;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (max-width: 992px) {
+    .post-footer {
+      grid-template-columns: 100%;
+      justify-content: center;
+    }
+
+    .post-footer-item1 {
+      justify-self: center;
+    }
+
+    .post-footer-item2 {
+      justify-self: center;
+    }
   }
 `
 
@@ -58,8 +73,7 @@ class Post extends Component {
   render() {
     this.post = this.props.data.wordpressPost
     this.url = this.props.data.site.siteMetadata.url
-    console.log(this.url)
-    console.log(window.location.href)
+
     return (
       <LayoutWrapper>
         <PageLayout
@@ -89,11 +103,13 @@ class Post extends Component {
               <div className="post-footer-item1">
                 Tags:
                 {this.post.tags.map((tag, i) => (
+                  <Link to={"/categoria/" + tag.slug}>
                   <span>
                     {" " +
                       tag.name +
                       (this.post.tags.length - 1 === i ? " " : ", ")}
                   </span>
+                  </Link>
                 ))}
               </div>
               <div className="post-footer-item2">
@@ -156,6 +172,7 @@ export const postQuery = graphql`
         id
         name
         description
+        slug
       }
 
       author {

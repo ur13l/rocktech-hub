@@ -31,7 +31,7 @@ const CFLogo = () => {
   return (
     <Img
       fluid={data.placeholderImage.childImageSharp.fluid}
-      style={{ width:"400px"}}
+      style={{ maxWidth:"400px"}}
       imgStyle={{ objectFit: "contain" }}
     />
   )

@@ -114,11 +114,20 @@ const LayoutWrapper = styled.div`
       grid-column: 1;
       grid-row: 1;
       margin-top: 30px;
+      justify-content: center;
+      text-align:center;
     }
 
     .def-item2 {
       grid-column: 1;
       grid-row: 2;
+    }
+    .content-item3 {
+      grid-template-columns: 100%;
+    }
+    
+    .def-item2 {
+      padding-bottom: 27px;
     }
   }
 
@@ -138,11 +147,16 @@ const LayoutWrapper = styled.div`
       grid-column: 1;
       grid-row: 1;
       margin-top: 30px;
+      justify-content: center;
     }
 
     .def-item2 {
       grid-column: 1;
       grid-row: 2;
+      padding-bottom: 27px;
+    }
+    .content-item3 {
+      grid-template-columns: 100%;
     }
   }
 
