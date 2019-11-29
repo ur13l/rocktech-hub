@@ -16,6 +16,7 @@ import "./layout.module.css"
 import styled from "styled-components"
 import Footer from "./footer"
 
+
 const GlobalStyles = styled.div`
   h2 {
     text-transform: uppercase;

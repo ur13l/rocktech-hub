@@ -77,7 +77,6 @@ class Category extends Component {
     let postsElems = []
     let otherElems = []
 
-    console.log(this.props)
 
     /**
      * If there's no elements we show a legend informing the user about that.

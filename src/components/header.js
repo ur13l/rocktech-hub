@@ -84,7 +84,8 @@ const HeaderWrapper = styled.header`
     padding-top: 33px;
   }
 
-  #header-content, #header-mobile {
+  #header-content,
+  #header-mobile {
     height: 70px;
   }
 
@@ -185,6 +186,10 @@ class Header extends Component {
     }
   }
 
+  /**
+   * Method executed when the user is typing a search term.
+   * @param {*} q 
+   */
   onChangeSearchText(q) {
     /** Asign the value to the state q. This state will be shared with SearchPanel Component */
     this.setState({
@@ -192,6 +197,9 @@ class Header extends Component {
     })
   }
 
+  /**
+   * Render method
+   */
   render() {
     return (
       <HeaderWrapper>
@@ -220,7 +228,7 @@ class Header extends Component {
               <Link to="/">Inicio</Link>
             </li>
             <li>
-              <Link to="/">Glosario</Link>
+              <Link to="/glosario">Glosario</Link>
             </li>
             <li>
               <Link to="/noticias">Noticias</Link>
@@ -251,10 +259,7 @@ class Header extends Component {
             </li>
           </ul>
         </div>
-        <SearchPanel
-          id="search-panel"
-          q={this.state.q}
-        />
+        <SearchPanel id="search-panel" q={this.state.q} />
       </HeaderWrapper>
     )
   }

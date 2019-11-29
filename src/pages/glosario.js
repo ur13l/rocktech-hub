@@ -8,6 +8,11 @@ import TextTruncate from "react-text-truncate"
 import htmlToText from "html-to-text"
 
 const LayoutWrapper = styled.div`
+
+  /**
+    Alphabet classes to identify elements selected, disabled and normal
+   */
+
   .alpha {
     padding: 0px 9px;
     font-weight: 800;
@@ -24,47 +29,6 @@ const LayoutWrapper = styled.div`
     color: #000;
   }
 
-  /**
-    Input styling
-   */
-  .large-input {
-    background: none;
-    border: none;
-    border-bottom: 2px solid #fff;
-    color: white;
-    font-size: 30px;
-    transition: width 0.3s;
-    padding-right: 48px;
-    width: 0%;
-    height: 0%;
-    float: right;
-    box-sizing: border-box;
-  }
-
-  .large-input:focus {
-    outline: 0;
-  }
-
-  .closable {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    font-size: 40px !important;
-  }
-
-  .input-full-width {
-    width: 100% !important;
-    height: 45px;
-  }
-
-  .closable_close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 0px 0px 27px 0px;
-    cursor: pointer;
-    color: #fff;
-  }
 
   /** Glosary display */
   .glosary-display {
@@ -92,7 +56,14 @@ const LayoutWrapper = styled.div`
   }
 `
 
+/**
+ * Glosary page, displays every glosary entry.
+ */
 class Glosario extends Component {
+  
+  /**
+   * Method overriden to set the displayedEntries state variable.
+   */
   constructor() {
     super()
     this.state = {
@@ -100,11 +71,19 @@ class Glosario extends Component {
     }
   }
 
+  /**
+   * Method executed after the render, the logic used is to display the "A" 
+   * entries by default.
+   */
   componentDidMount() {
     const glosary = this.props.data.glosary.edges
     this.onClickLetter("", "A", glosary)
   }
 
+  /**
+   * Auxiliar method to display the letters with its respective class names.
+   * @param {Array} entries 
+   */
   alphabetHTML(entries) {
     const alphabet = [
       "A",
@@ -183,7 +162,6 @@ class Glosario extends Component {
           activeItems[i].classList.remove("alpha-selected")
         }
       }
-      console.log(target)
 
       target.classList.add("alpha-selected")
     }
@@ -197,6 +175,9 @@ class Glosario extends Component {
     }
   }
 
+  /**
+   * Render method
+   */
   render() {
     return (
       <LayoutWrapper>
@@ -250,6 +231,9 @@ Glosario.propTypes = {
   edges: PropTypes.array,
 }
 
+/**
+ * Query to obtain every single glosary entry.
+ */
 export const postsQuery = graphql`
   query {
     glosary: allWordpressPost(

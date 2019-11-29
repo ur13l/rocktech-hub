@@ -24,10 +24,8 @@ const LayoutWrapper = styled.div`
   .main1  {
     grid-column: 1;
     grid-row: 1;
-    padding-top: 24px;
     padding-bottom: 24px;
     border-bottom: 1px solid #d0d0d0;
-    border-top: 1px solid #d0d0d0;
   }
 
   .main2 {

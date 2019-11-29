@@ -5,6 +5,7 @@ module.exports = {
     title: `Rocktech Hub`,
     description: `Generando valor para tu negocio.`,
     author: `@gatsbyjs`,
+    url: `https://hub.rocktech.mx'`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

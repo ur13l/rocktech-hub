@@ -12,6 +12,9 @@ import { FaFacebookF, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa"
 const FooterWrapper = styled.footer`
   width: 99%;
   color: #707070;
+  padding-top:36px;
+  padding-bottom:36px;
+  border-top: 1px solid #707070;
 
   ul li {
     margin: 0;
@@ -92,7 +95,7 @@ const FooterWrapper = styled.footer`
   }
 
   /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     div.grid {
       grid-template-columns: 100%;
       grid-gap: 12px;
@@ -122,6 +125,15 @@ const FooterWrapper = styled.footer`
       grid-column: 1;
       grid-row: 5;
     }
+
+    .item {
+      justify-self: center;
+      text-align:center;
+      
+      li {
+        padding: 0;
+      }
+    }
   }
 
   /* Medium devices (landscape tablets, 768px and up) */
@@ -148,11 +160,20 @@ const FooterWrapper = styled.footer`
     .item4 {
       grid-column: 2;
       grid-row: 2;
+      text-align: center;
     }
 
     .item5 {
       grid-column: 2;
       grid-row: 3;
+      text-align: center;
+    }
+    .item {
+      justify-self: center;
+      padding: 12px;
+      li {
+        padding: 0;
+      }
     }
   }
 

@@ -77,7 +77,6 @@ exports.createPages = async ({ graphql, actions }) => {
     //Paginator options for category template.
     const categoryPostsPerPage = 10
     const posts = result.data.posts.edges.filter(post => {
-      console.log(edge)
 
       return post.node.tags.findIndex(e => e.id === edge.node.id) !== -1
     })

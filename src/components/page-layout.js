@@ -75,6 +75,9 @@ const LayoutWrapper = styled.div`
     display: grid;
     grid-gap: 24px;
     height: fit-content;
+    border-top: 1px solid #d0d0d0;
+    padding-top: 27px;
+
   }
 
   .content-item2 {
@@ -158,13 +161,14 @@ const PageLayout = ({
   title,
   descriptionDef,
   description,
+  pageTitle
 }) => {
   //const data = useStaticQuery(graphql``)
 
   return (
     <LayoutWrapper>
       <Layout location={location}>
-        <SEO title={title} />
+        <SEO title={pageTitle || title} />
         <div className="section white-background">
           <div className="container">
             <div className="def-container">

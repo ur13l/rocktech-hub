@@ -1,16 +1,139 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
 import PropTypes from "prop-types"
+import styled from "styled-components"
+import PageLayout from "./page-layout"
+import htmlToText from "html-to-text"
+import SideNav from "./sidenav"
+import DOMPurify from "dompurify"
+import Moment from "react-moment"
+import "moment/locale/es"
+import {
+  FacebookShareButton,
+  GooglePlusShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  RedditShareButton,
+} from "react-share"
+import { FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa"
+
+const LayoutWrapper = styled.div`
+  .post-footer {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-content: center;
+    * {
+      align-self: center;
+
+    }
+  }
+
+  .post-footer-item1 {
+    justify-self: left;
+  }
+
+  .post-footer-item2 {
+    justify-self: end;
+    display: flex;
+    align-content: center;
+    * {
+      align-self: center;
+
+    }
+  }
+  .social {
+    font-size: 30px;
+    padding: 12px;
+  }
+`
 
 class Post extends Component {
-  render() {
-    const post = this.props.data.wordpressPost
+  constructor() {
+    super()
+  }
 
+  componentDidMount() {}
+
+  render() {
+    this.post = this.props.data.wordpressPost
+    this.url = this.props.data.site.siteMetadata.url
+    console.log(this.url)
+    console.log(window.location.href)
     return (
-      <>
-        <h1>{post.title}</h1>
-        <div>{post.content}</div>
-      </>
+      <LayoutWrapper>
+        <PageLayout
+          title={this.post.tags[0].name}
+          description={this.post.tags[0].description}
+          location={this.post.slug}
+          pageTitle={htmlToText.fromString(this.post.title)}
+        >
+          <div className="content-item1">
+            <div className="title-container">
+              <h1>{htmlToText.fromString(this.post.title)}</h1>
+              <p className="no-margin accent-text-color">
+                <Moment format="LL" locale="es">
+                  {this.post.date}
+                </Moment>
+              </p>
+              <p className="no-margin accent-text-color">
+                Por: {this.post.author.name}
+              </p>
+            </div>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: this.post.content,
+              }}
+            />
+            <div className="post-footer">
+              <div className="post-footer-item1">
+                Tags:
+                {this.post.tags.map((tag, i) => (
+                  <span>
+                    {" " +
+                      tag.name +
+                      (this.post.tags.length - 1 === i ? " " : ", ")}
+                  </span>
+                ))}
+              </div>
+              <div className="post-footer-item2">
+                <span className="">Compártelo:</span>
+                <span className="social">
+                  <FacebookShareButton
+                    url={window.location.href}
+                    quote={this.post.title}
+                    className="social-button facebook"
+                  >
+                    <FaFacebookF />
+                  </FacebookShareButton>
+                </span>
+                <span className="social">
+                  <TwitterShareButton
+                    url={window.location.href}
+                    title={this.post.title}
+                    className="social-button twitter"
+                  >
+                    <FaTwitter />
+                  </TwitterShareButton>
+                </span>
+                <span className="social">
+                  <LinkedinShareButton
+                    url={window.location.href}
+                    title={this.post.title}
+                    className="social-button twitter"
+                  >
+                    <FaLinkedin />
+                  </LinkedinShareButton>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="content-item2">
+            <SideNav />
+          </div>
+          <div className="content-item3"></div>
+        </PageLayout>
+      </LayoutWrapper>
     )
   }
 }
@@ -27,10 +150,22 @@ export const postQuery = graphql`
     wordpressPost(id: { eq: $id }) {
       title
       content
+      slug
+      date
+      tags {
+        id
+        name
+        description
+      }
+
+      author {
+        name
+      }
     }
     site {
       siteMetadata {
         title
+        url
       }
     }
   }
