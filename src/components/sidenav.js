@@ -1,5 +1,4 @@
 import { Link, useStaticQuery } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 import "../styles/global.css"
@@ -150,7 +149,7 @@ const SideNav = () => {
       localStorage.expiryDate == null ||
       currentDate.getTime() > localStorage.expiryDate
     ) {
-      let rn = Math.floor(Math.random() * (length - 0))
+      let rn = Math.floor(Math.random() * (length - 1))
 
       /**
        * Setting the expiry date as next day at 0:00
@@ -176,12 +175,13 @@ const SideNav = () => {
    * This word will be different for each user.
    */
   let randomNumber = getRandomNumberOfDay(glosary.length)
+  console.log(randomNumber);
   let wordOfTheDay = glosary[randomNumber]
 
   let highlightsElem = []
   highlights.forEach(post => {
     highlightsElem.push(
-      <li className="highlight-item">
+      <li key={post.node.id} className="highlight-item">
         <Link to={post.node.slug}>
           <h5
             className="highlight-title"
@@ -209,7 +209,7 @@ const SideNav = () => {
   let categoriesElem = []
   categories.forEach(category => {
     categoriesElem.push(
-      <Link to={"/categoria/" + category.node.slug}>{category.node.name}</Link>
+      <Link key={category.node.id} to={"/categoria/" + category.node.slug}>{category.node.name}</Link>
     )
   })
 

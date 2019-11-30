@@ -5,7 +5,6 @@ import styled from "styled-components"
 import PageLayout from "./page-layout"
 import htmlToText from "html-to-text"
 import SideNav from "./sidenav"
-import DOMPurify from "dompurify"
 import Moment from "react-moment"
 import "moment/locale/es"
 import {
@@ -46,11 +45,6 @@ const LayoutWrapper = styled.div`
 `
 
 class GlosaryEntry extends Component {
-  constructor() {
-    super()
-  }
-
-  componentDidMount() {}
 
   render() {
     this.post = this.props.data.wordpressPost

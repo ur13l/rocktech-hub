@@ -1,6 +1,6 @@
 import { useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
-import React, { Component } from "react"
+import React from "react"
 import styled from "styled-components"
 import "../styles/global.css"
 import { graphql, Link } from "gatsby"
@@ -38,7 +38,6 @@ const SearchPanelWrapper = styled.div`
       margin: 0;
     }
     overflow: scroll;
-
   }
 
   .search-panel3 {
@@ -61,7 +60,6 @@ const SearchPanelWrapper = styled.div`
   @media only screen and (max-width: 768px) {
     #search-panel {
       grid-template-columns: 100%;
-      
     }
     .search-panel1,
     .search-panel2 {
@@ -186,6 +184,7 @@ const SearchPanel = ({ q }) => {
           <h3>Noticias</h3>
           {newsShown.map(entry => (
             <Link
+              key={entry.node.id}
               onClick={() => {
                 selectPost()
               }}
@@ -215,6 +214,7 @@ const SearchPanel = ({ q }) => {
           <h3>Glosario</h3>
           {glosaryShown.map(entry => (
             <Link
+              key={entry.node.id}
               onClick={() => {
                 selectPost()
               }}

@@ -8,6 +8,8 @@
 const path = require(`path`)
 const slash = require(`slash`)
 
+
+
 /**
  * Method that create pages dynamically.
  * Pages created: all posts entries, glosary entries and category entries (These include
@@ -112,5 +114,33 @@ exports.createPages = async ({ graphql, actions }) => {
         id: edge.node.id,
       },
     })
+  })
+}
+
+
+exports.onCreateWebpackConfig = ({
+  stage,
+  rules,
+  loaders,
+  plugins,
+  actions,
+}) => {
+  actions.setWebpackConfig({
+    module: {
+      rules: [
+       
+      ],
+    },
+    plugins: [
+      plugins.define({
+        __DEVELOPMENT__: stage === `develop` || stage === `develop-html`,
+      }),
+    ],
+    node: {
+      console: true,
+      fs: 'empty',
+      net: 'empty',
+      tls: 'empty'
+    }
   })
 }

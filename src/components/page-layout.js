@@ -63,6 +63,7 @@ const LayoutWrapper = styled.div`
     display: grid;
     grid-gap: 24px;
     grid-template-columns: 75% 25%;
+    grid-template-rows: auto auto;
   }
 
   .space {
@@ -82,7 +83,7 @@ const LayoutWrapper = styled.div`
 
   .content-item2 {
     grid-column: 2;
-    grid-row: 1 / span 2;
+    grid-row: 1 / span 3;
     display: grid;
     border-left: 1px solid #d0d0d0;
   }

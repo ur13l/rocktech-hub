@@ -4,7 +4,7 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import "../styles/global.css"
 import Logo from "./images/logo.js"
-import { FaSearch, FaTimes, FaHamburger, FaBars } from "react-icons/fa"
+import { FaSearch, FaTimes, FaBars } from "react-icons/fa"
 import SearchPanel from "./search-panel"
 import Menu from "./menu"
 

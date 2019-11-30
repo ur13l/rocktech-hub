@@ -5,7 +5,6 @@ import styled from "styled-components"
 import PageLayout from "./page-layout"
 import htmlToText from "html-to-text"
 import SideNav from "./sidenav"
-import DOMPurify from "dompurify"
 import Moment from "react-moment"
 import "moment/locale/es"
 import {
@@ -64,12 +63,11 @@ const LayoutWrapper = styled.div`
 `
 
 class Post extends Component {
-  constructor() {
-    super()
+
+  componentDidMount() {
+    this.url = window.location.href
   }
-
-  componentDidMount() {}
-
+  
   render() {
     this.post = this.props.data.wordpressPost
     this.url = this.props.data.site.siteMetadata.url
@@ -103,7 +101,7 @@ class Post extends Component {
               <div className="post-footer-item1">
                 Tags:
                 {this.post.tags.map((tag, i) => (
-                  <Link to={"/categoria/" + tag.slug}>
+                  <Link key={this.post.id} to={"/categoria/" + tag.slug}>
                   <span>
                     {" " +
                       tag.name +
@@ -116,7 +114,7 @@ class Post extends Component {
                 <span className="">Compártelo:</span>
                 <span className="social">
                   <FacebookShareButton
-                    url={window.location.href}
+                    url={this.url}
                     quote={this.post.title}
                     className="social-button facebook"
                   >
@@ -125,7 +123,7 @@ class Post extends Component {
                 </span>
                 <span className="social">
                   <TwitterShareButton
-                    url={window.location.href}
+                    url={this.url}
                     title={this.post.title}
                     className="social-button twitter"
                   >
@@ -134,7 +132,7 @@ class Post extends Component {
                 </span>
                 <span className="social">
                   <LinkedinShareButton
-                    url={window.location.href}
+                    url={this.url}
                     title={this.post.title}
                     className="social-button twitter"
                   >
@@ -164,6 +162,7 @@ export default Post
 export const postQuery = graphql`
   query($id: String!) {
     wordpressPost(id: { eq: $id }) {
+      id
       title
       content
       slug

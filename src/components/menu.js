@@ -4,8 +4,7 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import "../styles/global.css"
 import BigLogo from "./images/big-logo.js"
-import { FaSearch, FaTimes, FaHamburger, FaBars } from "react-icons/fa"
-import SearchPanel from "./search-panel"
+import { FaTimes } from "react-icons/fa"
 
 /**
  * MenuWrapper element, used to set style to a component.
@@ -47,9 +46,6 @@ const MenuWrapper = styled.div`
  */
 
 class Menu extends Component {
-  constructor() {
-    super()
-  }
 
   onClickClose() {
     const menu = document.getElementById("drawer-menu")

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import PageLayout from "../components/page-layout"
 import styled from "styled-components"
 import SideNav from "../components/sidenav"
