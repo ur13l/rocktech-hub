@@ -58,7 +58,7 @@ const MediumPost = ({ post }) =>
           </div>  
         </Link>
         <Link to={"/" + post.node.slug}>
-          <h5 className="medium-title" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.node.title)}}/>
+          <h5 className="medium-title" dangerouslySetInnerHTML={{ __html: post.node.title}}/>
           <TextTruncate
                   line={4}
                   element="span"

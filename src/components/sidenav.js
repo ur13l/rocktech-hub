@@ -6,7 +6,7 @@ import DOMPurify from "dompurify"
 import TextTruncate from "react-text-truncate"
 import htmlToText from "html-to-text"
 import { TwitterTimelineEmbed } from "react-twitter-embed"
-import { graphql } from 'gatsby'
+import { graphql } from "gatsby"
 
 /**
  * SideNavWrapper element, used to set style to a component.
@@ -144,27 +144,29 @@ const SideNav = () => {
      * If there's no expiry date set.
      * If the current date is after the last expiry date.
      */
-    if (
-      localStorage.randomNumber == null ||
-      localStorage.expiryDate == null ||
-      currentDate.getTime() > localStorage.expiryDate
-    ) {
-      let rn = Math.floor(Math.random() * (length - 1))
+    /** 
+       if (
+        localStorage.randomNumber == null ||
+        localStorage.expiryDate == null ||
+        currentDate.getTime() > localStorage.expiryDate
+      ) {
+        */
+    let rn = Math.floor(Math.random() * (length - 1))
 
-      /**
-       * Setting the expiry date as next day at 0:00
-       */
-      let expiryDate = new Date()
-      expiryDate.setDate(currentDate.getDate() + 1)
-      expiryDate.setHours(0)
-      expiryDate.setMinutes(0)
-      expiryDate.setSeconds(0)
-      localStorage.randomNumber = rn
-      localStorage.expiryDate = expiryDate.getTime()
-      return rn
-    }
+    /**
+     * Setting the expiry date as next day at 0:00
+     */
+    let expiryDate = new Date()
+    expiryDate.setDate(currentDate.getDate() + 1)
+    expiryDate.setHours(0)
+    expiryDate.setMinutes(0)
+    expiryDate.setSeconds(0)
+    //localStorage.randomNumber = rn
+    //localStorage.expiryDate = expiryDate.getTime()
+    return rn
+    //}
 
-    return localStorage.randomNumber
+    return rn
   }
 
   const glosary = data.glosary.edges
@@ -175,7 +177,7 @@ const SideNav = () => {
    * This word will be different for each user.
    */
   let randomNumber = getRandomNumberOfDay(glosary.length)
-  console.log(randomNumber);
+  console.log(randomNumber)
   let wordOfTheDay = glosary[randomNumber]
 
   let highlightsElem = []
@@ -186,7 +188,7 @@ const SideNav = () => {
           <h5
             className="highlight-title"
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(post.node.title),
+              __html: post.node.title,
             }}
           />
         </Link>
@@ -209,7 +211,9 @@ const SideNav = () => {
   let categoriesElem = []
   categories.forEach(category => {
     categoriesElem.push(
-      <Link key={category.node.id} to={"/categoria/" + category.node.slug}>{category.node.name}</Link>
+      <Link key={category.node.id} to={"/categoria/" + category.node.slug}>
+        {category.node.name}
+      </Link>
     )
   })
 
@@ -220,7 +224,7 @@ const SideNav = () => {
         <h5
           className="wotd-title"
           dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(wordOfTheDay.node.title + ":"),
+            __html: wordOfTheDay.node.title + ":",
           }}
         />
         <TextTruncate
@@ -261,8 +265,6 @@ const SideNav = () => {
 /**
  * Default props for the SideNav Component
  */
-SideNav.propTypes = {
-  
-}
+SideNav.propTypes = {}
 
 export default SideNav

@@ -90,7 +90,7 @@ const SmallPost = ({ post }) => {
           <div className="post-header">
             <h5
               dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(post.node.title),
+                __html: post.node.title,
               }}
             />
           </div>

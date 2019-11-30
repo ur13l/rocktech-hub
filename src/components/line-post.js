@@ -89,7 +89,7 @@ const LinePost = ({ post }) => {
           {/* dangerouslySetInnerHTML means that the content will render in HTML */}
           <h3
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(post.node.title),
+              __html: post.node.title,
             }}
           ></h3>
 

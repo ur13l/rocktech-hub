@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import React from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
 import "../styles/global.css"
 var yf = require("yahoo-finance")
@@ -99,97 +99,119 @@ const IndicatorsWrapper = styled.div`
   }
 `
 
-/**
- * Indicators component
- * @param {string} location
- */
-const updateIndicators = () => {
-  yf.quote({ symbol: "MEX-TIIE28.MX", modules: ["price"] }, (err, quotes) => {
-    localStorage.tiie = JSON.stringify(quotes.price)
-  })
-  yf.quote({ symbol: "MEX-CETES-I.MX", modules: ["price"] }, (err, quotes) => {
-    localStorage.cetes = JSON.stringify(quotes.price)
-  })
+class Indicators extends Component {
+  constructor() {
+    super()
+    this.state ={indicators: []}
+  }
 
-  yf.quote({ symbol: "USDMXN=X", modules: ["price"] }, (err, quotes) => {
-    localStorage.usdmxn = JSON.stringify(quotes.price)
-  })
-  yf.quote({ symbol: "^MXX", modules: ["price"] }, (err, quotes) => {
-    localStorage.ipc = JSON.stringify(quotes.price)
-  })
+  componentDidMount() {
+    this.updateIndicators()
+    this.setState({
+      indicators: this.collectIndicators()
+    })
+  }
+  /**
+   * Indicators component
+   * @param {string} location
+   */
+  updateIndicators = () => {
+    if (localStorage) {
+      yf.quote(
+        { symbol: "MEX-TIIE28.MX", modules: ["price"] },
+        (err, quotes) => {
+          localStorage.tiie = JSON.stringify(quotes.price)
+        }
+      )
+      yf.quote(
+        { symbol: "MEX-CETES-I.MX", modules: ["price"] },
+        (err, quotes) => {
+          localStorage.cetes = JSON.stringify(quotes.price)
+        }
+      )
 
-  yf.quote({ symbol: "^NYA", modules: ["price"] }, (err, quotes) => {
-    localStorage.nyse = JSON.stringify(quotes.price)
-  })
+      yf.quote({ symbol: "USDMXN=X", modules: ["price"] }, (err, quotes) => {
+        localStorage.usdmxn = JSON.stringify(quotes.price)
+      })
+      yf.quote({ symbol: "^MXX", modules: ["price"] }, (err, quotes) => {
+        localStorage.ipc = JSON.stringify(quotes.price)
+      })
 
-  yf.quote({ symbol: "^IXIC", modules: ["price"] }, (err, quotes) => {
-    localStorage.nasdaq = JSON.stringify(quotes.price)
-  })
+      yf.quote({ symbol: "^NYA", modules: ["price"] }, (err, quotes) => {
+        localStorage.nyse = JSON.stringify(quotes.price)
+      })
 
-  yf.quote({ symbol: "EWW", modules: ["price"] }, (err, quotes) => {
-    localStorage.eww = JSON.stringify(quotes.price)
-  })
+      yf.quote({ symbol: "^IXIC", modules: ["price"] }, (err, quotes) => {
+        localStorage.nasdaq = JSON.stringify(quotes.price)
+      })
 
-  yf.quote({ symbol: "SPY", modules: ["price"] }, (err, quotes) => {
-    localStorage.spy = JSON.stringify(quotes.price)
-  })
+      yf.quote({ symbol: "EWW", modules: ["price"] }, (err, quotes) => {
+        localStorage.eww = JSON.stringify(quotes.price)
+      })
 
-  yf.quote({ symbol: "BTC-USD", modules: ["price"] }, (err, quotes) => {
-    localStorage.btcusd = JSON.stringify(quotes.price)
-  })
+      yf.quote({ symbol: "SPY", modules: ["price"] }, (err, quotes) => {
+        localStorage.spy = JSON.stringify(quotes.price)
+      })
 
-  yf.quote({ symbol: "XRP-USD", modules: ["price"] }, (err, quotes) => {
-    localStorage.xrpusd = JSON.stringify(quotes.price)
-  })
+      yf.quote({ symbol: "BTC-USD", modules: ["price"] }, (err, quotes) => {
+        localStorage.btcusd = JSON.stringify(quotes.price)
+      })
 
-  yf.quote({ symbol: "ETH-USD", modules: ["price"] }, (err, quotes) => {
-    localStorage.ethusd = JSON.stringify(quotes.price)
-  })
-}
+      yf.quote({ symbol: "XRP-USD", modules: ["price"] }, (err, quotes) => {
+        localStorage.xrpusd = JSON.stringify(quotes.price)
+      })
 
-const collectIndicators = () => {
-  let ind = []
-  if (localStorage.cetes) ind.push(JSON.parse(localStorage.cetes))
-  if (localStorage.tiie) ind.push(JSON.parse(localStorage.tiie))
-  if (localStorage.usdmxn) ind.push(JSON.parse(localStorage.usdmxn))
-  if (localStorage.ipc) ind.push(JSON.parse(localStorage.ipc))
-  if (localStorage.nyse) ind.push(JSON.parse(localStorage.nyse))
-  if (localStorage.nasdaq) ind.push(JSON.parse(localStorage.nasdaq))
-  if (localStorage.eww) ind.push(JSON.parse(localStorage.eww))
-  if (localStorage.spy) ind.push(JSON.parse(localStorage.spy))
-  if (localStorage.btcusd) ind.push(JSON.parse(localStorage.btcusd))
-  if (localStorage.xrpusd) ind.push(JSON.parse(localStorage.xrpusd))
-  if (localStorage.ethusd) ind.push(JSON.parse(localStorage.ethusd))
-  return ind
-}
+      yf.quote({ symbol: "ETH-USD", modules: ["price"] }, (err, quotes) => {
+        localStorage.ethusd = JSON.stringify(quotes.price)
+      })
+    }
+  }
 
-const Indicators = ({ location }) => {
-  updateIndicators()
-  const indicators = collectIndicators()
+  collectIndicators = () => {
+    let ind = []
+    if (localStorage) {
+      if (localStorage.cetes) ind.push(JSON.parse(localStorage.cetes))
+      if (localStorage.tiie) ind.push(JSON.parse(localStorage.tiie))
+      if (localStorage.usdmxn) ind.push(JSON.parse(localStorage.usdmxn))
+      if (localStorage.ipc) ind.push(JSON.parse(localStorage.ipc))
+      if (localStorage.nyse) ind.push(JSON.parse(localStorage.nyse))
+      if (localStorage.nasdaq) ind.push(JSON.parse(localStorage.nasdaq))
+      if (localStorage.eww) ind.push(JSON.parse(localStorage.eww))
+      if (localStorage.spy) ind.push(JSON.parse(localStorage.spy))
+      if (localStorage.btcusd) ind.push(JSON.parse(localStorage.btcusd))
+      if (localStorage.xrpusd) ind.push(JSON.parse(localStorage.xrpusd))
+      if (localStorage.ethusd) ind.push(JSON.parse(localStorage.ethusd))
+    }
+    return ind
+  }
 
-  return (
-    <IndicatorsWrapper>
-      <div className="container" id="indicators">
-        <div className="indicators-inner">
-          {indicators.map(quote => (
-            <div className="quote" key={quote.symbol}>
-              <span className="short-name">{quote.shortName}: </span>
-              <span>${quote.regularMarketPrice.toFixed(2)}</span>
-              <span
-                className={
-                  quote.regularMarketChange >= 0 ? "positive" : "negative"
-                }
-              >
-                {"  " +(quote.regularMarketChange >= 0 ? "+" : "-") + "" + Math.abs(quote.regularMarketChange).toFixed(2)}
-              </span>
-            </div>
-          ))}
+  render() {
+    return (
+      <IndicatorsWrapper>
+        <div className="container" id="indicators">
+          <div className="indicators-inner">
+            {this.state.indicators.map(quote => (
+              <div className="quote" key={quote.symbol}>
+                <span className="short-name">{quote.shortName}: </span>
+                <span>${quote.regularMarketPrice.toFixed(2)}</span>
+                <span
+                  className={
+                    quote.regularMarketChange >= 0 ? "positive" : "negative"
+                  }
+                >
+                  {"  " +
+                    (quote.regularMarketChange >= 0 ? "+" : "-") +
+                    "" +
+                    Math.abs(quote.regularMarketChange).toFixed(2)}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </IndicatorsWrapper>
-  )
+      </IndicatorsWrapper>
+    )
+  }
 }
-
 Indicators.propTypes = {
   location: PropTypes.string,
 }

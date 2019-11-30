@@ -97,7 +97,7 @@ const MainPost = ({ post }) => {
           {/* dangerouslySetInnerHTML means that the content will render in HTML */}
           <h1
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(post.node.title),
+              __html: post.node.title,
             }}
           ></h1>
           <div className="mp-item1 hide-on-large-and-up">

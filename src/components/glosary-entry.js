@@ -21,7 +21,6 @@ const LayoutWrapper = styled.div`
     align-content: center;
     * {
       align-self: center;
-
     }
   }
 
@@ -35,7 +34,6 @@ const LayoutWrapper = styled.div`
     align-content: center;
     * {
       align-self: center;
-
     }
   }
   .social {
@@ -45,7 +43,9 @@ const LayoutWrapper = styled.div`
 `
 
 class GlosaryEntry extends Component {
-
+  componentDidMount() {
+    this.url = window.location.href
+  }
   render() {
     this.post = this.props.data.wordpressPost
     this.url = this.props.data.site.siteMetadata.url
@@ -73,14 +73,12 @@ class GlosaryEntry extends Component {
               }}
             />
             <div className="post-footer">
-              <div className="post-footer-item1">
-                
-              </div>
+              <div className="post-footer-item1"></div>
               <div className="post-footer-item2">
                 <span className="">Compártelo:</span>
                 <span className="social">
                   <FacebookShareButton
-                    url={window.location.href}
+                    url={this.url}
                     quote={this.post.title}
                     className="social-button facebook"
                   >
@@ -89,7 +87,7 @@ class GlosaryEntry extends Component {
                 </span>
                 <span className="social">
                   <TwitterShareButton
-                    url={window.location.href}
+                    url={this.url}
                     title={this.post.title}
                     className="social-button twitter"
                   >
@@ -98,7 +96,7 @@ class GlosaryEntry extends Component {
                 </span>
                 <span className="social">
                   <LinkedinShareButton
-                    url={window.location.href}
+                    url={this.url}
                     title={this.post.title}
                     className="social-button twitter"
                   >
