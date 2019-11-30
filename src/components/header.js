@@ -276,7 +276,9 @@ class Header extends Component {
           </span>
         </div>
         <div id="header-content" className="container hide-on-med-and-down">
-          <Logo location={this.props.location} />
+          <Link to="/">
+            <Logo location={this.props.location} />
+          </Link>
           <ul>
             <li>
               <Link to="/">Inicio</Link>
