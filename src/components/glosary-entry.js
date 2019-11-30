@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import PageLayout from "./page-layout"
@@ -21,6 +21,7 @@ const LayoutWrapper = styled.div`
     align-content: center;
     * {
       align-self: center;
+
     }
   }
 
@@ -34,50 +35,27 @@ const LayoutWrapper = styled.div`
     align-content: center;
     * {
       align-self: center;
+
     }
   }
   .social {
     font-size: 30px;
     padding: 12px;
   }
-
-  a {
-    color: inherit;
-  }
-
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (max-width: 992px) {
-    .post-footer {
-      grid-template-columns: 100%;
-      justify-content: center;
-    }
-
-    .post-footer-item1 {
-      justify-self: center;
-    }
-
-    .post-footer-item2 {
-      justify-self: center;
-    }
-  }
 `
 
-class Post extends Component {
+class GlosaryEntry extends Component {
 
-  componentDidMount() {
-    this.url = window.location.href
-  }
-  
   render() {
     this.post = this.props.data.wordpressPost
     this.url = this.props.data.site.siteMetadata.url
-
     return (
       <LayoutWrapper>
         <PageLayout
-          title={this.post.tags[0].name}
-          description={this.post.tags[0].description}
-          location={this.post.slug}
+          title="Glosario"
+          description="m. Catálogo de palabras de una misma disciplina que aparecen explicadas."
+          descriptionDef="Del lat. glossarium."
+          location={"/glosario/" + this.post.slug}
           pageTitle={htmlToText.fromString(this.post.title)}
         >
           <div className="content-item1">
@@ -88,9 +66,6 @@ class Post extends Component {
                   {this.post.date}
                 </Moment>
               </p>
-              <p className="no-margin accent-text-color">
-                Por: {this.post.author.name}
-              </p>
             </div>
             <div
               dangerouslySetInnerHTML={{
@@ -99,22 +74,13 @@ class Post extends Component {
             />
             <div className="post-footer">
               <div className="post-footer-item1">
-                Tags:
-                {this.post.tags.map((tag, i) => (
-                  <Link key={this.post.id} to={"/categoria/" + tag.slug}>
-                  <span>
-                    {" " +
-                      tag.name +
-                      (this.post.tags.length - 1 === i ? " " : ", ")}
-                  </span>
-                  </Link>
-                ))}
+                
               </div>
               <div className="post-footer-item2">
                 <span className="">Compártelo:</span>
                 <span className="social">
                   <FacebookShareButton
-                    url={this.url}
+                    url={window.location.href}
                     quote={this.post.title}
                     className="social-button facebook"
                   >
@@ -123,7 +89,7 @@ class Post extends Component {
                 </span>
                 <span className="social">
                   <TwitterShareButton
-                    url={this.url}
+                    url={window.location.href}
                     title={this.post.title}
                     className="social-button twitter"
                   >
@@ -132,7 +98,7 @@ class Post extends Component {
                 </span>
                 <span className="social">
                   <LinkedinShareButton
-                    url={this.url}
+                    url={window.location.href}
                     title={this.post.title}
                     className="social-button twitter"
                   >
@@ -152,31 +118,20 @@ class Post extends Component {
   }
 }
 
-Post.propTypes = {
+GlosaryEntry.propTypes = {
   data: PropTypes.object.isRequired,
   edges: PropTypes.array,
 }
 
-export default Post
+export default GlosaryEntry
 
 export const postQuery = graphql`
   query($id: String!) {
     wordpressPost(id: { eq: $id }) {
-      id
       title
       content
       slug
       date
-      tags {
-        id
-        name
-        description
-        slug
-      }
-
-      author {
-        name
-      }
     }
     site {
       siteMetadata {

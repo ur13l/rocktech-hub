@@ -1,0 +1,46 @@
+/* Import font Nunito Sans wich is almost the same as Avenir */
+
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,800&display=swap');
+
+html {
+    height: 100vh;
+}
+
+html, body {
+    font-family: 'Nunito Sans', sans-serif !important;
+    background: #171717;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited, a:checked, a:hover{
+    color: inherit;
+}
+
+
+
+.primary-background-color {
+    background-color: #171717;
+}
+
+.secondary-background-color {
+    background-color: #c9c9c9;
+}
+
+.primary-text-color {
+    color: #ffffff;
+}
+
+.secondary-text-color {
+    color: #171717;
+}
+
+.accent-text-color {
+    color: #a0a0a0;
+}
+
+.dark-text-color {
+    color: #939393;
+}
