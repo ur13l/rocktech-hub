@@ -37,6 +37,9 @@ const HeaderWrapper = styled.header`
     color: #fff !important;
   }
 
+li {
+  font-weight: 800;
+}
   .pointer {
     cursor: pointer;
   }
