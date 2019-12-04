@@ -19,19 +19,34 @@ import Img from "gatsby-image"
 const AnalyticsImage = () => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "analytics.png" }) {
+      webImage: file(relativePath: { eq: "analytics.png" }) {
         childImageSharp {
-          fluid(maxWidth: 800) {
+          fluid(maxWidth: 850) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      mobileImage: file(relativePath: { eq: "analytics-mobile.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 850) {
             ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `)
+
+  const sources = [
+    data.mobileImage.childImageSharp.fluid,
+    {
+      ...data.webImage.childImageSharp.fluid,
+      media: `(min-width: 768px)`,
+    },
+  ]
   return (
     <Img
-      fluid={data.placeholderImage.childImageSharp.fluid}
-      style={{ maxWidth:"800px"}}
+      fluid={sources}
+      style={{ maxWidth: "850px" }}
       imgStyle={{ objectFit: "contain" }}
     />
   )

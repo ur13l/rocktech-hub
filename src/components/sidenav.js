@@ -2,7 +2,6 @@ import { Link, useStaticQuery } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import "../styles/global.css"
-import DOMPurify from "dompurify"
 import TextTruncate from "react-text-truncate"
 import htmlToText from "html-to-text"
 import { TwitterTimelineEmbed } from "react-twitter-embed"
@@ -165,8 +164,6 @@ const SideNav = () => {
     //localStorage.expiryDate = expiryDate.getTime()
     return rn
     //}
-
-    return rn
   }
 
   const glosary = data.glosary.edges

@@ -5,19 +5,19 @@ import SEO from "../components/seo"
 import styled from "styled-components"
 import Carousel from "react-multi-carousel"
 import BusinessUnit from "../components/business-unit"
-import 'react-multi-carousel/lib/styles.css';
+import "react-multi-carousel/lib/styles.css"
 
 const LayoutWrapper = styled.div`
   background-color: #171717;
-  min-height:99%;
+  min-height: 99%;
   color: white;
 
   .rocktech-def {
-    padding-top:6vh;
+    padding-top: 6vh;
     margin-bottom: 12vh;
   }
-  
-  .react-multi-carousel-dot {
+
+  .react-multi-carousel-dot  {
     margin: 21px;
   }
 `
@@ -40,8 +40,7 @@ const responsive = {
     breakpoint: { max: 464, min: 0 },
     items: 1,
   },
-};
-
+}
 
 const IndexPage = () => (
   <LayoutWrapper>
@@ -49,28 +48,37 @@ const IndexPage = () => (
       <SEO title="Rocktech Hub" />
       <div className="container">
         <div className="rocktech-def">
-            <h3>¿Qué es Rocktech?</h3>
-            <p className="def">
-              Rocktech es una empresa de tecnología financiera que fomenta la inversión en innovación y analítica de mercados, con el propósito de incrementar el valor a cada negocio.
-            </p>
+          <h3>¿Qué es Rocktech?</h3>
+          <p className="def">
+            Rocktech es una empresa de tecnología financiera que fomenta la
+            institucionalización e innovación del modelo de un negocio a través
+            de finanzas corporativas, investigación y desarrollo de software, y
+            analítica de datos, con el propósito de generar valor para sus
+            accionistas.
+          </p>
         </div>
         <div className="units">
           <h3>Unidades de negocio</h3>
-          
-          <Carousel 
+
+          <Carousel
             responsive={responsive}
             autoPlay={true}
             autoPlaySpeed={10000}
             infinite={true}
             showDots={true}
-            swipeable={false}
-            draggable={false}
-            removeArrowOnDeviceType={["superLargeDesktop", "desktop", "tablet", "mobile"]}
-            >
-            <BusinessUnit unit="ec"/>
-            <BusinessUnit unit="rd"/>
-            <BusinessUnit unit="cf"/>
-            <BusinessUnit unit="an"/>
+            swipeable={true}
+            draggable={true}
+            removeArrowOnDeviceType={[
+              "superLargeDesktop",
+              "desktop",
+              "tablet",
+              "mobile",
+            ]}
+          >
+            <BusinessUnit unit="ec" />
+            <BusinessUnit unit="rd" />
+            <BusinessUnit unit="cf" />
+            <BusinessUnit unit="an" />
           </Carousel>
         </div>
       </div>

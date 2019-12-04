@@ -3,7 +3,6 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import "../styles/global.css"
 import fetch from "cross-fetch"
-var yf = require("yahoo-finance")
 
 /**
  * HeaderWrapper element, used to set style to a component.
@@ -12,6 +11,7 @@ const IndicatorsWrapper = styled.div`
   background: #171717;
   height: 60px;
   color: white;
+  overflow: hidden;
 
   div {
     hr {
@@ -136,7 +136,7 @@ class Indicators extends Component {
             {this.state.indicators.map(quote => (
               <div className="quote" key={quote.symbol}>
                 <span className="short-name">{quote.shortName}: </span>
-                <span>${quote.regularMarketPrice.toFixed(2)}</span>
+                <span>${quote.regularMarketPrice.toLocaleString(navigator.language, { minimumFractionDigits: 2 })}</span>
                 <span
                   className={
                     quote.regularMarketChange >= 0 ? "positive" : "negative"
@@ -145,7 +145,7 @@ class Indicators extends Component {
                   {"  " +
                     (quote.regularMarketChange >= 0 ? "+" : "-") +
                     "" +
-                    Math.abs(quote.regularMarketChange).toFixed(2)}
+                    Math.abs(quote.regularMarketChange).toLocaleString(navigator.language, { minimumFractionDigits: 2 })}
                 </span>
               </div>
             ))}

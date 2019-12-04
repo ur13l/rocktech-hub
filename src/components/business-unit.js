@@ -36,9 +36,13 @@ const BusinessUnitWrapper = styled.div`
     grid-column: 2;
     grid-row: 1 / span 2;
     align-self: center;
-    justify-self: end;
+    justify-self: right;
     text-align: right;
     width: 100%;
+
+    a {
+      text-align: right;
+    }
   }
 
   /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -128,9 +132,10 @@ const BusinessUnit = ({ unit }) => {
           </div>
           <div className="item2">
             <p className="def">
-              Es una plataforma de <b>Tecnología Financiera</b> que tiene como
-              propósito la generación de negocio entre empresas e inversionistas
-              a través del fondeo colectivo de capital.
+              Rocktech Equity Crowdfunding es una plataforma de{" "}
+              <b>tecnología financiera</b> enfocada en la institucionalización y
+              capitalización de la pequeña y mediana empresa a través del{" "}
+              <b>fondeo colectivo de capital</b>.
             </p>
           </div>
           <div className="item3">
@@ -150,9 +155,9 @@ const BusinessUnit = ({ unit }) => {
           </div>
           <div className="item2">
             <p className="def">
-              Es una unidad dedicada a investigar y desarrollar productos con el
-              propósito de <b>implantar nuevas tecnologías</b> dentro del modelo
-              de cada negocio a través del análisis, definición e ingeniería de
+              Unidad dedicada a <b>investigar y desarrollar</b> software con el
+              propósito de implantar nuevas tecnologías dentro de un modelo de
+              negocio a través del análisis, definición e ingeniería de
               procesos.
             </p>
           </div>
@@ -173,10 +178,9 @@ const BusinessUnit = ({ unit }) => {
           </div>
           <div className="item2">
             <p className="def">
-              Es una unidad de negocio de Rocktech, dedicada a diseñar modelos
-              corporativos a través de{" "}
-              <b>ingeniería financiera y análisis contable</b> con el propósito
-              de implementar una estructura de cumplimiento empresarial.
+              Unidad dedicada a la institucionaización de negocios a través de
+              <b>finanzas corporativas</b>, con el propósito de implementar una
+              estructura de cumplimiento empresarial.
             </p>
           </div>
           <div className="item3">

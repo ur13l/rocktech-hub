@@ -25,20 +25,35 @@ const ImgWrapper = styled.div`
 const RDImage = () => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "rd.png" }) {
+      webImage: file(relativePath: { eq: "rd.png" }) {
         childImageSharp {
-          fluid(maxWidth: 700) {
+          fluid(maxWidth: 850) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      mobileImage: file(relativePath: { eq: "rd-mobile.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 850) {
             ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `)
+
+  const sources = [
+    data.mobileImage.childImageSharp.fluid,
+    {
+      ...data.webImage.childImageSharp.fluid,
+      media: `(min-width: 768px)`,
+    },
+  ]
   return (
     <ImgWrapper>
       <Img
-        fluid={data.placeholderImage.childImageSharp.fluid}
-        style={{ maxWidth: "700px" }}
+        fluid={sources}
+        style={{ maxWidth: "850px" }}
         imgStyle={{ objectFit: "contain" }}
       />
     </ImgWrapper>

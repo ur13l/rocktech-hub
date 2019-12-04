@@ -4,7 +4,6 @@ import React from "react"
 import styled from "styled-components"
 import "../styles/global.css"
 import Img from "gatsby-image"
-import DOMPurify from "dompurify"
 import TextTruncate from "react-text-truncate"
 
 /**

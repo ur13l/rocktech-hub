@@ -18,6 +18,7 @@ import Footer from "./footer"
 
 
 const GlobalStyles = styled.div`
+
   h2 {
     text-transform: uppercase;
     color: #a0a0a0;
