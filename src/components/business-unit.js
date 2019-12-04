@@ -178,7 +178,7 @@ const BusinessUnit = ({ unit }) => {
           </div>
           <div className="item2">
             <p className="def">
-              Unidad dedicada a la institucionaización de negocios a través de
+              Unidad dedicada a la institucionaización de negocios a través de {" "}
               <b>finanzas corporativas</b>, con el propósito de implementar una
               estructura de cumplimiento empresarial.
             </p>
