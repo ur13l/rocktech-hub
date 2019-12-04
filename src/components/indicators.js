@@ -10,6 +10,7 @@ import fetch from "cross-fetch"
 const IndicatorsWrapper = styled.div`
   background: #171717;
   height: 60px;
+  width: 100vw;
   color: white;
   overflow: hidden;
 
@@ -20,7 +21,7 @@ const IndicatorsWrapper = styled.div`
   }
 
   .short-name {
-    font-weight: 800;
+    font-weight: 700;
   }
 
   @-webkit-keyframes ticker {
@@ -131,7 +132,7 @@ class Indicators extends Component {
   render() {
     return (
       <IndicatorsWrapper>
-        <div className="container" id="indicators">
+        <div id="indicators">
           <div className="indicators-inner">
             {this.state.indicators.map(quote => (
               <div className="quote" key={quote.symbol}>

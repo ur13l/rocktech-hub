@@ -15,7 +15,7 @@ const LayoutWrapper = styled.div`
 
   .alpha {
     padding: 0px 9px;
-    font-weight: 800;
+    font-weight: 700;
     color: #8c8c8c;
     cursor: pointer;
   }

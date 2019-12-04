@@ -17,7 +17,7 @@ const PaginatorWrapper = styled.div`
   li {
     display: inline;
     padding: 18px;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 21px;
     color: #707070;
   }

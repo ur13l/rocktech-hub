@@ -45,7 +45,7 @@ const SearchPanelWrapper = styled.div`
     align-self: center;
     text-transform: uppercase;
     font-size: 27px;
-    font-weight: 800;
+    font-weight: 700;
   }
 
   .search-hidden {

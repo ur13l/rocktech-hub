@@ -28,7 +28,7 @@ const GlobalStyles = styled.div`
 
   h1, h2, h3, h4, h5 {
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 700;
   }
 
   h3 {
@@ -83,7 +83,7 @@ const GlobalStyles = styled.div`
   }
 
   .black {
-    font-weight: 800;
+    font-weight: 700;
   }
 
   .truncate-text {
