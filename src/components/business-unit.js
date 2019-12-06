@@ -1,6 +1,7 @@
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 import "../styles/global.css"
 import ECImage from "./images/ec"
 import ECLogo from "./images/ec-logo"
@@ -133,9 +134,19 @@ const BusinessUnit = ({ unit }) => {
           <div className="item2">
             <p className="def">
               Rocktech Equity Crowdfunding es una plataforma de{" "}
-              <b>tecnología financiera</b> enfocada en la institucionalización y
-              capitalización de la pequeña y mediana empresa a través del{" "}
-              <b>fondeo colectivo de capital</b>.
+              <b>
+                <Link to="/glosario/tecnologia-financiera">
+                  tecnología financiera
+                </Link>
+              </b>{" "}
+              enfocada en la institucionalización y capitalización de la pequeña
+              y mediana empresa a través del{" "}
+              <b>
+                <Link to="/glosario/fondeo-colectivo-de-capital">
+                  fondeo colectivo de capital
+                </Link>
+              </b>
+              .
             </p>
           </div>
           <div className="item3">
@@ -155,10 +166,14 @@ const BusinessUnit = ({ unit }) => {
           </div>
           <div className="item2">
             <p className="def">
-              Unidad dedicada a <b>investigar y desarrollar</b> software con el
-              propósito de implantar nuevas tecnologías dentro de un modelo de
-              negocio a través del análisis, definición e ingeniería de
-              procesos.
+              Unidad dedicada a investigar y desarrollar{" "}
+              <b>
+                <Link to="/glosario/solucion-tecnologica">
+                  soluciones tecnológicas
+                </Link>
+              </b>{" "}
+              para modelos de negocio y de mejora de procesos con base en la
+              ingeniería empresarial.
             </p>
           </div>
           <div className="item3">
@@ -178,9 +193,14 @@ const BusinessUnit = ({ unit }) => {
           </div>
           <div className="item2">
             <p className="def">
-              Unidad dedicada a la institucionaización de negocios a través de {" "}
-              <b>finanzas corporativas</b>, con el propósito de implementar una
-              estructura de cumplimiento empresarial.
+              Unidad dedicada a la institucionaización de negocios a través de{" "}
+              <b>
+                <Link to="/glosario/finanzas-coporativas">
+                  finanzas corporativas
+                </Link>
+              </b>
+              , con el propósito de implementar una estructura de cumplimiento
+              empresarial.
             </p>
           </div>
           <div className="item3">
@@ -200,7 +220,7 @@ const BusinessUnit = ({ unit }) => {
             <p className="def">
               Es una unidad con una propuesta para desarrollo de{" "}
               <b>análisis de información</b> mediante procesamiento de texto
-              proveniente de archivos de texto( .txt o .csv ) o redes sociales.
+              proveniente de archivos de texto o redes sociales.
             </p>
           </div>
           <div className="item3">

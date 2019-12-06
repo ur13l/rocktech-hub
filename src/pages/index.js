@@ -1,5 +1,5 @@
 import React from "react"
-
+import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
@@ -19,6 +19,10 @@ const LayoutWrapper = styled.div`
 
   .react-multi-carousel-dot  {
     margin: 21px;
+  }
+
+  a {
+    color: inherit !important;
   }
 `
 
@@ -50,11 +54,20 @@ const IndexPage = () => (
         <div className="rocktech-def">
           <h3>¿Qué es Rocktech?</h3>
           <p className="def">
-            Rocktech es una empresa de tecnología financiera que fomenta la
-            institucionalización e innovación del modelo de un negocio a través
-            de finanzas corporativas, investigación y desarrollo de software, y
-            analítica de datos, con el propósito de generar valor para sus
-            accionistas.
+            Rocktech es una empresa dedicada a la{" "}
+            <b>
+              <Link to="/glosario/ingenieria-de-negocios">
+                ingniería de negocios
+              </Link>
+            </b>{" "}
+            que fomenta la institucionalización, capitalización e innovación del
+            modelo de un negocio a través de finanzas corporativas,
+            investigación y desarrollo, y analítica de datos, con el propósito
+            de generar{" "}
+            <b>
+              <Link to="/glosario/valor">valor</Link>
+            </b>
+            .
           </p>
         </div>
         <div className="units">
