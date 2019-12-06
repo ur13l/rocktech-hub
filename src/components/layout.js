@@ -124,7 +124,7 @@ const GlobalStyles = styled.div`
   }
 
   /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+  @media only screen and (min-width: 992px) and (max-width: 1280px) {
     .hide-on-large-and-up {
       display: none;
     }
@@ -134,7 +134,7 @@ const GlobalStyles = styled.div`
   }
 
   /* Extra large devices (large laptops and desktops, 1200px and up) */
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 1280px) {
     .hide-on-large-and-up {
       display: none;
     }
