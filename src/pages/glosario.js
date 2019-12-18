@@ -33,14 +33,19 @@ const LayoutWrapper = styled.div`
   /** Glosary display */
   .glosary-display {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-gap: 9px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 90px;
   }
 
   .glosary-item {
     padding: 33px 0;
+    text-align: justify;
   }
 
+  .truncate-text {
+    color: #aaa;
+
+  }
   /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (max-width: 768px) {
     .glosary-display {
@@ -134,10 +139,12 @@ class Glosario extends Component {
       div.push(
         <span
           key={i}
+          role="listitem"
           className={"alpha" + selectedClass + disabledClass}
           onClick={e => {
             this.onClickLetter(disabledClass, letter, entries, e.target)
           }}
+          onKeyUp = { () => {}}
         >
           {letter}
         </span>
@@ -155,7 +162,7 @@ class Glosario extends Component {
    * @param {any} target
    */
   onClickLetter(disabled, letter, glosary, target) {
-    if (target) {
+    if (target && disabled === "") {
       let activeItems = document.getElementsByClassName("alpha-selected")
       if (activeItems) {
         for (let i = 0; i < activeItems.length; i++) {
@@ -173,6 +180,9 @@ class Glosario extends Component {
         displayedEntries: newList,
       })
     }
+    setTimeout(() => {
+      this.forceUpdate()
+    }, 1)
   }
 
   /**
@@ -199,14 +209,13 @@ class Glosario extends Component {
                   <TextTruncate
                     line={4}
                     element="span"
-                    truncateText=""
-                    text={htmlToText.fromString(entry.node.content)}
+                    text={htmlToText.fromString(entry.node.excerpt)}
                     textTruncateChild={
                       <a
                         className="truncate-text"
                         href={"/glosario/" + entry.node.slug}
                       >
-                        Ver más...
+                        Ver más
                       </a>
                     }
                   />
@@ -217,7 +226,8 @@ class Glosario extends Component {
           <div className="content-item2">
             <SideNav />
           </div>
-          <div className="content-item3"></div>
+          <div className="content-item3">
+          </div>
         </PageLayout>
       </LayoutWrapper>
     )

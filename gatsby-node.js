@@ -8,8 +8,6 @@
 const path = require(`path`)
 const slash = require(`slash`)
 
-
-
 /**
  * Method that create pages dynamically.
  * Pages created: all posts entries, glosary entries and category entries (These include

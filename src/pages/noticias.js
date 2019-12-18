@@ -176,11 +176,9 @@ class Noticias extends Component {
   }
 
   render() {
-    console.log(this.props);
     var mainPosts = this.props.data.mainPosts.edges
     var techPosts = this.props.data.technologyPosts.edges
     var financePosts = this.props.data.financePosts.edges
-    console.log(financePosts);
     /**
      * We iterate in reverse because that is how we assure the most recent
      * posts with the sticky property will be appearing first.

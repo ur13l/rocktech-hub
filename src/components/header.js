@@ -37,9 +37,9 @@ const HeaderWrapper = styled.header`
     color: #fff !important;
   }
 
-li {
-  font-weight: 700;
-}
+  li {
+    font-weight: 700;
+  }
   .pointer {
     cursor: pointer;
   }
@@ -49,7 +49,7 @@ li {
     border: none;
     border-bottom: 2px solid #fff;
     color: white;
-    font-size: 30px;
+    font-size: 25px;
     transition: width 0.3s;
     padding-right: 48px;
     width: 0%;
@@ -129,6 +129,9 @@ li {
       justify-self: right;
       margin: 0;
     }
+    .large-input {
+      font-size: 20px;
+    }
   }
 
   /* Medium devices (landscape tablets, 768px and up) */
@@ -139,6 +142,10 @@ li {
       color: #fff;
       align-content: center;
       grid-gap: 18px;
+    }
+
+    .large-input {
+      font-size: 20px;
     }
   }
 

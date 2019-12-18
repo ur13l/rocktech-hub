@@ -57,10 +57,17 @@ const SideNavWrapper = styled.div`
 
   .categories-container {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 1fr 1fr;
     margin-top: 42px;
     grid-gap: 12px 24px;
+    align-content:center;
+
   }
+
+  .categories-container a {
+    color: #aaa;
+    font-size: 18px;
+  } 
 `
 
 /**
@@ -174,7 +181,6 @@ const SideNav = () => {
    * This word will be different for each user.
    */
   let randomNumber = getRandomNumberOfDay(glosary.length)
-  console.log(randomNumber)
   let wordOfTheDay = glosary[randomNumber]
 
   let highlightsElem = []

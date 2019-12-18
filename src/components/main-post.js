@@ -42,8 +42,8 @@ const PostWrapper = styled.div`
   .post-footer  {
     padding-top: 18px;
     display: grid;
-    color: #707070;
-    font-style: italic;
+    color: #aaa;
+    font-size: 15px;
   }
 
   .post-date {

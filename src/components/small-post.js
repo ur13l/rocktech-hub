@@ -51,12 +51,12 @@ const PostWrapper = styled.div`
   .post-footer {
     grid-column: 1;
     grid-row: 2;
-    color: #707070;
-    font-style: italic;
     font-size: 16px;
     align-self: end;
     align-content: end;
 
+    color: #aaa;
+    font-size: 15px;
     line-height: normal;
 
     p,

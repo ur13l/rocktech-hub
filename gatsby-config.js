@@ -36,7 +36,7 @@ module.exports = {
       options: {
         // your WordPress source
         baseUrl: `correspondant.rocktech.mx`,
-        protocol: `http`,
+        protocol: `https`,
         // is it hosted on wordpress.com, or self-hosted?
         hostingWPCOM: false,
         // does your site use the Advanced Custom Fields Plugin?
