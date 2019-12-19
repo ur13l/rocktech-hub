@@ -48,23 +48,21 @@ class GlosaryEntry extends Component {
   }
   render() {
     this.post = this.props.data.wordpressPost
-    this.url = this.props.data.site.siteMetadata.url + "/glosario/" + this.post.slug 
+    this.url =
+      this.props.data.site.siteMetadata.url + "/glosario/" + this.post.slug
 
     console.log(this.url)
     return (
       <LayoutWrapper>
         <PageLayout
-          title="Glosario"
+          title={"Glosario"}
           description="m. Catálogo de palabras de una misma disciplina que aparecen explicadas."
           descriptionDef="Del lat. glossarium."
           location={"/glosario/" + this.post.slug}
           pageTitle={htmlToText.fromString(this.post.title)}
+          titleSEO={this.post.title}
+          descriptionSEO={this.post.excerpt}
         >
-        <meta property="og:url"                content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html" />
-        <meta property="og:type"               content="article" />
-        <meta property="og:title"              content="When Great Minds Don’t Think Alike" />
-        <meta property="og:description"        content="How much does culture influence creative thinking?" />
-        <meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
           <div className="content-item1">
             <div className="title-container">
               <h1>{htmlToText.fromString(this.post.title)}</h1>
@@ -86,7 +84,7 @@ class GlosaryEntry extends Component {
                 <span className="social">
                   <FacebookShareButton
                     url={this.url}
-                    quote={this.post.excerpt} 
+                    quote={this.post.excerpt}
                     className="social-button facebook"
                   >
                     <FaFacebookF />

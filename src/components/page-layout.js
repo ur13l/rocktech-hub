@@ -176,14 +176,17 @@ const PageLayout = ({
   title,
   descriptionDef,
   description,
-  pageTitle
+  pageTitle,
+  titleSEO,
+  descriptionSEO,
+  image
 }) => {
   //const data = useStaticQuery(graphql``)
 
   return (
     <LayoutWrapper>
       <Layout location={location}>
-        <SEO title={pageTitle || title} />
+        <SEO title={pageTitle || title} description={descriptionSEO} image={image}/>
         <div className="section white-background">
           <div className="container">
             <div className="def-container">
