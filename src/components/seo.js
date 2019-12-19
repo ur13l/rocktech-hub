@@ -19,6 +19,7 @@ function SEO({ description, lang, meta, title, image }) {
             title
             description
             author
+            
           }
         }
       }
@@ -28,6 +29,8 @@ function SEO({ description, lang, meta, title, image }) {
   const metaDescription = description || site.siteMetadata.description
   const metaImage = image || "https://rocktech.mx/wp-content/uploads/2019/08/city.png"
 
+  console.log(metaDescription)
+  console.log(description)
   return (
     <Helmet
       htmlAttributes={{

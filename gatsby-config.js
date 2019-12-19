@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   siteMetadata: {
     title: `Rocktech Hub`,
-    description: `Generando valor para tu negocio.`,
+    description: `Sumamos valor.`,
     author: `@gatsbyjs`,
     url: `https://hub.rocktech.mx`
   },

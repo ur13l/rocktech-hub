@@ -61,7 +61,7 @@ class GlosaryEntry extends Component {
           location={"/glosario/" + this.post.slug}
           pageTitle={htmlToText.fromString(this.post.title)}
           titleSEO={this.post.title}
-          descriptionSEO={this.post.excerpt}
+          descriptionSEO={this.post.excerpt.replace("<p>", "").replace("</p>", "")}
         >
           <div className="content-item1">
             <div className="title-container">
@@ -84,7 +84,6 @@ class GlosaryEntry extends Component {
                 <span className="social">
                   <FacebookShareButton
                     url={this.url}
-                    quote={this.post.excerpt}
                     className="social-button facebook"
                   >
                     <FaFacebookF />
@@ -93,7 +92,8 @@ class GlosaryEntry extends Component {
                 <span className="social">
                   <TwitterShareButton
                     url={this.url}
-                    title={this.post.title}
+                    title={"Definición de " + this.post.title}
+                    hashtags={["SumamosValor"]}
                     className="social-button twitter"
                   >
                     <FaTwitter />
@@ -135,6 +135,7 @@ export const postQuery = graphql`
       content
       slug
       date
+      excerpt
     }
     site {
       siteMetadata {
