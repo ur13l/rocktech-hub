@@ -27,10 +27,8 @@ function SEO({ description, lang, meta, title, image }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
-  const metaImage = image || "https://rocktech.mx/wp-content/uploads/2019/08/city.png"
+  const metaImage = image || "https://s3.us-east-2.amazonaws.com/hub.rocktech/glosario.jpeg"
 
-  console.log(metaDescription)
-  console.log(description)
   return (
     <Helmet
       htmlAttributes={{
