@@ -193,7 +193,7 @@ const BusinessUnit = ({ unit }) => {
           </div>
           <div className="item2">
             <p className="def">
-              Unidad dedicada a la institucionaización de negocios a través de{" "}
+              Corporate Finance es la unidad dedicada a la institucionaización de negocios a través de{" "}
               <b>
                 <Link to="/glosario/finanzas-coporativas">
                   finanzas corporativas

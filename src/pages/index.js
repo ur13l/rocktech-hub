@@ -54,10 +54,11 @@ const IndexPage = () => (
         <div className="rocktech-def">
           <h3>¿Qué es Rocktech?</h3>
           <p className="def">
+          
             Rocktech es una empresa dedicada a la{" "}
-            <b>
+            <b>  
               <Link to="/glosario/ingenieria-de-negocios">
-                ingniería de negocios
+                ingeniería de negocios
               </Link>
             </b>{" "}
             que fomenta la institucionalización, capitalización e innovación del
