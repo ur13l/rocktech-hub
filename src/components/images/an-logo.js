@@ -22,7 +22,7 @@ const AnalyticsLogo = () => {
       placeholderImage: file(relativePath: { eq: "analytics-logo.png" }) {
         childImageSharp {
           fluid(maxWidth: 400) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }

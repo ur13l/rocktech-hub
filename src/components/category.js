@@ -153,7 +153,7 @@ export const postQuery = graphql`
                     opacity: 100
                   }
                 ) {
-                  ...GatsbyImageSharpFixed
+                  ...GatsbyImageSharpFixed_tracedSVG
                 }
               }
             }
@@ -194,10 +194,10 @@ export const postQuery = graphql`
               childImageSharp {
                 # Try editing the "maxWidth" value to generate resized images.
                 fixed(width: 468, height: 263) {
-                  ...GatsbyImageSharpFixed
+                  ...GatsbyImageSharpFixed_tracedSVG
                 }
                 fluid(maxWidth: 290, maxHeight: 230) {
-                  ...GatsbyImageSharpFluid
+                  ...GatsbyImageSharpFluid_tracedSVG
                 }
 
                 grayFluid: fluid(
@@ -209,7 +209,7 @@ export const postQuery = graphql`
                     opacity: 100
                   }
                 ) {
-                  ...GatsbyImageSharpFluid
+                  ...GatsbyImageSharpFluid_tracedSVG
                 }
               }
             }

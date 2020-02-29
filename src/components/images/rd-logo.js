@@ -23,7 +23,7 @@ const RDLogo = () => {
       placeholderImage: file(relativePath: { eq: "rd-logo.png" }) {
         childImageSharp {
           fluid(maxWidth: 400) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }

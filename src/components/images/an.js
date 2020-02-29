@@ -22,14 +22,14 @@ const AnalyticsImage = () => {
       webImage: file(relativePath: { eq: "analytics.png" }) {
         childImageSharp {
           fluid(maxWidth: 850) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
       mobileImage: file(relativePath: { eq: "analytics-mobile.png" }) {
         childImageSharp {
           fluid(maxWidth: 850) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }

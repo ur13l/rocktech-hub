@@ -22,7 +22,7 @@ const CFLogo = () => {
       placeholderImage: file(relativePath: { eq: "cf-logo.png" }) {
         childImageSharp {
           fluid(maxWidth: 400) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }

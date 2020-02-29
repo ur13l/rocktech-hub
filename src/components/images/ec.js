@@ -22,14 +22,14 @@ const ECImage = () => {
       webImage: file(relativePath: { eq: "ec.png" }) {
         childImageSharp {
           fluid(maxWidth: 850) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
       mobileImage: file(relativePath: { eq: "ec-mobile.png" }) {
         childImageSharp {
           fluid(maxWidth: 850) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }

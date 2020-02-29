@@ -21,8 +21,8 @@ const BigLogo = () => {
     query {
       desktopImage: file(relativePath: { eq: "logo1.png" }) {
         childImageSharp {
-          fluid(maxWidth: 900) {
-            ...GatsbyImageSharpFluid
+          fluid(maxWidth: 500) {
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
@@ -32,7 +32,7 @@ const BigLogo = () => {
   return (
     <Img
       fluid={data.desktopImage.childImageSharp.fluid}
-      style={{ maxWidth: "900px", marginLeft: "30px", marginRight: "30px" }}
+      style={{ maxWidth: "500px", marginLeft: "30px", marginRight: "30px" }}
       imgStyle={{ objectFit: "contain" }}
     />
   )

@@ -22,7 +22,7 @@ const ECLogo = () => {
       placeholderImage: file(relativePath: { eq: "ec-logo.png" }) {
         childImageSharp {
           fluid(maxWidth: 400) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }

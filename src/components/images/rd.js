@@ -28,14 +28,14 @@ const RDImage = () => {
       webImage: file(relativePath: { eq: "rd.png" }) {
         childImageSharp {
           fluid(maxWidth: 850) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
       mobileImage: file(relativePath: { eq: "rd-mobile.png" }) {
         childImageSharp {
           fluid(maxWidth: 850) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }

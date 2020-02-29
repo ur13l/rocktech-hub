@@ -22,7 +22,7 @@ const CFImage = () => {
       webImage: file(relativePath: { eq: "cf.png" }) {
         childImageSharp {
           fluid(maxWidth: 850) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
@@ -30,7 +30,7 @@ const CFImage = () => {
       mobileImage: file(relativePath: { eq: "cf-mobile.png" }) {
         childImageSharp {
           fluid(maxWidth: 850) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
