@@ -41,8 +41,16 @@ const LayoutWrapper = styled.div`
     padding: 12px;
   }
 
+  img {
+    max-width: 315px;
+  }
+
   a {
     color: inherit;
+  }
+
+  .content-html {
+    max-width: 85vw;
   }
 
   /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -93,6 +101,7 @@ class Post extends Component {
               </p>
             </div>
             <div
+            className="content-html"
               dangerouslySetInnerHTML={{
                 __html: this.post.content,
               }}

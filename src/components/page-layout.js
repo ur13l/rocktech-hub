@@ -100,9 +100,13 @@ const LayoutWrapper = styled.div`
   /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (max-width: 768px) {
     .content-news {
-      grid-template-columns: 100%;
+      grid-template-columns: 1fr;
+      content: object-fit;
     }
 
+    .content-news *{
+      max-width: 100%;
+    }
     .content-item2 {
       display: none;
     }

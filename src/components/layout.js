@@ -111,6 +111,11 @@ const GlobalStyles = styled.div`
     .container {
       padding: 0 30px;
     }
+
+    h1 {
+  font-size: 1.6em;
+  margin: 0;
+}
   }
 
   /* Medium devices (landscape tablets, 768px and up) */
