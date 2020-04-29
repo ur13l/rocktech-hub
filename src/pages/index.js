@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
@@ -29,10 +28,11 @@ const LayoutWrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
+    margin-bottom: 60px;
   }
   
   .business-units > a {
-    tex-align: center;
+    text-align: center;
   }
   
   .link {
@@ -57,26 +57,6 @@ const LayoutWrapper = styled.div`
   }
 `
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 1,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-}
-
 const IndexPage = () => (
   <LayoutWrapper>
     <Layout location="/">
@@ -84,10 +64,8 @@ const IndexPage = () => (
       <div className="container">
         <div className="rocktech-def">
           <p className="def-rocktech">
-            Rocktech es una empresa Business Technology que fomenta la
-            institucionalización, capitalización e innovación a través de
-            finanzas corporativas, investigación, desarrollo y analítica de
-            datos, con el propósito de generar valor.
+            Rocktech es una empresa <i>Business Technology</i> que fomenta la capitalización e innovación de las empresas a
+            través de finanzas corporativas, investigación y desarrollo con el propósito de generar valor.
           </p>
         </div>
         <div className="units">
