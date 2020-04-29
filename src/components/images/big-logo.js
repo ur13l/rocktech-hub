@@ -30,9 +30,10 @@ const BigLogo = () => {
   `)
 
   return (
+
     <Img
       fluid={data.desktopImage.childImageSharp.fluid}
-      style={{ maxWidth: "500px", marginLeft: "30px", marginRight: "30px" }}
+      style={{ maxWidth: "500px"}}
       imgStyle={{ objectFit: "contain" }}
     />
   )

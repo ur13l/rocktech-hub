@@ -7,7 +7,7 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import Helmet from "react-helmet"
+import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 function SEO({ description, lang, meta, title, image }) {
@@ -28,7 +28,6 @@ function SEO({ description, lang, meta, title, image }) {
 
   const metaDescription = description || site.siteMetadata.description
   const metaImage = image || "https://s3.us-east-2.amazonaws.com/hub.rocktech/glosario.jpeg"
-
   return (
     <Helmet
       htmlAttributes={{

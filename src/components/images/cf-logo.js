@@ -21,7 +21,7 @@ const CFLogo = () => {
     query {
       placeholderImage: file(relativePath: { eq: "cf-logo.png" }) {
         childImageSharp {
-          fluid(maxWidth: 400) {
+          fluid(maxWidth: 500) {
             ...GatsbyImageSharpFluid_tracedSVG
           }
         }
@@ -31,7 +31,7 @@ const CFLogo = () => {
   return (
     <Img
       fluid={data.placeholderImage.childImageSharp.fluid}
-      style={{ maxWidth:"400px"}}
+      style={{ maxWidth:"500px", margin:"0 auto"}}
       imgStyle={{ objectFit: "contain" }}
     />
   )

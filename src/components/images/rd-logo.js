@@ -22,7 +22,7 @@ const RDLogo = () => {
     query {
       placeholderImage: file(relativePath: { eq: "rd-logo.png" }) {
         childImageSharp {
-          fluid(maxWidth: 400) {
+          fluid(maxWidth: 500) {
             ...GatsbyImageSharpFluid_tracedSVG
           }
         }
@@ -32,7 +32,7 @@ const RDLogo = () => {
   return (
       <Img
         fluid={data.placeholderImage.childImageSharp.fluid}
-        style={{ maxWidth: "400px" }}
+        style={{ maxWidth: "500px", margin:"0 auto" }}
         imgStyle={{ objectFit: "contain" }}
       />
   )

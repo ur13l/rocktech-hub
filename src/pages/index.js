@@ -3,9 +3,9 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
-import Carousel from "react-multi-carousel"
-import BusinessUnit from "../components/business-unit"
 import "react-multi-carousel/lib/styles.css"
+import CFLogo from "../components/images/cf-logo"
+import RDLogo from "../components/images/rd-logo"
 
 const LayoutWrapper = styled.div`
   background-color: #171717;
@@ -23,6 +23,36 @@ const LayoutWrapper = styled.div`
 
   a {
     color: inherit !important;
+  }
+  
+  .business-units {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+  }
+  
+  .business-units > a {
+    tex-align: center;
+  }
+  
+  .link {
+    transition: 0.3s;
+  }
+  
+  .link:hover {
+    transform: scale(1.1, 1.1);
+  }
+  
+  .def-rocktech {
+    font-size: 24px;
+  }
+  
+    /* Small devices (Mobile phones) */
+  @media only screen and (max-width: 768px) {
+    .business-units {
+      grid-template-columns: 1fr;
+    }
+  
   }
 `
 
@@ -49,51 +79,26 @@ const responsive = {
 const IndexPage = () => (
   <LayoutWrapper>
     <Layout location="/">
-      <SEO title="Rocktech Hub" />
+      <SEO title="Rocktech Hub"/>
       <div className="container">
         <div className="rocktech-def">
-          <h3>¿Qué es Rocktech?</h3>
-          <p className="def">
-          
-            Rocktech es una empresa dedicada a la{" "}
-            <b>  
-              <Link to="/glosario/ingenieria-de-negocios">
-                ingeniería de negocios
-              </Link>
-            </b>{" "}
-            que fomenta la institucionalización, capitalización e innovación del
-            modelo de un negocio a través de finanzas corporativas,
-            investigación y desarrollo, y analítica de datos, con el propósito
-            de generar{" "}
-            <b>
-              <Link to="/glosario/valor">valor</Link>
-            </b>
-            .
+          <p className="def-rocktech">
+            Rocktech es una empresa Business Technology que fomenta la
+            institucionalización, capitalización e innovación a través de
+            finanzas corporativas, investigación, desarrollo y analítica de
+            datos, con el propósito de generar valor.
           </p>
         </div>
         <div className="units">
-          <h3>Unidades de negocio</h3>
+          <div className="business-units">
+            <a className={"link"} href={"https://cf.rocktech.mx"}>
+            <CFLogo/>
+            </a>
+            <a className={"link"} href={"https://rd.rocktech.mx"}>
+            <RDLogo/>
+            </a>
+          </div>
 
-          <Carousel
-            responsive={responsive}
-            autoPlay={true}
-            autoPlaySpeed={10000}
-            infinite={true}
-            showDots={true}
-            swipeable={true}
-            draggable={true}
-            removeArrowOnDeviceType={[
-              "superLargeDesktop",
-              "desktop",
-              "tablet",
-              "mobile",
-            ]}
-          >
-            <BusinessUnit unit="ec" />
-            <BusinessUnit unit="rd" />
-            <BusinessUnit unit="cf" />
-            <BusinessUnit unit="an" />
-          </Carousel>
         </div>
       </div>
     </Layout>

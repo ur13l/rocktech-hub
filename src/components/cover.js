@@ -48,6 +48,14 @@ const CoverWrapper = styled.div`
     margin-top: -25vh;
     padding: 0 30px;
   }
+  
+  .link {
+    transition: 0.3s;
+  }
+  
+  .link:hover {
+    transform: scale(1.1, 1.1);
+  }
 
   /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (max-width: 768px) {
@@ -74,7 +82,7 @@ const Cover = ({ location }) => {
     return (
       <CoverWrapper>
         <div className="big-logo-container">
-          <BigLogo location={location} />
+            <BigLogo location={location} />
         </div>
         <h3 className="disrupt-title">Disrumpir:</h3>
         <p className="deflat">

@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
+    "core-js": "^3.6.5",
     "dompurify": "^2.0.7",
     "gatsby": "^2.17.6",
     "gatsby-image": "^2.2.30",
@@ -23,20 +24,20 @@
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-helmet": "^5.2.1",
+    "react-helmet": "^6.0.0",
     "react-html-parser": "^2.0.2",
     "react-icons": "^3.8.0",
     "react-lines-ellipsis": "^0.14.1",
     "react-moment": "^0.9.6",
     "react-multi-carousel": "^2.4.0",
-    "react-share": "^3.0.1",
-    "react-text-truncate": "^0.15.0",
+    "react-share": "^4.1.0",
+    "react-text-truncate": "^0.16.0",
     "react-timeago": "^4.4.0",
     "react-twitter-embed": "^3.0.3",
-    "styled-components": "^4.4.1"
+    "styled-components": "^5.1.0"
   },
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "prettier": "^2.0.5"
   },
   "keywords": [
     "gatsby"

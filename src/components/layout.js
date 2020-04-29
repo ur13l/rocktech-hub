@@ -21,7 +21,6 @@ const GlobalStyles = styled.div`
 
   h2 {
     text-transform: uppercase;
-    color: #a0a0a0;
     letter-spacing: 6px;
     margin: 0;
   }
@@ -32,7 +31,6 @@ const GlobalStyles = styled.div`
   }
 
   h3 {
-    color: #a0a0a0;
     letter-spacing: 3px;
   }
   
