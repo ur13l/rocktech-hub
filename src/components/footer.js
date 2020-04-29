@@ -3,8 +3,8 @@ import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 import "../styles/global.css"
-import Logo from "./images/logo.js"
 import { FaFacebookF, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa"
+import Iso from "./images/iso"
 
 /**
  * FooterWrapper element, used to set style to a component.
@@ -203,7 +203,7 @@ const Footer = ({ siteTitle, location }) => {
     <FooterWrapper>
       <div className="container grid">
         <div className="item item1">
-          <Logo />
+          <Iso />
         </div>
         <div className="item item2">
           <h5 className="footer-title footer-color">Oficina Central</h5>

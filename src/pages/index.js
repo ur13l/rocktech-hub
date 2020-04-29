@@ -45,6 +45,7 @@ const LayoutWrapper = styled.div`
   
   .def-rocktech {
     font-size: 24px;
+    text-align: center;
   }
   
     /* Small devices (Mobile phones) */
