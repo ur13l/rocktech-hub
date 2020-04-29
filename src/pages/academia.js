@@ -166,7 +166,7 @@ const LayoutWrapper = styled.div`
     }
   }
 `
-class Noticias extends Component {
+class Academia extends Component {
   postLoop = posts => {
     let div = []
     posts.forEach((post, key) => {
@@ -192,7 +192,7 @@ class Noticias extends Component {
     return (
       <LayoutWrapper>
         <PageLayout
-          title="Noticias"
+          title="Academia"
           description="f. Información sobre algo que se considera interesante divulgar."
           descriptionDef="Del lat. notitia."
           location="/noticias"
@@ -252,9 +252,9 @@ class Noticias extends Component {
   }
 }
 
-export default Noticias
+export default Academia
 
-Noticias.propTypes = {
+Academia.propTypes = {
   data: PropTypes.object.isRequired,
   edges: PropTypes.array,
 }

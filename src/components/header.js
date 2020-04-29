@@ -297,7 +297,7 @@ class Header extends Component {
               <Link to="/glosario">Glosario</Link>
             </li>
             <li>
-              <Link to="/noticias">Noticias</Link>
+              <Link to="/academia">Academia</Link>
             </li>
             <li>
               <div
