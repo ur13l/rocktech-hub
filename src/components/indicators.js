@@ -77,8 +77,8 @@ const IndicatorsWrapper = styled.div`
     animation-timing-function: linear;
     -webkit-animation-name: ticker;
     animation-name: ticker;
-    -webkit-animation-duration: 45s;
-    animation-duration: 45s;
+    -webkit-animation-duration: 1700s;
+    animation-duration: 1700s;
   }
   .quote {
     display: inline-block;
@@ -117,8 +117,10 @@ class Indicators extends Component {
     .then(json => {
       let array = []
       const keys = Object.keys(json);
-      for(const key of keys) {
-        array.push(json[key]['price'])
+      for(let i = 20 ; i >= 0 ; i--) {
+        for(const key of keys) {
+          array.push(json[key]['price'])
+        }
       }
 
 
@@ -134,8 +136,8 @@ class Indicators extends Component {
       <IndicatorsWrapper>
         <div id="indicators">
           <div className="indicators-inner">
-            {this.state.indicators.map(quote => (
-              <div className="quote" key={quote.symbol}>
+            {this.state.indicators.map((quote, index) => (
+              <div className="quote" key={quote.symbol + "_" +index}>
                 <span className="short-name">{quote.shortName}: </span>
                 <span>${quote.regularMarketPrice.toLocaleString(navigator.language, { minimumFractionDigits: 2 })}</span>
                 <span
