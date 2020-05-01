@@ -22,9 +22,18 @@ const SideNavWrapper = styled.div`
     color: #000;
   }
 
+  .border-black{
+    border-style: solid;
+    padding: 2px;
+  }
+
+  .red{
+    color:red;
+  }
+
   .sidenav-section {
     padding-top: 42px;
-    padding-bottom: 42px;
+    padding-bottom: 10px;
   }
 
   .word-of-the-day {
@@ -223,27 +232,9 @@ const SideNav = () => {
   return (
     <SideNavWrapper>
       <div className="word-of-the-day sidenav-section">
-        <h4>Palabra del día</h4>
-        <h5
-          className="wotd-title"
-          dangerouslySetInnerHTML={{
-            __html: wordOfTheDay.node.title + ":",
-          }}
-        />
-        <TextTruncate
-          line={4}
-          element="span"
-          truncateText=""
-          text={htmlToText.fromString(wordOfTheDay.node.content)}
-          textTruncateChild={
-            <a
-              className="truncate-text"
-              href={"/glosario/" + wordOfTheDay.node.slug}
-            >
-              Ver más...
-            </a>
-          }
-        />
+       <a href={"https://s3.us-east-2.amazonaws.com/hub.rocktech/PF_JDIII_290420.pdf"} target="_blank"> 
+       <h4 className="border-black">PORTAFOLIO <span className="red">JDIII</span></h4>
+       </a>
       </div>
       <div className="last-minute sidenav-section">
         <h4>Último minuto</h4>

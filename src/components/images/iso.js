@@ -43,7 +43,7 @@ const Iso = ({ location, src }) => {
       <ImgWrapper2>
       <Img
         fluid={data.placeholderImage.childImageSharp.fluid}
-        style={{ maxWidth: "70px" }}
+        style={{ maxWidth: "70px"},{marginLeft: "auto"} ,{marginRight:"auto"}}
         imgStyle={{ objectFit: "contain" }}
       />
       </ImgWrapper2>
