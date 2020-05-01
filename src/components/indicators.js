@@ -88,7 +88,7 @@ const IndicatorsWrapper = styled.div`
   }
 
   .positive {
-    color: green;
+    color: rgb(56,216,199);
   }
 
   .negative {
@@ -98,6 +98,7 @@ const IndicatorsWrapper = styled.div`
   span {
     margin: auto 0;
     align-self: center;
+    font-weight: 700;
   }
 `
 
@@ -147,8 +148,11 @@ class Indicators extends Component {
                 >
                   {"  " +
                     (quote.regularMarketChange >= 0 ? "+" : "-") +
-                    "" +
-                    Math.abs(quote.regularMarketChange).toLocaleString(navigator.language, { minimumFractionDigits: 2 })}
+                    "$" +
+                    Math.abs(quote.regularMarketChange).toLocaleString(navigator.language, { minimumFractionDigits: 2 }) + " (" +
+                    Math.abs(quote.regularMarketChangePercent * 100).toLocaleString(navigator.language, {maximumFractionDigits: 2}) +"%)"
+
+                  }
                 </span>
               </div>
             ))}
