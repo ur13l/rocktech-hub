@@ -193,8 +193,8 @@ class Academia extends Component {
       <LayoutWrapper>
         <PageLayout
           title="Academia"
-          description="f. Información sobre algo que se considera interesante divulgar."
-          descriptionDef="Del lat. notitia."
+          description=""
+          descriptionDef=""
           location="/noticias"
         >
           <div className="content-item1">

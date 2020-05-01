@@ -4,6 +4,7 @@ import React from "react"
 import styled from "styled-components"
 import "../styles/global.css"
 import { FaFacebookF, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa"
+import { MdMail } from "react-icons/md"
 import Iso from "./images/iso"
 
 /**
@@ -63,13 +64,18 @@ const FooterWrapper = styled.footer`
   }
 
   .sn1 {
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 5;
     align-items: start;
     justify-items: left;
     ul {
       margin-left: 0;
       margin-bottom: 12px;
     }
+  }
+
+  .space-icon{
+    margin-left: 5px;
+    margin-right: 5px;
   }
 
   br,
@@ -243,38 +249,12 @@ const Footer = ({ siteTitle, location }) => {
             </p>
           </a>
         </div>
-        <div className="item item4">
-          <ul>
-            <li>
-              <Link className="footer-color" to="/">
-                Inicio
-              </Link>
-            </li>
-            <li>
-              <Link className="footer-color" to="/">
-                Glosario
-              </Link>
-            </li>
-            <li>
-              <Link className="footer-color" to="/noticias">
-                Noticias
-              </Link>
-            </li>
-          </ul>
-        </div>
         <div className="item item5">
           <div className="sn1">
-            <ul>
-              <li>
-                <Link className="footer-color uppercase" to="/">
-                  Aviso de privacidad
-                </Link>
-              </li>
-            </ul>
           </div>
           <div className="sn sn2">
             <a
-              className="footer-color"
+              className="footer-color space-icon"
               href="https://twitter.com/rocktechmx?lang=en"
               target="_blank"
               rel="noopener noreferrer"
@@ -284,7 +264,7 @@ const Footer = ({ siteTitle, location }) => {
           </div>
           <div className="sn sn3">
             <a
-              className="footer-color"
+              className="footer-color space-icon"
               href="https://www.linkedin.com/company/rocktechgroup"
               target="_blank"
               rel="noopener noreferrer"
@@ -294,8 +274,8 @@ const Footer = ({ siteTitle, location }) => {
           </div>
           <div className="sn sn4">
             <a
-              className="footer-color"
-              href="https://www.facebook.com/rocktechEquityCrowdfunding/"
+              className="footer-color space-icon"
+              href="https://www.facebook.com/rocktechgroup/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -304,12 +284,22 @@ const Footer = ({ siteTitle, location }) => {
           </div>
           <div className="sn sn5">
             <a
-              className="footer-color"
+              className="footer-color space-icon"
               href="https://www.instagram.com/rocktechmx/?hl=en"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaInstagram />
+            </a>
+          </div>
+          <div className="sn sn5">
+            <a
+              className="footer-color space-icon"
+              href="mailto:soporte@rocktech.mx"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MdMail />
             </a>
           </div>
         </div>
