@@ -5,6 +5,8 @@ import styled from "styled-components"
 import "react-multi-carousel/lib/styles.css"
 import CFLogo from "../components/images/cf-logo"
 import RDLogo from "../components/images/rd-logo"
+import ECLogo from "../components/images/ec-logo"
+
 
 const LayoutWrapper = styled.div`
   background-color: #171717;
@@ -26,7 +28,7 @@ const LayoutWrapper = styled.div`
   
   .business-units {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     margin-bottom: 60px;
   }
@@ -72,6 +74,9 @@ const IndexPage = () => (
           <div className="business-units">
             <a className={"link"} href={"https://cf.rocktech.mx"}>
             <CFLogo/>
+            </a>
+            <a className={"link"} href={"https://crowd.rocktech.mx"}>
+            <ECLogo/>
             </a>
             <a className={"link"} href={"https://rd.rocktech.mx"}>
             <RDLogo/>
