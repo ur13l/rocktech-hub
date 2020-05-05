@@ -66,8 +66,7 @@ const IndexPage = () => (
       <div className="container">
         <div className="rocktech-def">
           <p className="def-rocktech">
-            Rocktech es una empresa <i>Business Technology</i> que fomenta la capitalización e innovación de las empresas a
-            través de finanzas corporativas, investigación y desarrollo con el propósito de generar valor.
+          Perfeccionamos, Optimizamos y Ofertamos Buenos Negocios.
           </p>
         </div>
         <div className="units">
@@ -75,11 +74,11 @@ const IndexPage = () => (
             <a className={"link"} href={"https://cf.rocktech.mx"}>
             <CFLogo/>
             </a>
-            <a className={"link"} href={"https://crowd.rocktech.mx"}>
-            <ECLogo/>
-            </a>
             <a className={"link"} href={"https://rd.rocktech.mx"}>
             <RDLogo/>
+            </a>
+            <a className={"link"} href={"https://crowd.rocktech.mx"}>
+            <ECLogo/>
             </a>
           </div>
 
