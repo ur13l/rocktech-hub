@@ -77,7 +77,7 @@ const IndexPage = () => (
             <a className={"link"} href={"https://rd.rocktech.mx"}>
             <RDLogo/>
             </a>
-            <a className={"link"} href={"https://crowd.rocktech.mx"}>
+            <a className={"link"} href={"https://rocktech.mx"}>
             <ECLogo/>
             </a>
           </div>
