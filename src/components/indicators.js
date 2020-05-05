@@ -24,7 +24,7 @@ const IndicatorsWrapper = styled.div`
     font-weight: 700;
   }
 
-  @-webkit-keyframes ticker {
+  @keyframes ticker {
     0% {
       -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0);
@@ -36,8 +36,8 @@ const IndicatorsWrapper = styled.div`
       transform: translate3d(-100%, 0, 0);
     }
   }
-
-  @keyframes ticker {
+  
+  @-webkit-keyframes ticker-webkit {
     0% {
       -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0);
@@ -57,7 +57,6 @@ const IndicatorsWrapper = styled.div`
     height: 30px;
     width: 100%;
     overflow: hidden;
-    box-sizing: border-box;
     padding-left: 100%;
     box-sizing: content-box;
   }
@@ -70,15 +69,14 @@ const IndicatorsWrapper = styled.div`
     box-sizing: content-box;
     white-space: nowrap;
     padding-right: 100%;
-    box-sizing: content-box;
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
-    -webkit-animation-name: ticker;
+    -webkit-animation-name: ticker-webkit;
     animation-name: ticker;
-    -webkit-animation-duration: 1700s;
-    animation-duration: 1700s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 2s;
   }
   .quote {
     display: inline-block;
@@ -118,7 +116,7 @@ class Indicators extends Component {
     .then(json => {
       let array = []
       const keys = Object.keys(json);
-      for(let i = 20 ; i >= 0 ; i--) {
+      for(let i = 0 ; i >= 0 ; i--) {
         for(const key of keys) {
           array.push(json[key]['price'])
         }
@@ -149,7 +147,7 @@ class Indicators extends Component {
                   {"  " +
                     (quote.regularMarketChange >= 0 ? "+" : "-") +
                     "$" +
-                    Math.abs(quote.regularMarketChange).toLocaleString(navigator.language, { minimumFractionDigits: 2 }) + " (" +
+                    Math.abs(quote.regularMarketChange).toLocaleString(navigator.language, { minimumFractionDigits: 2, maximumFractionDigits:2 }) + " (" +
                     Math.abs(quote.regularMarketChangePercent * 100).toLocaleString(navigator.language, {maximumFractionDigits: 2}) +"%)"
 
                   }
