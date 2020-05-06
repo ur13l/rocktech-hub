@@ -3,6 +3,7 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import "../styles/global.css"
 import fetch from "cross-fetch"
+import Ticker from 'react-ticker'
 
 /**
  * HeaderWrapper element, used to set style to a component.
@@ -25,30 +26,17 @@ const IndicatorsWrapper = styled.div`
   }
 
   @keyframes ticker {
-    0% {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-      visibility: visible;
+   from {
+      /* left: 0; */
+      transform: translateX(0);
     }
 
-    100% {
-      -webkit-transform: translate3d(-100%, 0, 0);
-      transform: translate3d(-100%, 0, 0);
+    to {
+        transform: translateX(-100%);
+      /* left: -197800px; */
     }
   }
   
-  @-webkit-keyframes ticker-webkit {
-    0% {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-      visibility: visible;
-    }
-
-    100% {
-      -webkit-transform: translate3d(-100%, 0, 0);
-      transform: translate3d(-100%, 0, 0);
-    }
-  }
 
   #indicators {
     margin-bottom: 60px;
@@ -59,6 +47,7 @@ const IndicatorsWrapper = styled.div`
     overflow: hidden;
     padding-left: 100%;
     box-sizing: content-box;
+    outline: 1px solid transparent;
   }
 
   .indicators-inner {
@@ -69,20 +58,24 @@ const IndicatorsWrapper = styled.div`
     box-sizing: content-box;
     white-space: nowrap;
     padding-right: 100%;
+    position: absolute;
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
-    -webkit-animation-name: ticker-webkit;
+    -webkit-animation-name: ticker;
     animation-name: ticker;
-    -webkit-animation-duration: 1s;
-    animation-duration: 2s;
+    -webkit-animation-duration: 1700s;
+    animation-duration: 1700s;
+    animation-play-state: paused;
+    outline: 1px solid transparent;
   }
   .quote {
     display: inline-block;
     height: 30px;
     align-content: center;
     margin-right: 24px;
+    outline: 1px solid transparent;
   }
 
   .positive {
@@ -116,7 +109,7 @@ class Indicators extends Component {
     .then(json => {
       let array = []
       const keys = Object.keys(json);
-      for(let i = 0 ; i >= 0 ; i--) {
+      for(let i = 20 ; i >= 0 ; i--) {
         for(const key of keys) {
           array.push(json[key]['price'])
         }
@@ -125,7 +118,12 @@ class Indicators extends Component {
 
      this.setState({
         indicators: array
-     }) 
+     }, () => {
+       let elem = document.getElementsByClassName("indicators-inner")[0]
+       setTimeout(()=> {
+         elem.style="animation-play-state: running"
+       }, 100)
+     })
     });
     return [];
   }
@@ -136,23 +134,25 @@ class Indicators extends Component {
         <div id="indicators">
           <div className="indicators-inner">
             {this.state.indicators.map((quote, index) => (
-              <div className="quote" key={quote.symbol + "_" +index}>
-                <span className="short-name">{quote.shortName}: </span>
-                <span>${quote.regularMarketPrice.toLocaleString(navigator.language, { minimumFractionDigits: 2 })}</span>
-                <span
-                  className={
-                    quote.regularMarketChange >= 0 ? "positive" : "negative"
-                  }
-                >
+                        <div className="quote" key={quote.symbol + "_" +index}>
+                          <span className="short-name">{quote.shortName}: </span>
+                          <span>${quote.regularMarketPrice.toLocaleString(navigator.language, { minimumFractionDigits: 2 })}</span>
+                          <span
+                              className={
+                                quote.regularMarketChange >= 0 ? "positive" : "negative"
+                              }
+                          >
                   {"  " +
-                    (quote.regularMarketChange >= 0 ? "+" : "-") +
-                    "$" +
-                    Math.abs(quote.regularMarketChange).toLocaleString(navigator.language, { minimumFractionDigits: 2, maximumFractionDigits:2 }) + " (" +
-                    Math.abs(quote.regularMarketChangePercent * 100).toLocaleString(navigator.language, {maximumFractionDigits: 2}) +"%)"
+                  (quote.regularMarketChange >= 0 ? "+" : "-") +
+                  "$" +
+                  Math.abs(quote.regularMarketChange).toLocaleString(navigator.language, { minimumFractionDigits: 2, maximumFractionDigits:2 }) + " (" +
+                  Math.abs(quote.regularMarketChangePercent * 100).toLocaleString(navigator.language, {maximumFractionDigits: 2}) +"%)"
 
                   }
                 </span>
-              </div>
+                        </div>
+
+
             ))}
           </div>
         </div>
