@@ -3,7 +3,6 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import "../styles/global.css"
 import fetch from "cross-fetch"
-import Ticker from 'react-ticker'
 
 /**
  * HeaderWrapper element, used to set style to a component.
@@ -136,17 +135,30 @@ class Indicators extends Component {
             {this.state.indicators.map((quote, index) => (
                         <div className="quote" key={quote.symbol + "_" +index}>
                           <span className="short-name">{quote.shortName}: </span>
-                          <span>${quote.regularMarketPrice.toLocaleString(navigator.language, { minimumFractionDigits: 2 })}</span>
+                          <span>${
+                            typeof quote.regularMarketPrice === "object" ?
+                              quote.regularMarketPrice.raw.toLocaleString(navigator.language, { minimumFractionDigits: 2 }) :
+                              quote.regularMarketPrice.toLocaleString(navigator.language, { minimumFractionDigits: 2 })
+                          }</span>
                           <span
                               className={
-                                quote.regularMarketChange >= 0 ? "positive" : "negative"
+                                typeof quote.regularMarketChange === "object" ?
+                                (quote.regularMarketChange.raw >= 0 ? "positive" : "negative") :
+                                (quote.regularMarketChange >= 0 ? "positive" : "negative")
                               }
                           >
                   {"  " +
-                  (quote.regularMarketChange >= 0 ? "+" : "-") +
+                  (
+                      typeof quote.regularMarketChange === "object" ?
+                      (quote.regularMarketChange.raw >= 0 ? "+" : "-") :
+                      (quote.regularMarketChange >= 0 ? "+" : "-")
+                  ) +
                   "$" +
-                  Math.abs(quote.regularMarketChange).toLocaleString(navigator.language, { minimumFractionDigits: 2, maximumFractionDigits:2 }) + " (" +
-                  Math.abs(quote.regularMarketChangePercent * 100).toLocaleString(navigator.language, {maximumFractionDigits: 2}) +"%)"
+                  Math.abs( typeof quote.regularMarketChange === "object" ? quote.regularMarketChange.raw : quote.regularMarketChange)
+                      .toLocaleString(navigator.language, { minimumFractionDigits: 2, maximumFractionDigits:2 }) + " (" +
+                  Math.abs(typeof quote.regularMarketChangePercent === "object" ? quote.regularMarketChangePercent.raw * 100 :
+                      quote.regularMarketChangePercent * 100)
+                      .toLocaleString(navigator.language, {maximumFractionDigits: 2}) +"%)"
 
                   }
                 </span>
