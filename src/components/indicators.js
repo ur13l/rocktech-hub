@@ -104,26 +104,26 @@ class Indicators extends Component {
 
   collectIndicators = () => {
     fetch("https://s3.us-east-2.amazonaws.com/hub.rocktech/prices.json")
-    .then(response => response.json())
-    .then(json => {
-      let array = []
-      const keys = Object.keys(json);
-      for(let i = 20 ; i >= 0 ; i--) {
-        for(const key of keys) {
-          array.push(json[key]['price'])
+      .then(response => response.json())
+      .then(json => {
+        let array = []
+        const keys = Object.keys(json);
+        for(let i = 20 ; i >= 0 ; i--) {
+          for(const key of keys) {
+            array.push(json[key]['price'])
+          }
         }
-      }
 
 
-     this.setState({
-        indicators: array
-     }, () => {
-       let elem = document.getElementsByClassName("indicators-inner")[0]
-       setTimeout(()=> {
-         elem.style="animation-play-state: running"
-       }, 100)
-     })
-    });
+        this.setState({
+          indicators: array
+        }, () => {
+          let elem = document.getElementsByClassName("indicators-inner")[0]
+          setTimeout(()=> {
+            elem.style="animation-play-state: running"
+          }, 100)
+        })
+      });
     return [];
   }
 
@@ -133,36 +133,51 @@ class Indicators extends Component {
         <div id="indicators">
           <div className="indicators-inner">
             {this.state.indicators.map((quote, index) => (
-                        <div className="quote" key={quote.symbol + "_" +index}>
-                          <span className="short-name">{quote.shortName}: </span>
-                          <span>${
-                            typeof quote.regularMarketPrice === "object" ?
-                              quote.regularMarketPrice.raw.toLocaleString(navigator.language, { minimumFractionDigits: 2 }) :
-                              quote.regularMarketPrice.toLocaleString(navigator.language, { minimumFractionDigits: 2 })
-                          }</span>
-                          <span
-                              className={
-                                typeof quote.regularMarketChange === "object" ?
-                                (quote.regularMarketChange.raw >= 0 ? "positive" : "negative") :
-                                (quote.regularMarketChange >= 0 ? "positive" : "negative")
-                              }
-                          >
-                  {"  " +
-                  (
-                      typeof quote.regularMarketChange === "object" ?
-                      (quote.regularMarketChange.raw >= 0 ? "+" : "-") :
-                      (quote.regularMarketChange >= 0 ? "+" : "-")
-                  ) +
-                  "$" +
-                  Math.abs( typeof quote.regularMarketChange === "object" ? quote.regularMarketChange.raw : quote.regularMarketChange)
-                      .toLocaleString(navigator.language, { minimumFractionDigits: 2, maximumFractionDigits:2 }) + " (" +
-                  Math.abs(typeof quote.regularMarketChangePercent === "object" ? quote.regularMarketChangePercent.raw * 100 :
-                      quote.regularMarketChangePercent * 100)
-                      .toLocaleString(navigator.language, {maximumFractionDigits: 2}) +"%)"
+              <div className="quote" key={quote.symbol + "_" +index}>
+                <span className="short-name">{quote.shortName}: </span>
+                {quote.from === "yahoo" ?
+                  <>
+                    <span>${
+                      typeof quote.regularMarketPrice === "object" ?
+                        quote.regularMarketPrice.raw.toLocaleString(navigator.language, { minimumFractionDigits: 2 }) :
+                        quote.regularMarketPrice.toLocaleString(navigator.language, { minimumFractionDigits: 2 })
+                    }</span>
+                    <span
+                      className={
+                        typeof quote.regularMarketChange === "object" ?
+                          (quote.regularMarketChange.raw >= 0 ? "positive" : "negative") :
+                          (quote.regularMarketChange >= 0 ? "positive" : "negative")
+                      }
+                    >
+                      {"  " +
+                      (
+                        typeof quote.regularMarketChange === "object" ?
+                          (quote.regularMarketChange.raw >= 0 ? "+" : "-") :
+                          (quote.regularMarketChange >= 0 ? "+" : "-")
+                      ) +
+                      "$" +
+                      Math.abs(typeof quote.regularMarketChange === "object" ? quote.regularMarketChange.raw : quote.regularMarketChange)
+                        .toLocaleString(navigator.language, {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2
+                        }) + " (" +
+                      Math.abs(typeof quote.regularMarketChangePercent === "object" ? quote.regularMarketChangePercent.raw * 100 :
+                        quote.regularMarketChangePercent * 100)
+                        .toLocaleString(navigator.language, { maximumFractionDigits: 2 }) + "%)"
 
-                  }
-                </span>
-                        </div>
+                      }
+                    </span>
+                  </> :
+                  <>
+                    <span className={"positive"}>
+                      {" (" +
+                      Math.abs(quote.regularMarketChangePercent * 100)
+                        .toLocaleString(navigator.language, { maximumFractionDigits: 2 }) + "%)"}
+                    </span>
+                  </>
+
+                }
+              </div>
 
 
             ))}
