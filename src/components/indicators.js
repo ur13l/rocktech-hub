@@ -103,7 +103,7 @@ class Indicators extends Component {
   }
 
   collectIndicators = () => {
-    fetch("https://s3.us-east-2.amazonaws.com/hub.rocktech/prices.json")
+    fetch("https://s3.us-east-2.amazonaws.com/hub.rocktech/prices-dev.json")
       .then(response => response.json())
       .then(json => {
         let array = []
@@ -171,7 +171,7 @@ class Indicators extends Component {
                   <>
                     <span className={"positive"}>
                       {" (" +
-                      Math.abs(quote.regularMarketChangePercent * 100)
+                      Math.abs(quote.value)
                         .toLocaleString(navigator.language, { maximumFractionDigits: 2 }) + "%)"}
                     </span>
                   </>
