@@ -232,7 +232,7 @@ const SideNav = () => {
   return (
     <SideNavWrapper>
       <div className="word-of-the-day sidenav-section">
-       <a href={"https://s3.us-east-2.amazonaws.com/hub.rocktech/PF_JDIII_290420.pdf"} target="_blank"> 
+       <a href={"https://s3.us-east-2.amazonaws.com/hub.rocktech/JDIII_060520.pdf"} target="_blank"> 
        <h4 className="border-black">PORTAFOLIO <span className="red">JDIII</span></h4>
        </a>
       </div>
