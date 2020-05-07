@@ -103,7 +103,7 @@ class Indicators extends Component {
   }
 
   collectIndicators = () => {
-    fetch("https://s3.us-east-2.amazonaws.com/hub.rocktech/prices-dev.json")
+    fetch("https://s3.us-east-2.amazonaws.com/hub.rocktech/prices.json")
       .then(response => response.json())
       .then(json => {
         let array = []
