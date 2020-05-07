@@ -195,7 +195,7 @@ class Academia extends Component {
           title="Academia"
           description=""
           descriptionDef=""
-          location="/noticias"
+          location="/academia"
         >
           <div className="content-item1">
             <div className="main1">

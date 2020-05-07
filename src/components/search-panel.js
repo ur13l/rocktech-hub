@@ -181,7 +181,7 @@ const SearchPanel = ({ q }) => {
             "search-panel1 " + (newsShown.length === 0 ? "search-hidden" : "")
           }
         >
-          <h3>Noticias</h3>
+          <h3>Academia</h3>
           {newsShown.map(entry => (
             <Link
               key={entry.node.id}

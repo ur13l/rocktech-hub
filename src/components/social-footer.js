@@ -63,7 +63,7 @@ const SocialFooter = ({ post }) => {
         <div className="elem2">
           <p>¿Tienes alguna sugerencia de contenido?</p>
           <p>
-            Te escuchamos, twitteanos a
+            Te escuchamos, twitteanos a&nbsp;
             <a
               className="twitter-link black"
               href="https://twitter.com/rocktechmx"
