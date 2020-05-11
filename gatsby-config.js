@@ -35,7 +35,7 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         // your WordPress source
-        baseUrl: `correspondant.rocktech.mx`,
+        baseUrl: `rocktech.mx`,
         protocol: `https`,
         // is it hosted on wordpress.com, or self-hosted?
         hostingWPCOM: false,
