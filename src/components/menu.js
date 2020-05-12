@@ -68,7 +68,7 @@ class Menu extends Component {
           <Link onClick={()=>{this.onClickClose()}} to="/glosario">Glosario</Link>
         </div>
         <div>
-          <Link onClick={()=>{this.onClickClose()}} to="/noticias">Noticias</Link>
+          <Link onClick={()=>{this.onClickClose()}} to="/academia">Academia</Link>
         </div>
         <div className="bottom">
           <BigLogo location="menu" />
