@@ -84,11 +84,13 @@ const Cover = ({ location }) => {
         <div className="big-logo-container">
             <BigLogo location={location} />
         </div>
-        <h3 className="disrupt-title">Disrumpir:</h3>
+        <h3 className="disrupt-title">Business Engineering:</h3>
         <p className="deflat">
-          del lat. disruptio, -ōnis, var. de diruptio, -ōnis ‘rotura, fractura’.
+         Ingeniería de Empresarial o Ingeniería de Negocios.
         </p>
-        <p className="def">Alude a realizar las cosas de manera diferente.</p>
+        <p className="def">(BE) Es el desarrollo e implementación de soluciones empresariales.<br/> 
+        Desde sistemas y tecnologías de la informaciòn hasta el perfeccionamiento de la estructura organizacional 
+        y la optimización de procesos.</p>
       </CoverWrapper>
     )
   }
