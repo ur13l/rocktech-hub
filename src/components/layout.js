@@ -146,6 +146,8 @@ const GlobalStyles = styled.div`
       display: none;
     }
   }
+
+  overflow-x: hidden;
 `
 
 const Layout = ({ children, location }) => {

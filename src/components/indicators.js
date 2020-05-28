@@ -57,7 +57,7 @@ const IndicatorsWrapper = styled.div`
     box-sizing: content-box;
     white-space: nowrap;
     padding-right: 100%;
-    position: absolute;
+    position: relative;
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
