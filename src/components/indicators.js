@@ -108,8 +108,8 @@ class Indicators extends Component {
       .then(json => {
         let array = []
         const keys = Object.keys(json);
-        for(let i = 20 ; i >= 0 ; i--) {
-          for(const key of keys) {
+        for (let i = 20; i >= 0; i--) {
+          for (const key of keys) {
             array.push(json[key]['price'])
           }
         }
@@ -119,8 +119,8 @@ class Indicators extends Component {
           indicators: array
         }, () => {
           let elem = document.getElementsByClassName("indicators-inner")[0]
-          setTimeout(()=> {
-            elem.style="animation-play-state: running"
+          setTimeout(() => {
+            elem.style = "animation-play-state: running"
           }, 100)
         })
       });
@@ -133,7 +133,7 @@ class Indicators extends Component {
         <div id="indicators">
           <div className="indicators-inner">
             {this.state.indicators.map((quote, index) => (
-              <div className="quote" key={quote.symbol + "_" +index}>
+              <div className="quote" key={quote.symbol + "_" + index}>
                 <span className="short-name">{quote.shortName}: </span>
                 {quote.from === "yahoo" ?
                   <>
@@ -150,20 +150,20 @@ class Indicators extends Component {
                       }
                     >
                       {"  " +
-                      (
-                        typeof quote.regularMarketChange === "object" ?
-                          (quote.regularMarketChange.raw >= 0 ? "+" : "-") :
-                          (quote.regularMarketChange >= 0 ? "+" : "-")
-                      ) +
-                      "$" +
-                      Math.abs(typeof quote.regularMarketChange === "object" ? quote.regularMarketChange.raw : quote.regularMarketChange)
-                        .toLocaleString(navigator.language, {
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2
-                        }) + " (" +
-                      Math.abs(typeof quote.regularMarketChangePercent === "object" ? quote.regularMarketChangePercent.raw * 100 :
-                        quote.regularMarketChangePercent * 100)
-                        .toLocaleString(navigator.language, { maximumFractionDigits: 2 }) + "%)"
+                        (
+                          typeof quote.regularMarketChange === "object" ?
+                            (quote.regularMarketChange.raw >= 0 ? "+" : "-") :
+                            (quote.regularMarketChange >= 0 ? "+" : "-")
+                        ) +
+                        "$" +
+                        Math.abs(typeof quote.regularMarketChange === "object" ? quote.regularMarketChange.raw : quote.regularMarketChange)
+                          .toLocaleString(navigator.language, {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                          }) + " (" +
+                        Math.abs(typeof quote.regularMarketChangePercent === "object" ? quote.regularMarketChangePercent.raw * 100 :
+                          quote.regularMarketChangePercent * 100)
+                          .toLocaleString(navigator.language, { maximumFractionDigits: 2 }) + "%)"
 
                       }
                     </span>
@@ -171,8 +171,8 @@ class Indicators extends Component {
                   <>
                     <span className={"positive"}>
                       {" (" +
-                      Math.abs(quote.value)
-                        .toLocaleString(navigator.language, { maximumFractionDigits: 2 }) + "%)"}
+                        Math.abs(quote.value)
+                          .toLocaleString(navigator.language, { maximumFractionDigits: 2 }) + "%)"}
                     </span>
                   </>
 

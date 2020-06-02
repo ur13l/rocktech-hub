@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: `Rocktech Hub`,
     description: `Sumamos valor.`,
-    author: `@gatsbyjs`,
+    author: `@ur13l`,
     url: `https://hub.rocktech.mx`
   },
   plugins: [

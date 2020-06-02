@@ -111,7 +111,7 @@ const GlobalStyles = styled.div`
     }
 
     h1 {
-  font-size: 1.6em;
+  font-size: 1.5em;
   margin: 0;
 }
   }
