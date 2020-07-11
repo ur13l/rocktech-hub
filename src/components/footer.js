@@ -231,23 +231,6 @@ const Footer = ({ siteTitle, location }) => {
           </a>
         </div>
         <div className="item item3">
-          <h5 className="footer-title footer-color">Corporativo</h5>
-          <a
-            className="address footer-color"
-            href="https://goo.gl/maps/vFqDoMThoGVdxtkn8"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <p className="address">
-              Capital Reforma
-              <br />
-              Avenida Paseo de la Reforma #250
-              <br />
-              Torre 1 Reforma #16, Piso 11 Col. Juárez,
-              <br />
-              Delegación Cuauhtémoc, CDMX.
-            </p>
-          </a>
         </div>
         <div className="item item5">
           <div className="sn1">
