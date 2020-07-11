@@ -10976,11 +10976,6 @@ react-text-truncate@^0.16.0:
   dependencies:
     prop-types "^15.5.7"
 
-react-ticker@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/react-ticker/-/react-ticker-1.2.2.tgz#12cda5ff8266c6fe90ffcd8c58e12ba1596ddf24"
-  integrity sha512-PXUujoPJvajxwOfosuuujlrBUrjgGp4FB4haWFOI25ujhMppW4SuLkiOdQ9AylrWN3yTHWdk2kbQWe3n9SjFGA==
-
 react-timeago@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/react-timeago/-/react-timeago-4.4.0.tgz#4520dd9ba63551afc4d709819f52b14b9343ba2b"
