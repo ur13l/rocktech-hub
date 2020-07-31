@@ -17,13 +17,16 @@ const LayoutWrapper = styled.div`
     background-color: #FFF;
     color: #000;
     font-weight: bold;
-    padding: 7px;
-
+    padding-left: 5px;
+    padding-right: 5px;
   }
 
   .border{
     border: solid 1px white;
     padding: 5px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .cf{
@@ -41,6 +44,7 @@ const LayoutWrapper = styled.div`
   .align-center{
     text-align: center;
     margin-bottom: 40px;
+    
   }
 
   .rocktech-def {
@@ -86,6 +90,14 @@ const LayoutWrapper = styled.div`
     .business-units {
       grid-template-columns: 1fr;
     }
+
+    .border{
+      border: solid 1px white;
+      padding: 5px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
   
   }
 `
@@ -102,8 +114,8 @@ const IndexPage = () => (
         unidades de negocio; <b className="cf">finanzas corporativas</b>, <b className="rd">investigación + 
         desarrollo</b> y <b className="ec">fondeo colectivo de capital</b>.</span>
           </p>
-          <p className="def-rocktech">
-          <span className="border">Perfeccionamos, Optimizamos y Ofertamos Buenos Negocios.</span>
+          <p className="def-rocktech border">
+              Perfeccionamos, Optimizamos y Ofertamos Buenos Negocios.
           </p>
         </div>
         <div className="units">
