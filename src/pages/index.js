@@ -19,6 +19,7 @@ const LayoutWrapper = styled.div`
     font-weight: bold;
     padding-left: 5px;
     padding-right: 5px;
+    line-height: 35px;
   }
 
   .border{
