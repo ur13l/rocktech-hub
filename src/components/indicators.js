@@ -64,8 +64,8 @@ const IndicatorsWrapper = styled.div`
     animation-timing-function: linear;
     -webkit-animation-name: ticker;
     animation-name: ticker;
-    -webkit-animation-duration: 1700s;
-    animation-duration: 1700s;
+    -webkit-animation-duration: 1200s;
+    animation-duration: 1200s;
     animation-play-state: paused;
     outline: 1px solid transparent;
   }
