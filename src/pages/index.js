@@ -12,6 +12,34 @@ const LayoutWrapper = styled.div`
   background-color: #171717;
   min-height: 99%;
   color: white;
+  
+
+  .hidden-phrase{
+    visibility: hidden;
+  }
+  
+  .cf-unit:hover  > .cf-unit-phrase {
+    color: rgb(192,137,6);
+    visibility: visible;
+    font-weight: bold;
+    margin-top: -30px;
+  }
+  
+  
+  .ec-unit:hover  > .ec-unit-phrase {
+    color: rgb(16,128,128);
+    visibility: visible;
+    font-weight: bold;
+    margin-top: -30px;
+  }
+  
+  
+  .rd-unit:hover  > .rd-unit-phrase {
+    color: rgb(42,70,139);
+    visibility: visible;
+    font-weight: bold;
+    margin-top: -30px;
+  }
 
   .phrase{
     background-color: #FFF;
@@ -113,22 +141,31 @@ const IndexPage = () => (
         <span className="phrase">Rocktech es una empresa de ingeniería de negocios que promueve la 
         institucionalización, innovación y la inversión desde sus tres 
         unidades de negocio; <b className="cf">finanzas corporativas</b>, <b className="rd">investigación + 
-        desarrollo</b> y <b className="ec">fondeo colectivo de capital</b>.</span>
+        desarrollo</b> y <b className="ec">capital de inversión</b>.</span>
           </p>
           <p className="def-rocktech border">
-              Perfeccionamos, Optimizamos y Ofertamos Buenos Negocios.
+              Perfeccionamos, Optimizamos y Capitalizamos Buenos Negocios.
           </p>
         </div>
         <div className="units">
           <div className="business-units">
-            <a className={"link"} href={"https://cf.rocktech.mx"}>
+            <a className={"link cf-unit"} href={"https://cf.rocktech.mx"}>
             <CFLogo/>
+              <span className="hidden-phrase cf-unit-phrase">
+                Corporate and Finance
+              </span>
             </a>
-            <a className={"link"} href={"https://rd.rocktech.mx"}>
+            <a className={"link rd-unit"} href={"https://rd.rocktech.mx"}>
             <RDLogo/>
+              <span className="hidden-phrase rd-unit-phrase">
+                Research + Development
+              </span>
             </a>
-            <a className={"link"} href={"https://rocktech.mx"}>
+            <a className={"link ec-unit"} href={"https://rocktech.mx"}>
             <ECLogo/>
+              <span className="hidden-phrase ec-unit-phrase">
+                Equity
+              </span>
             </a>
           </div>
 
