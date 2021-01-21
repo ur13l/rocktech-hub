@@ -19,7 +19,7 @@ import Img from "gatsby-image"
 const ECLogo = () => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "ec-logo.png" }) {
+      placeholderImage: file(relativePath: { eq: "eq-logo.png" }) {
         childImageSharp {
           fluid(maxWidth: 500) {
             ...GatsbyImageSharpFluid_tracedSVG
