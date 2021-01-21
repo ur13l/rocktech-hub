@@ -152,7 +152,7 @@ const IndexPage = () => (
             <a className={"link cf-unit"} href={"https://cf.rocktech.mx"}>
             <CFLogo/>
               <span className="hidden-phrase cf-unit-phrase">
-                Corporate and Finance
+                Corporate Finance
               </span>
             </a>
             <a className={"link rd-unit"} href={"https://rd.rocktech.mx"}>
@@ -164,7 +164,7 @@ const IndexPage = () => (
             <a className={"link ec-unit"} href={"https://rocktech.mx"}>
             <ECLogo/>
               <span className="hidden-phrase ec-unit-phrase">
-                Equity
+                Equity Crowdfunding
               </span>
             </a>
           </div>
